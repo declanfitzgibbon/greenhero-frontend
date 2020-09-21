@@ -1,0 +1,55 @@
+
+<mat-drawer-container class="main-content-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="menu-title">
+      <span><img src="/assets/green-hero.png" class="green-hero-icon"> Green Hero</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="menu-items">
+      <div class="menu-item">
+        <a mat-button href="#">Link</a>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="menu-item">
+        <a mat-button href="#">Link</a>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="menu-item">
+        <a mat-button href="#">Link</a>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="menu-item">
+        <a mat-button href="#">Link</a>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-drawer>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Menu" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Green Hero</span>
+    <span class="example-spacer"></span>
+    <div class="coin-container">
+        <img src="assets/green-coing.png" class="coin-icon">
+        <span class="coin-amount">2000</span>
+    </div>
+    <div class="toggle-container">
+      <button mat-icon-button (click)="changeTheme($event)">
+        <mat-icon *ngIf="isDark">brightness_2</mat-icon>
+        <mat-icon *ngIf="!isDark">wb_sunny</mat-icon>
+      </button>
+      <button mat-icon-button (click)="changeUser($event)">
+        <mat-icon *ngIf="isUser">supervised_user_circle</mat-icon>
+        <mat-icon *ngIf="!isUser">account_circle</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="main-content-container">
+    <ng-content></ng-content>
+  </div>
+
+</mat-drawer-container>
+

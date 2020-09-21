@@ -1,0 +1,22 @@
+<ng-container *ngIf="!loading">
+    <h3 class="line-chart-title">{{ title }}</h3>
+    <ngx-charts-area-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="multi"
+    (window:resize)="onResize($event)">
+    </ngx-charts-area-chart>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-progress-spinner
+        [color]="'primary'">
+    </mat-progress-spinner>
+</ng-container>

@@ -1,0 +1,40 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.coin-icon {
+    width: 1em;
+    height: 1em;
+}
+
+.main-content-container {
+    min-height: calc(100vh - 64px);;
+}
+
+.menu-title {
+    height: 64px;
+    text-align: center;
+    display:table;
+    width: 100%;
+}
+
+.menu-title > span {
+    font-weight: 500;
+    display: table-cell;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.green-hero-icon {
+    height: 1em;
+}
+
+.menu-item {
+    min-width: 200px;
+    text-align: center;
+    width: 100%;
+}
+
+.menu-item a {
+    width: 100%;
+}

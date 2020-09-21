@@ -1,0 +1,22 @@
+.navigation-cards {
+    display: flex;
+    width: calc(100% - 40px);
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navigation-card {
+    width: 20%;
+    margin: 2%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-img {
+    max-width: 150px;
+}
+
+.mat-card .last-child {
+    margin-bottom: 0;
+}

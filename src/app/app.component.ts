@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'power-saving';
+  isDark: boolean = true;
+  isUser: boolean =  false;
+
+  @HostBinding('class')
+  get themeMode() {
+    return this.isDark ? 'theme-dark' : 'theme-light';
+  }
 }

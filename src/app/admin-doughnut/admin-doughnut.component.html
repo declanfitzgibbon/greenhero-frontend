@@ -1,0 +1,17 @@
+<ng-container *ngIf="!loading">
+    <h3 class="donut-chart-title">{{ title }}</h3>
+    <ngx-charts-pie-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="single"
+    [labels]="labels"
+    [legend]="legend"
+    (window:resize)="onResize($event)"
+    >
+    </ngx-charts-pie-chart>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-progress-spinner
+        [color]="'primary'">
+    </mat-progress-spinner>
+</ng-container>

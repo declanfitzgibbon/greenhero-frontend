@@ -1,0 +1,19 @@
+<ng-container *ngIf="!loading">
+    <h3 class="feed-title">{{ title }}</h3>
+    <div class="feed-container">
+        <mat-card class="feed-entry" *ngFor="let entry of feed" @slideIn>
+            <div class="icon-container">
+                <div [innerHTML]="entry.icon"></div>
+            </div>
+            <div class="content-container">
+                <p class="title">{{ entry.title }}</p>
+                <p class="content">{{ entry.content }}</p>
+            </div>
+        </mat-card>
+    </div>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-progress-spinner
+        [color]="'primary'">
+    </mat-progress-spinner>
+</ng-container>
