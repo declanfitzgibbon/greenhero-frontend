@@ -1,20 +1,26 @@
 .navigation-cards {
+    margin: 20px 0px;
+}
+.navigation-card {
+    width: 50%;
     display: flex;
-    width: calc(100% - 40px);
-    padding: 20px;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
-.navigation-card {
-    width: 20%;
-    margin: 2%;
-    text-align: center;
-    cursor: pointer;
+.mat-card-header-text {
+    width: 100%;
 }
 
 .card-img {
-    max-width: 150px;
+    max-width: 200px;
+    max-height: 50px;
+    height: auto;
+    width: auto;
 }
 
 .mat-card .last-child {

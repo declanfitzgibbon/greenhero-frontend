@@ -46,6 +46,10 @@ $power-saving-dark-theme: mat-dark-theme((
     fill: white;
   }
 
+  .navigation-card {
+    background: rgb(55, 102, 91);
+  }
+
   /* width */
   ::-webkit-scrollbar {
     width: 10px;
@@ -70,6 +74,10 @@ $power-saving-dark-theme: mat-dark-theme((
   @include angular-material-theme($power-saving-light-theme);
   text {
     fill: black;
+  }
+
+  .navigation-card {
+    background: rgb(112, 204, 183);
   }
 
   /* width */
