@@ -1,18 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ThemeService } from '../theme.service';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class NavigationComponent implements OnInit {
-
-  isDark: boolean = false;
-  isUser: boolean = false;
+export class DashboardComponent implements OnInit {
 
   constructor(private themeService: ThemeService, private userService: UserService) { }
+
+  isDark: boolean = true;
+  isUser: boolean =  true;
 
   ngOnInit(): void {
     this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
@@ -21,12 +21,6 @@ export class NavigationComponent implements OnInit {
     this.isUser = this.userService.getCurrentUserType();
   }
 
-  changeTheme(event) {
-    this.themeService.changeTheme();
-  }
   
-  changeUser(event) {
-    this.userService.changeUser();
-  }
 
 }

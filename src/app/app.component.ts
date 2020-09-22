@@ -1,4 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
+import {ThemeService} from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +7,17 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isDark: boolean = true;
-  isUser: boolean =  true;
+
+  isDark: boolean
+
+  constructor(private themeService: ThemeService) {
+    this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
+    this.isDark = this.themeService.getCurrentThemeType();
+  }
 
   @HostBinding('class')
   get themeMode() {
     return this.isDark ? 'theme-dark' : 'theme-light';
   }
+
 }

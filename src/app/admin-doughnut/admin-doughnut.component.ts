@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-admin-doughnut',
@@ -7,11 +8,12 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class AdminDoughnutComponent implements OnInit, OnChanges {
 
-  @Input() isDark: boolean;
+  isDark: boolean;
   @Input() title: string = 'Energy consumption';
+  @Input() isFull: boolean = false;
 
   single: any[];
-  view: Array<number> = [innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20, ((innerHeight / 2) - (innerHeight / 5)) - 28];
+  view: Array<number>;
 
   loading: boolean;
 
@@ -21,12 +23,18 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
 
   colorScheme: { domain: Array<string> };
 
-  constructor() {
+  constructor(private themeService: ThemeService) {
     
   }
 
   ngOnInit() {
     this.loading = true;
+
+    this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20) : innerWidth - 20, !this.isFull ? (((innerHeight / 2) - (innerHeight / 5)) - 28) : innerHeight / 2];
+    
+
+    this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
+    this.isDark = this.themeService.getCurrentThemeType();
 
     this.legend = !(innerWidth < 960);
 
@@ -64,7 +72,7 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
         entry.value += Math.floor(Math.random() * 100);
       }
       this.single = [...this.single];
-    }, 4000);
+    }, 1000);
     
     this.loading = false;
   }
@@ -79,7 +87,7 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
 
   onResize(event) {
     this.legend = !(innerWidth < 960);
-    this.view = [innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20, ((innerHeight / 2) - (innerHeight / 5)) - 28];
+    this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20) : innerWidth - 20, !this.isFull ? (((innerHeight / 2) - (innerHeight / 5)) - 28) : innerHeight / 2];
   }
 
 }

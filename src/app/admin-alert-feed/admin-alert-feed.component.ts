@@ -73,7 +73,7 @@ export class AdminAlertFeedComponent implements OnInit {
         title: "System recommendation",
         content: "Lights are too bright"
       });
-    }, 4000);
+    }, 1000);
 
     this.loading = false;
   }

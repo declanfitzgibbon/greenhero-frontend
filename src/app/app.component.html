@@ -1,10 +1,3 @@
-<app-navigation [isDark]="isDark" [isUser]="isUser" (themeChange)="isDark = !isDark" (userChange)="isUser = !isUser">
-    <!-- User -->
-    <ng-container *ngIf="isUser">
-        <app-user-dashboard></app-user-dashboard>
-    </ng-container>
-    <!-- Admin -->
-    <ng-container *ngIf="!isUser">
-        <app-admin-dashboard [isDark]="isDark"></app-admin-dashboard>
-    </ng-container>
+<app-navigation>
+    <router-outlet></router-outlet>
 </app-navigation>

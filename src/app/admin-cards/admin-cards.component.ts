@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-admin-cards',
@@ -7,18 +8,21 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class AdminCardsComponent implements OnInit, OnChanges {
 
-  @Input() isDark: boolean;
+  isDark: boolean;
 
   colorScheme: {domain: Array<string> };
   single: Array<{name: string, value: number}>;
   view: Array<number> = [innerWidth - 20, innerWidth < 500 ? 500 : innerHeight / 5];
   loading: boolean;
 
-  constructor() {
+  constructor(private themeService: ThemeService) {
   }
 
   ngOnInit(): void {
     this.loading = true;
+
+    this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
+    this.isDark = this.themeService.getCurrentThemeType();
 
     if(this.isDark) {
       this.colorScheme = { domain: ["#375c66", "#37665b"] }
@@ -50,7 +54,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
         entry.value += Math.floor(Math.random() * 100);
       }
       this.single = [...this.single];
-    }, 4000);
+    }, 1000);
 
     this.loading = false;
   }

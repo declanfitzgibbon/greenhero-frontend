@@ -1,12 +1,12 @@
 <div gdAreas="header header | graph_1 graph_2 | graph_3 feed"
 gdGap="10px"
-gdRows="auto auto auto"
+gdRows="auto auto 200px"
 gdAreas.lt-md="header | graph_1 | graph_2 | graph_3 | feed"
-gdRows.lt-md="auto auto auto auto auto"
+gdRows.lt-md="auto auto auto auto 400px"
 class="admin-content">
-    <app-admin-cards gdArea="header" [isDark]="isDark"></app-admin-cards>
-    <app-admin-doughnut gdArea="graph_1" [isDark]="isDark"></app-admin-doughnut>
-    <app-admin-line-graph gdArea="graph_2" [isDark]="isDark"></app-admin-line-graph>
-    <app-admin-bar-chart gdArea="graph_3" [isDark]="isDark"></app-admin-bar-chart>
+    <app-admin-cards gdArea="header"></app-admin-cards>
+    <app-admin-doughnut gdArea="graph_1"></app-admin-doughnut>
+    <app-admin-line-graph gdArea="graph_2"></app-admin-line-graph>
+    <app-admin-bar-chart gdArea="graph_3"></app-admin-bar-chart>
     <app-admin-alert-feed gdArea="feed"></app-admin-alert-feed>
 </div>

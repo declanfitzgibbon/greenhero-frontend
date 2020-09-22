@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-admin-bar-chart',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 })
 export class AdminBarChartComponent implements OnInit {
 
-  @Input() isDark: boolean;
+  isDark: boolean;
   @Input() title: string = 'Consumption per profession';
 
   single: any[];
@@ -31,10 +32,14 @@ export class AdminBarChartComponent implements OnInit {
 
   loading: boolean;
 
-  constructor() { }
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
+
     this.loading = true;
+
+    this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
+    this.isDark = this.themeService.getCurrentThemeType();
     this.showLegend = !(innerWidth < 960);
     this.single = [
       {
@@ -71,7 +76,7 @@ export class AdminBarChartComponent implements OnInit {
         entry.value += Math.floor(Math.random() * 100);
       }
       this.single = [...this.single];
-    }, 4000);
+    }, 1000);
 
     this.loading = false;
   }

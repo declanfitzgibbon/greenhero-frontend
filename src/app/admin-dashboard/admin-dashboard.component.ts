@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -7,11 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  @Input() isDark: boolean;
+  isDark: boolean;
 
-  constructor() { }
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
+    this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
+    this.isDark = this.themeService.getCurrentThemeType();
   }
 
 }

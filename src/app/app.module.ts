@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -30,6 +31,10 @@ import { AppComponent } from './app.component';
 import { AdminDoughnutComponent } from './admin-doughnut/admin-doughnut.component';
 import { AdminLineGraphComponent } from './admin-line-graph/admin-line-graph.component';
 import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.component';
+import { UserConsumptionComponent } from './user-consumption/user-consumption.component';
+import { UserMissionsComponent } from './user-missions/user-missions.component';
+import { UserStatsComponent } from './user-stats/user-stats.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -45,7 +50,11 @@ import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.compon
     AdminAlertFeedComponent,
     AdminDoughnutComponent,
     AdminLineGraphComponent,
-    AdminBarChartComponent
+    AdminBarChartComponent,
+    UserConsumptionComponent,
+    UserMissionsComponent,
+    UserStatsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,8 @@ import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.compon
     MatGridListModule,
     FlexLayoutModule,
     NgxChartsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

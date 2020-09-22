@@ -4,8 +4,8 @@
         <mat-card-header>
             <mat-card-title class="event-card-title">Fight against the power lich!</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-            <div class="event-content-container last-child">
+        <mat-card-content class="last-child">
+            <div class="event-content-container">
                 <div class="event-half">
                     <img mat-card-image src="/assets/enemy-example.png" alt="Illumination" class="event-img">
                 </div>
@@ -17,8 +17,14 @@
                         Integer vitae sapien eget nisi molestie tempor. Curabitur consectetur, erat non consequat volutpat, 
                         lacus elit interdum massa, eget iaculis ex libero at ipsum.
                     </p>
+                    <div class="tags-container">
+                        <mat-chip-list fxLayout="row" fxLayoutAlign="center center">
+                            <mat-chip color="primary" selected>Electricity saver</mat-chip>
+                            <mat-chip color="accent" selected>Water saver</mat-chip>
+                        </mat-chip-list>
+                    </div>
                 </div>
             </div>
-          </mat-card-content>
+        </mat-card-content>
     </mat-card>
 </div>

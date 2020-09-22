@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-admin-line-graph',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 })
 export class AdminLineGraphComponent implements OnInit {
 
-  @Input() isDark: boolean;
+  isDark: boolean;
   @Input() title: string = 'Consumption per profession and month';
 
   multi: any[];
@@ -31,10 +32,13 @@ export class AdminLineGraphComponent implements OnInit {
 
   loading: boolean;
 
-  constructor() { }
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.loading = true;
+
+    this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
+    this.isDark = this.themeService.getCurrentThemeType();
 
     this.legend = !(innerWidth < 960);
 
@@ -124,7 +128,7 @@ export class AdminLineGraphComponent implements OnInit {
       }
       this.multi = [...this.multi];
       console.log("hola", this.multi);
-    }, 4000);
+    }, 1000);
     
     this.loading = false;
   }

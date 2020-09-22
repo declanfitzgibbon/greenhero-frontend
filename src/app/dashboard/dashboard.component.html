@@ -1,0 +1,8 @@
+<!-- User -->
+<ng-container *ngIf="isUser">
+    <app-user-dashboard></app-user-dashboard>
+</ng-container>
+<!-- Admin -->
+<ng-container *ngIf="!isUser">
+    <app-admin-dashboard></app-admin-dashboard>
+</ng-container>
