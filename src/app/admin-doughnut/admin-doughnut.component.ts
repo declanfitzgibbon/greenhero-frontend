@@ -61,7 +61,7 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
 
     setInterval(() => {
       for(let entry of this.single) {
-        entry.value += entry.value / 10 < 0 ? 1 : entry.value / 10;
+        entry.value += Math.floor(Math.random() * 100);
       }
       this.single = [...this.single];
     }, 4000);

@@ -114,6 +114,17 @@ export class AdminLineGraphComponent implements OnInit {
     } else {
       this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
     }
+
+    setInterval(() => {
+      
+      for(let entry of this.multi) {
+        for(let month of entry.series) {
+          month.value += Math.floor(Math.random() * 1000);
+        }
+      }
+      this.multi = [...this.multi];
+      console.log("hola", this.multi);
+    }, 4000);
     
     this.loading = false;
   }

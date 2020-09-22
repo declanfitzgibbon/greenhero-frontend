@@ -64,6 +64,15 @@ export class AdminBarChartComponent implements OnInit {
     } else {
       this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
     }
+
+
+    setInterval(() => {
+      for(let entry of this.single) {
+        entry.value += Math.floor(Math.random() * 100);
+      }
+      this.single = [...this.single];
+    }, 4000);
+
     this.loading = false;
   }
 
