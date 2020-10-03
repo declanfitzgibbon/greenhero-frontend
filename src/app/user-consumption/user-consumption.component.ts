@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserConsumptionComponent implements OnInit {
 
+  timeFrame: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {

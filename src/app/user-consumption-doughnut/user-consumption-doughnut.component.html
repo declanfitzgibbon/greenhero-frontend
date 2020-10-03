@@ -1,0 +1,18 @@
+<ng-container *ngIf="!loading">
+    <div >
+        <ngx-charts-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="single"
+        [labels]="labels"
+        [legend]="legend"
+        (window:resize)="onResize($event)"
+        >
+        </ngx-charts-pie-chart>
+    </div>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-progress-spinner
+        [color]="'primary'">
+    </mat-progress-spinner>
+</ng-container>

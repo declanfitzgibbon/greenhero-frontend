@@ -16,6 +16,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -35,6 +38,10 @@ import { UserConsumptionComponent } from './user-consumption/user-consumption.co
 import { UserMissionsComponent } from './user-missions/user-missions.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserConsumptionCardsComponent } from './user-consumption-cards/user-consumption-cards.component';
+import { UserConsumptionTimeSelectorComponent } from './user-consumption-time-selector/user-consumption-time-selector.component';
+import { UserConsumptionDoughnutComponent } from './user-consumption-doughnut/user-consumption-doughnut.component';
+import { UserConsumptionBarsComponent } from './user-consumption-bars/user-consumption-bars.component';
 
 
 
@@ -54,7 +61,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UserConsumptionComponent,
     UserMissionsComponent,
     UserStatsComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserConsumptionCardsComponent,
+    UserConsumptionTimeSelectorComponent,
+    UserConsumptionDoughnutComponent,
+    UserConsumptionBarsComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +83,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FlexLayoutModule,
     NgxChartsModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressBarModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,11 @@
-<div gdAreas="graph_1 | feed"
+<div gdAreas="emptySpace | bars | selector | cards | graph_1"
 gdGap="10px"
-gdRows="50vh 30vh"
-gdColumns="90vw">
-    <app-admin-doughnut gdArea="graph_1" [isFull]="true"></app-admin-doughnut>
-    <app-admin-alert-feed gdArea="feed"></app-admin-alert-feed>
+gdRows="20px calc(33vh - 20px) 60px calc(33vh - 20px) calc(33vh - 20px)"
+gdColumns="calc(100vw - 20px)"
+style="overflow: hidden;">
+    <div gdArea="emptySpace"></div>
+    <app-user-consumption-bars gdArea="bars" [timeFrame]="timeFrame"></app-user-consumption-bars>
+    <app-user-consumption-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-user-consumption-time-selector>
+    <app-user-consumption-cards gdArea="cards" [timeFrame]="timeFrame"></app-user-consumption-cards>
+    <app-user-consumption-doughnut gdArea="graph_1" [isFull]="true" [timeFrame]="timeFrame"></app-user-consumption-doughnut>
 </div>

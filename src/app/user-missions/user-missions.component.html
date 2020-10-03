@@ -1,1 +1,20 @@
-<p>user-missions works!</p>
+<div class="missions-container">
+    <div class="mission-item" *ngFor="let mission of missions">
+
+        <div class="icon-container">
+            <img [src]="mission.image">
+        </div>
+        <div class="mission-container">
+            <h3>{{ mission.title }}</h3>
+            <p>{{ mission.description }}</p>
+            <mat-progress-bar mode="determinate" [value]="(mission.value / mission.goal) * 100"></mat-progress-bar>
+        </div>
+        <div class="actions">
+            <a mat-button href="#">
+                <img src="/assets/green-coin.png">
+                <p>{{ mission.reward }}</p>
+            </a>
+        </div>
+
+    </div>
+</div>
