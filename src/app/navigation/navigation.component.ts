@@ -11,6 +11,7 @@ export class NavigationComponent implements OnInit {
 
   isDark: boolean = false;
   isUser: boolean = false;
+  coinAmount: number = 2000;
 
   constructor(private themeService: ThemeService, private userService: UserService) { }
 
@@ -19,6 +20,8 @@ export class NavigationComponent implements OnInit {
     this.isDark = this.themeService.getCurrentThemeType();
     this.userService.getUserType().subscribe((user) => this.isUser = user);
     this.isUser = this.userService.getCurrentUserType();
+    this.coinAmount = this.userService.getCurrentCoinAmount();
+    this.userService.getCoinsEmitter().subscribe((amount) => this.coinAmount = amount);
   }
 
   changeTheme(event) {

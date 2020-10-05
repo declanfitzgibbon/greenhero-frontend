@@ -50,6 +50,10 @@ $power-saving-dark-theme: mat-dark-theme((
     background: rgb(55, 102, 91);
   }
 
+  .mission-general-title::before, .mission-general-title::after {
+    background: rgb(55, 102, 91);
+  } 
+
   /* width */
   ::-webkit-scrollbar {
     width: 10px;
@@ -79,6 +83,10 @@ $power-saving-dark-theme: mat-dark-theme((
   .navigation-card {
     background: rgb(112, 204, 183);
   }
+
+  .mission-general-title::before, .mission-general-title::after {
+    background: rgb(112, 204, 183);
+  } 
 
   /* width */
   ::-webkit-scrollbar {

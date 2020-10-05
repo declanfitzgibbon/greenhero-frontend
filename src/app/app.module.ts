@@ -17,7 +17,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -85,7 +87,8 @@ import { UserConsumptionBarsComponent } from './user-consumption-bars/user-consu
     MatProgressSpinnerModule,
     MatChipsModule,
     MatProgressBarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

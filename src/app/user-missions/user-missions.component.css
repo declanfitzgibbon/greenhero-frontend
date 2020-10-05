@@ -1,0 +1,58 @@
+.mission-general-title {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 40px 0;
+    font-size: 3em;
+}
+.mission-general-title:after, .mission-general-title:before {
+    content: "";
+    width:33%;
+    height:6px;
+    margin:0 10px;
+}
+
+.missions-container {
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.mission-item {
+    width: calc(100% - 66px);
+    display: flex;
+    padding: 20px 10px;
+    margin: 20px;
+    border: 3px solid;
+    border-radius: 10px;
+}
+
+.icon-container {
+    flex: 1;
+}
+.mission-container {
+    flex: 3;
+}
+.actions {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.icon-container img {
+    width: 100%;
+}
+
+.mission-container h3 {
+    font-size: 2em;
+}
+
+.reap-action {
+    width: 80%;
+    margin: calc(60% - 30px) auto auto auto;
+}
+.reap-action img {
+    width: 1em;
+    height: 1em;
+    margin-top: -6px;
+}

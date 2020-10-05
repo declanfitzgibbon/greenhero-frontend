@@ -1,20 +1,71 @@
+<h1 class="mission-general-title">Missions</h1>
 <div class="missions-container">
-    <div class="mission-item" *ngFor="let mission of missions">
-
-        <div class="icon-container">
-            <img [src]="mission.image">
-        </div>
-        <div class="mission-container">
-            <h3>{{ mission.title }}</h3>
-            <p>{{ mission.description }}</p>
-            <mat-progress-bar mode="determinate" [value]="(mission.value / mission.goal) * 100"></mat-progress-bar>
-        </div>
-        <div class="actions">
-            <a mat-button href="#">
-                <img src="/assets/green-coin.png">
-                <p>{{ mission.reward }}</p>
-            </a>
-        </div>
-
-    </div>
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Daily"> 
+            <ng-container *ngFor="let mission of dailyMissions; let i = index">
+                <div class="mission-item" *ngIf="!mission.deleted" [@simpleFadeAnimation]="'in'">
+                    <div class="icon-container">
+                        <img [src]="mission.image">
+                    </div>
+                    <div class="mission-container">
+                        <h3>{{ mission.title }}</h3>
+                        <p>{{ mission.description }}</p>
+                        <mat-progress-bar mode="determinate" [value]="(mission.value / mission.goal) * 100"></mat-progress-bar>
+                        <p class="progress-bar-label">{{ mission.value }} / {{ mission.goal }} </p>
+                    </div>  
+                    <div class="actions">
+                        <a mat-raised-button (click)="completeTask(0,i)" color="primary" class="reap-action" [disabled]="mission.value !== mission.goal">
+                                
+                                {{ mission.reward }}
+                                <img src="/assets/green-coing.png">
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+        </mat-tab>
+        <mat-tab label="Weekly"> 
+            <ng-container *ngFor="let mission of weeklyMissions; let i = index">
+                <div class="mission-item" *ngIf="!mission.deleted" [@simpleFadeAnimation]="'in'">
+                    <div class="icon-container">
+                        <img [src]="mission.image">
+                    </div>
+                    <div class="mission-container">
+                        <h3>{{ mission.title }}</h3>
+                        <p>{{ mission.description }}</p>
+                        <mat-progress-bar mode="determinate" [value]="(mission.value / mission.goal) * 100"></mat-progress-bar>
+                        <p class="progress-bar-label">{{ mission.value }} / {{ mission.goal }} </p>
+                    </div>  
+                    <div class="actions">
+                        <a mat-raised-button (click)="completeTask(1,i)" color="primary" class="reap-action" [disabled]="mission.value !== mission.goal">
+                                
+                                {{ mission.reward }}
+                                <img src="/assets/green-coing.png">
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+        </mat-tab>
+        <mat-tab label="Monthly"> 
+            <ng-container *ngFor="let mission of monthlyMissions; let i = index">
+                <div class="mission-item" *ngIf="!mission.deleted" [@simpleFadeAnimation]="'in'">
+                    <div class="icon-container">
+                        <img [src]="mission.image">
+                    </div>
+                    <div class="mission-container">
+                        <h3>{{ mission.title }}</h3>
+                        <p>{{ mission.description }}</p>
+                        <mat-progress-bar mode="determinate" [value]="(mission.value / mission.goal) * 100"></mat-progress-bar>
+                        <p class="progress-bar-label">{{ mission.value }} / {{ mission.goal }} </p>
+                    </div>  
+                    <div class="actions">
+                        <a mat-raised-button (click)="completeTask(2,i)" color="primary" class="reap-action" [disabled]="mission.value !== mission.goal">
+                                
+                                {{ mission.reward }}
+                                <img src="/assets/green-coing.png">
+                        </a>
+                    </div>
+                </div>
+            </ng-container>
+        </mat-tab>
+    </mat-tab-group>
 </div>
