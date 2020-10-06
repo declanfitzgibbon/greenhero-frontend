@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +20,13 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+import { ScheduleModule, AgendaService, DayService, 
+  WeekService, WorkWeekService, MonthService } 
+from '@syncfusion/ej2-angular-schedule';
 
 
 
@@ -44,6 +52,12 @@ import { UserConsumptionCardsComponent } from './user-consumption-cards/user-con
 import { UserConsumptionTimeSelectorComponent } from './user-consumption-time-selector/user-consumption-time-selector.component';
 import { UserConsumptionDoughnutComponent } from './user-consumption-doughnut/user-consumption-doughnut.component';
 import { UserConsumptionBarsComponent } from './user-consumption-bars/user-consumption-bars.component';
+import { RoomReserverComponent } from './room-reserver/room-reserver.component';
+import { RoomListComponent } from './room-list/room-list.component';
+import { RoomCalendarComponent } from './room-calendar/room-calendar.component';
+import { UserService } from './user.service';
+import { ThemeService } from './theme.service';
+import { EventService } from './event.service';
 
 
 
@@ -67,7 +81,10 @@ import { UserConsumptionBarsComponent } from './user-consumption-bars/user-consu
     UserConsumptionCardsComponent,
     UserConsumptionTimeSelectorComponent,
     UserConsumptionDoughnutComponent,
-    UserConsumptionBarsComponent
+    UserConsumptionBarsComponent,
+    RoomReserverComponent,
+    RoomListComponent,
+    RoomCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -88,9 +105,24 @@ import { UserConsumptionBarsComponent } from './user-consumption-bars/user-consu
     MatChipsModule,
     MatProgressBarModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ScheduleModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    ThemeService,
+    EventService,
+    AgendaService, 
+    DayService, 
+    WeekService, 
+    WorkWeekService, 
+    MonthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

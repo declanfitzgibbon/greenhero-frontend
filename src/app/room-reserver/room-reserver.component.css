@@ -1,0 +1,11 @@
+.room-reserver-container{
+    min-height: calc(100% - 64px);
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+@media (max-width: 959px) {
+    .room-reserver-container{
+        grid-template-columns: 100%;
+    }
+}

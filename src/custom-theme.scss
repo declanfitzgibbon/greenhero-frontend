@@ -40,10 +40,23 @@ $power-saving-dark-theme: mat-dark-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
+.mat-select-panel {
+  background: #fff;
+}
+
+.mat-select-panel:not([class*=mat-elevation-z]) {
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+
+
 .theme-dark {
   @include angular-material-theme($power-saving-dark-theme);
   text {
     fill: white;
+  }
+
+  .mat-option-text {
+    color: white;
   }
 
   .navigation-card {
@@ -78,6 +91,10 @@ $power-saving-dark-theme: mat-dark-theme((
   @include angular-material-theme($power-saving-light-theme);
   text {
     fill: black;
+  }
+
+  .mat-option-text {
+    color: black;
   }
 
   .navigation-card {

@@ -1,0 +1,16 @@
+<form [formGroup]="form" class="form-container" (ngSubmit)="createEvent()">
+    <h1>Book your room</h1>
+    <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Rooms</mat-label>
+        <mat-select formControlName="room_id">
+            <mat-option *ngFor="let room of rooms" [value]="room.id">{{ room.roomName }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="time-picker">
+        <input matInput type="datetime-local" placeholder="Start date" formControlName="start_date">
+    </mat-form-field>
+    <mat-form-field class="time-picker">
+        <input matInput type="datetime-local" placeholder="End date" formControlName="end_date">
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!form.valid">Submit</button>
+</form>
