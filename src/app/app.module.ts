@@ -58,6 +58,10 @@ import { RoomCalendarComponent } from './room-calendar/room-calendar.component';
 import { UserService } from './user.service';
 import { ThemeService } from './theme.service';
 import { EventService } from './event.service';
+import { UserBattleComponent } from './user-battle/user-battle.component';
+import { UserBattleActionsComponent } from './user-battle-actions/user-battle-actions.component';
+import { UserBattleCanvasComponent } from './user-battle-canvas/user-battle-canvas.component';
+import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.component';
 
 
 
@@ -84,7 +88,11 @@ import { EventService } from './event.service';
     UserConsumptionBarsComponent,
     RoomReserverComponent,
     RoomListComponent,
-    RoomCalendarComponent
+    RoomCalendarComponent,
+    UserBattleComponent,
+    UserBattleActionsComponent,
+    UserBattleCanvasComponent,
+    UserBattleTurnsComponent
   ],
   imports: [
     BrowserModule,

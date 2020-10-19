@@ -3,7 +3,8 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "lib": ["es6", "es7", "dom", "scripthost"]
   },
   "files": [
     "src/main.ts",

@@ -13,5 +13,11 @@
 </head>
 <body class="mat-typography">
   <app-root></app-root>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
+  <script src="assets/phaser.min.js"></script>
 </body>
 </html>
