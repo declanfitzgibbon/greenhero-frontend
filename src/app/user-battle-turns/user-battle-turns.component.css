@@ -1,0 +1,31 @@
+.action-title {
+    margin: 10px 20px;
+}
+.turn-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 10px;
+    overflow-y: auto;
+    cursor: default;
+}
+.turn-avatar {
+    text-align: center;
+    position: relative;
+    margin-top: 15px;
+}
+.name {
+    font-size: 15px;
+
+}
+img.avatar-img {
+    border-radius: 50%;
+    border: 5px solid;
+    margin-top: 5px;
+    height: 75px;
+}
+.position {
+    font-size: 15px;
+    font-weight: bold;
+}

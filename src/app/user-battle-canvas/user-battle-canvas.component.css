@@ -1,0 +1,9 @@
+#game {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#game > canvas {
+    border: 5px solid;
+}

@@ -1,8 +1,8 @@
-<div gdAreas="turns | canvas | actions"
+<div gdAreas="turns canvas | turns actions"
 gdGap="10px"
-gdRows="auto 120vh auto"
+gdRows="auto auto"
 class="battle-container">
     <app-user-battle-turns gdArea="turns"></app-user-battle-turns>
-    <app-user-battle-canvas gdArea="canvas"></app-user-battle-canvas>
-    <app-user-battle-actions gdArea="actions"></app-user-battle-actions>
+    <app-user-battle-canvas gdArea="canvas" (targetChosen)="setTarget($event)" [action]="action"></app-user-battle-canvas>
+    <app-user-battle-actions gdArea="actions" [targetChosen]="target" (actionChosen)="setAction($event)"></app-user-battle-actions>
 </div>

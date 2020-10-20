@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { AUTO, Game, GameObjects, Scene, Time, Types } from 'phaser';
 
 class MainScene extends Phaser.Scene {
 
   blues: Array<BlueElf>;
   greens: Array<GreenElf>;
+  idOfTurn: string;
 
-  constructor(blues: Array<BlueElf>, greens: Array<GreenElf>) {
+  constructor(blues: Array<BlueElf>, greens: Array<GreenElf>, idOfTurn: string) {
     super({ key: 'main' });
     this.blues = blues;
     this.greens = greens;
+    this.idOfTurn = idOfTurn;
   }
   preload() {
       //  The graphics used in this example were free downloads from https://craftpix.net
@@ -18,6 +20,8 @@ class MainScene extends Phaser.Scene {
       this.load.atlas('elves', 'assets/elves-craft-pixel.png', 'assets/elves-craft-pixel.json');
   }
   create() {
+    (<Phaser.Renderer.WebGL.WebGLRenderer>this.game.renderer).addPipeline('outline', new OutlinePipeline(this.game));
+
     this.anims.create({ key: 'greenIdle', frames: this.anims.generateFrameNames('elves', { prefix: 'green_idle_', start: 0, end: 4 }), frameRate: 10, repeat: -1 });
     this.anims.create({ key: 'blueIdle', frames: this.anims.generateFrameNames('elves', { prefix: 'blue_idle_', start: 0, end: 4 }), frameRate: 10, repeat: -1 });
 
@@ -26,20 +30,24 @@ class MainScene extends Phaser.Scene {
 
     this.anims.create({ key: 'greenDead', frames: this.anims.generateFrameNames('elves', { prefix: 'green_die_', start: 0, end: 4 }), frameRate: 6 });
     this.anims.create({ key: 'blueDead', frames: this.anims.generateFrameNames('elves', { prefix: 'blue_die_', start: 0, end: 4 }), frameRate: 6 });
+    
+    this.anims.create({ key: 'greenHeal', frames: this.anims.generateFrameNames('elves', { prefix: 'green_attack_', start: 0, end: 4 }), frameRate: 10 });
+    this.anims.create({ key: 'blueHeal', frames: this.anims.generateFrameNames('elves', { prefix: 'blue_attack_', start: 0, end: 4 }), frameRate: 10 });
 
     const background = this.add.sprite(0, 0, 'background').setOrigin(0);
     
     background.setDisplaySize((this.game.config.width as number), (this.game.config.height as number));
+    
 
-    this.blues.push(new BlueElf(this, window.innerWidth/10, 476, []));
-    this.blues.push(new BlueElf(this, (2 * window.innerWidth)/10, 480, []));
-    this.blues.push(new BlueElf(this, (3 * window.innerWidth)/10, 484, []));
-    this.blues.push(new BlueElf(this, (4 * window.innerWidth)/10, 480, []));
+    this.blues.push(new BlueElf(this, (2 * parseFloat(this.game.config.width as string)/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '1', (this.idOfTurn === '1') as boolean));
+    this.blues.push(new BlueElf(this, ((3 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '2', (this.idOfTurn === '2') as boolean));
+    this.blues.push(new BlueElf(this, ((4 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '3', (this.idOfTurn === '3') as boolean));
+    this.blues.push(new BlueElf(this, ((5 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '4', (this.idOfTurn === '4') as boolean));
 
-    this.greens.push(new GreenElf(this, (6 * window.innerWidth)/10, 486, []));
-    this.greens.push(new GreenElf(this, (7 * window.innerWidth)/10, 488, []));
-    this.greens.push(new GreenElf(this, (8 * window.innerWidth)/10, 485, []));
-    this.greens.push(new GreenElf(this, (9 * window.innerWidth)/10, 484, []));
+    // this.greens.push(new GreenElf(this, ((7 * parseFloat(this.game.config.width as string))/10) - 60, 5 * parseFloat(this.game.config.height as string) / 6, [], '5', (this.idOfTurn === '5') as boolean));
+    this.greens.push(new GreenElf(this, ((10 * parseFloat(this.game.config.width as string))/10) - 60, 3.5 * parseFloat(this.game.config.height as string) / 6, [], '6', false));
+    // this.greens.push(new GreenElf(this, ((9 * parseFloat(this.game.config.width as string))/10) - 60, 5 * parseFloat(this.game.config.height as string) / 6, [], '7', (this.idOfTurn === '7') as boolean));
+    // this.greens.push(new GreenElf(this, ((10 * parseFloat(this.game.config.width as string))/10) - 60, 5 * parseFloat(this.game.config.height as string) / 6, [], '8', (this.idOfTurn === '8') as boolean));
 
     for(let elf of this.blues) {
       elf.updateEnemies(this.greens);
@@ -54,25 +62,60 @@ class MainScene extends Phaser.Scene {
   }
 }
 
+class OutlinePipeline extends Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline {
+  constructor(game: Phaser.Game) {
+      let config = {
+          game: game,
+          renderer: game.renderer,
+          fragShader: `
+          precision mediump float;
+          uniform sampler2D uMainSampler;
+          varying vec2 outTexCoord;
+          void main(void) {
+              vec4 color = texture2D(uMainSampler, outTexCoord);
+              vec4 colorU = texture2D(uMainSampler, vec2(outTexCoord.x, outTexCoord.y - 0.001));
+              vec4 colorD = texture2D(uMainSampler, vec2(outTexCoord.x, outTexCoord.y + 0.001));
+              vec4 colorL = texture2D(uMainSampler, vec2(outTexCoord.x + 0.001, outTexCoord.y));
+              vec4 colorR = texture2D(uMainSampler, vec2(outTexCoord.x - 0.001, outTexCoord.y));
+              
+              gl_FragColor = color;
+              
+              if (color.a == 0.0 && (colorU.a != 0.0 || colorD.a != 0.0 || colorL.a != 0.0 || colorR.a != 0.0)  ) {
+                  gl_FragColor = vec4(1.0, 0, 0, 1.0);
+              }
+          }`};
+      super(config);
+  }
+}
+
 class HealthBar {
   bar: GameObjects.Graphics;
+  text: GameObjects.Text;
   x: number;
   y: number;
   value: number;
   p: number;
+  isSuper: boolean;
 
-  constructor (scene: Scene, x: number, y: number)
+  constructor (scene: Scene, x: number, y: number, isSuper: boolean)
   {
+      this.isSuper = isSuper;
       this.bar = new GameObjects.Graphics(scene);
-
+      this.value = this.isSuper ? 1000 : Math.round(Math.random() * 100);
+      this.text = new GameObjects.Text(scene, this.isSuper ? x + 45 : x + 20, y, this.isSuper ? "1000/1000" : "100/100", {
+        fontSize: '14px',
+        fontFamily: 'Arial',
+        color: 'black',
+        align: 'center'
+      });
       this.x = x;
       this.y = y;
-      this.value = 100;
-      this.p = 76 / 100;
+      this.p = this.isSuper ? 76/1000 : 76/100;
 
       this.draw();
 
       scene.add.existing(this.bar);
+      scene.add.existing(this.text);
   }
 
   decrease (amount: number)
@@ -88,19 +131,29 @@ class HealthBar {
 
       return (this.value === 0);
   }
+  
+  increase (amount: number)
+  {
+      this.value += amount;
+      this.value = this.value > 100 ? 100 : this.value;
+
+      this.draw();
+  }
 
   draw ()
   {
       this.bar.clear();
 
+      this.text.text = this.isSuper ? this.value + '/1000' : this.value + '/100'
+
       //  BG
       this.bar.fillStyle(0x000000);
-      this.bar.fillRect(this.x, this.y, 80, 16);
+      this.bar.fillRect(this.x, this.y, this.isSuper ? 157 : 80, 16);
 
       //  Health
 
       this.bar.fillStyle(0xffffff);
-      this.bar.fillRect(this.x + 2, this.y + 2, 76, 12);
+      this.bar.fillRect(this.x + 2, this.y + 2, this.isSuper ? 152 : 76, 12);
 
       if (this.value < 30)
       {
@@ -111,7 +164,7 @@ class HealthBar {
           this.bar.fillStyle(0x00ff00);
       }
 
-      var d = Math.floor(this.p * this.value);
+      var d = this.isSuper ? Math.floor(this.p * this.value * 2) : Math.floor(this.p * this.value);
 
       this.bar.fillRect(this.x + 2, this.y + 2, d, 12);
   }
@@ -136,12 +189,19 @@ class Elf extends GameObjects.Sprite {
   timer: Time.TimerEvent;
   missile: Missile;
   enemies: Array<Elf>;
+  id: string;
+  clickedEmmiter: EventEmitter<string>;
+  mainScene: MainScene;
+  isHighlighted: boolean;
 
-  constructor (scene: Scene, color: string, x: number, y: number, enemies: Array<Elf>)
+  constructor (scene: MainScene, color: string, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean)
   {
       super(scene, x, y, null);
 
+      this.isHighlighted = isHighlighted;
+      this.mainScene = scene;
       this.color = color;
+      
 
       this.setTexture('elves');
       this.setPosition(x, y);
@@ -151,11 +211,23 @@ class Elf extends GameObjects.Sprite {
       
       this.alive = true;
       
-      var hx = (this.color === 'blue') ? 110 : -40;
+      var hx = this.color === 'green' ? 275 : 110;
+      var hy = this.color === 'green' ? 230 : 110;
       
-      this.hp = new HealthBar(scene, x - hx, y - 110);
+      this.hp = new HealthBar(scene, x - hx, y - hy, this.color === 'green');
+
+      this.id = id; 
       
       this.enemies = enemies;
+      this.clickedEmmiter = new EventEmitter();
+
+      this.setDepth(1);
+
+      this.setInteractive().on('pointerup', () => {
+        this.clickedEmmiter.emit(this.id);
+        this.resetPipeline();
+        this.setTint(0xff0000);
+      });
   }
 
   preUpdate (time: number, delta: number)
@@ -180,63 +252,96 @@ class Elf extends GameObjects.Sprite {
           this.play(this.color + 'Dead');
       }
   }
-
-  fire (target: Array<Elf>)
+  
+  restoreHealth (amount: number)
   {
-    console.log(this, target);
-      if (target && target.length && this.alive)
+      this.hp.increase(amount);
+  }
+
+  fire (target: Elf)
+  {
+      if (target && this.alive)
       {
-          target = Phaser.Utils.Array.Shuffle(target);
-
-          let enemy;
-
-          for (var i = 0; i < target.length; i++)
-          {
-              if (target[i].alive)
-              {
-                  enemy = target[i];
-              }
-          }
           this.play(this.color + 'Attack');
 
           var offset = (this.color === 'blue') ? 20 : -20;
-          var targetX = (this.color === 'blue') ? enemy.x + 30 : enemy.x - 30;
+          var targetX = (this.color === 'blue') ? target.x - 250: target.x - 30;
 
+          this.missile.setScale(2);
           this.missile.setPosition(this.x + offset, this.y + 20).setVisible(true);
+
 
           this.scene.tweens.add({
               targets: this.missile,
               x: targetX,
               ease: 'Linear',
-              duration: 500,
+              duration: 1000,
               onComplete: function (tween, targets) {
                   targets[0].setVisible(false);
               }
           });
 
-          enemy.damage(8);
+          target.damage(8);
 
       }
-      this.timer = this.scene.time.addEvent({ delay: 1000, callback: this.fire, args: [this.enemies], callbackScope: this });
+  } 
+
+  heal (target: Elf)
+  {
+      if (target && this.alive)
+      {
+          this.play(this.color + 'Heal');
+          this.once('animationcomplete', () => this.play(this.color + 'Idle'))
+          target.restoreHealth(8);
+
+      }
   }
 
   updateEnemies(enemies: Array<Elf>) {
     this.enemies = enemies;
+    this.mainScene.greens.forEach((elf) => {
+      if (elf.id !== this.id) {
+        elf.clickedEmmiter.subscribe((elf) => {
+          this.clearTint();
+          if(this.isHighlighted) {
+            this.setPipeline("outline");
+          }
+        });
+      }
+    });
+    this.mainScene.blues.forEach((elf) => {
+      if (elf.id !== this.id) {
+        elf.clickedEmmiter.subscribe((elf) => {
+          this.clearTint();
+          if(this.isHighlighted) {
+            this.setPipeline("outline");
+          }
+        });
+      }
+    });
+  }
+
+  resetTarget() {
+    this.clickedEmmiter.emit(null);
+    this.clearTint();
   }
 
   render() {
     this.scene.add.existing(this);
+    
+    if(this.isHighlighted) {
+      this.setPipeline("outline");
+    }
     this.on('animationcomplete', this.animComplete, this);
-    this.timer = this.scene.time.addEvent({ delay: 1000, callback: this.fire, args: [this.enemies], callbackScope: this });
   }
 
 }
 
 class BlueElf extends Elf {
 
-  constructor (scene: Scene, x: number, y: number, enemies: Array<Elf>)
+  constructor (scene: MainScene, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean)
   {
-      super(scene, 'blue', x, y, enemies);
+      super(scene, 'blue', x, y, enemies, id, isHighlighted);
 
       this.missile = new Missile(scene, 'blue-missile');
       
@@ -247,13 +352,17 @@ class BlueElf extends Elf {
 
 class GreenElf extends Elf {
 
-  constructor (scene, x, y, enemies)
+  constructor (scene: MainScene, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean)
   {
-      super(scene, 'green', x, y, enemies);
+      super(scene, 'green', x, y, enemies, id, isHighlighted);
+
+      this.setScale(3);
 
       this.missile = new Missile(scene, 'green-missile');
+      this.missile.setScale(3);
 
       scene.add.existing(this.missile);
+
   }
 
 }
@@ -264,9 +373,17 @@ class GreenElf extends Elf {
   templateUrl: './user-battle-canvas.component.html',
   styleUrls: ['./user-battle-canvas.component.css']
 })
-export class UserBattleCanvasComponent implements OnInit {
+export class UserBattleCanvasComponent implements OnInit, OnChanges {
+  @Input() turnId: string = '1';
+  @Input() action: { action: string, actionNumber: number };
+  @Output() targetChosen: EventEmitter<{
+    chosen: boolean,
+    friend: boolean
+  }> = new EventEmitter();
+  targetId: string;
   phaserGame: Game;
   config: Types.Core.GameConfig;
+  scene: MainScene;
   load: any;
   anims: any;
   add: any;
@@ -276,21 +393,62 @@ export class UserBattleCanvasComponent implements OnInit {
   constructor() {
     this.blues = [];
     this.greens = [];
+    this.scene = new MainScene(this.blues, this.greens, this.turnId);
     this.config = {
-      width: window.innerWidth,
-      height: 600,
+      width:  (5 * window.innerWidth / 6) - 20,
+      height: window.innerHeight - 200,
       type: AUTO,
       parent: 'game',
-      scene: new MainScene(this.blues, this.greens)
+      scene: this.scene
     };
    }
 
   ngOnInit(): void {
     this.phaserGame = new Game(this.config);
+
+    setTimeout(() => {
+      this.scene.greens.forEach((elf) => elf.clickedEmmiter.subscribe((id) => {
+        this.targetId = id;
+        this.targetChosen.emit({
+          chosen: true,
+          friend: false
+        });
+      }));
+      this.scene.blues.forEach((elf) => elf.clickedEmmiter.subscribe((id) => {
+        this.targetId = id;
+        this.targetChosen.emit({
+          chosen: true,
+          friend: true
+        });
+      }));
+    }, 500);
+    
   }
 
-  attack() {
-
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.action.currentValue) {
+      if(this.action.action === "attack") {
+        this.scene.blues.find((elf) => elf.id === this.turnId)
+        .fire(
+          this.scene.greens.find(
+            (elf) => elf.id === this.targetId
+          )
+        );
+        this.scene.greens[0].fire(this.scene.blues.find((elf) => elf.id === this.turnId));
+      } else if (this.action.action === "heal") {
+        this.scene.blues.find((elf) => elf.id === this.turnId)
+        .heal(
+          this.scene.blues.find(
+            (elf) => elf.id === this.targetId
+          )
+        );
+        this.scene.greens[0].fire(this.scene.blues.find((elf) => elf.id === this.turnId));
+      }
+      this.scene.blues.forEach((elf) => {elf.resetTarget()});
+      this.scene.greens.forEach((elf) => {elf.resetTarget()});
+    }
   }
+
+
 
 }

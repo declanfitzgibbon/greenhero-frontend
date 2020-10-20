@@ -59,7 +59,15 @@ $power-saving-dark-theme: mat-dark-theme((
     color: white;
   }
 
+  img.avatar-img.you {
+    border-color: rgb(55, 102, 91);
+  }
+
   .navigation-card {
+    background: rgb(55, 102, 91);
+  }
+
+  .action-card {
     background: rgb(55, 102, 91);
   }
 
@@ -93,8 +101,16 @@ $power-saving-dark-theme: mat-dark-theme((
     fill: black;
   }
 
+  img.avatar-img.you {
+    border-color: rgb(112, 204, 183);
+  }
+
   .mat-option-text {
     color: black;
+  }
+
+  .action-card {
+    background: rgb(112, 204, 183);
   }
 
   .navigation-card {
