@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { AUTO, Game, GameObjects, Scene, Time, Types } from 'phaser';
+import { BattleTurnService } from '../battle-turn.service';
 
 class MainScene extends Phaser.Scene {
 
@@ -326,6 +327,15 @@ class Elf extends GameObjects.Sprite {
     this.clearTint();
   }
 
+  setHighlighted(isHighlighted: boolean) {
+    this.isHighlighted = isHighlighted;
+    if(this.isHighlighted) {
+      this.setPipeline("outline");
+    } else {
+      this.resetPipeline();
+    }
+  }
+
   render() {
     this.scene.add.existing(this);
     
@@ -387,13 +397,9 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
   load: any;
   anims: any;
   add: any;
-  blues: Array<BlueElf>;
-  greens: Array<GreenElf>;
 
-  constructor() {
-    this.blues = [];
-    this.greens = [];
-    this.scene = new MainScene(this.blues, this.greens, this.turnId);
+  constructor(private turnService: BattleTurnService) {
+    this.scene = new MainScene([], [], this.turnId);
     this.config = {
       width:  (5 * window.innerWidth / 6) - 20,
       height: window.innerHeight - 200,
@@ -404,25 +410,50 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
    }
 
   ngOnInit(): void {
+
+
+    this.turnService.turnChange.subscribe((value) => {
+      this.turnId = value[0];
+      this.scene.blues.forEach((elf) => {
+        if(elf.id === this.turnId) {
+          if(elf.alive) {
+            elf.setHighlighted(true);
+          } else {
+            this.turnService.nextTurn();
+          }
+        } else {
+          elf.setHighlighted(false);
+        }
+      });
+    });
+
+    this.initGame();
+    
+  }
+
+  initGame() {
     this.phaserGame = new Game(this.config);
 
     setTimeout(() => {
       this.scene.greens.forEach((elf) => elf.clickedEmmiter.subscribe((id) => {
-        this.targetId = id;
-        this.targetChosen.emit({
-          chosen: true,
-          friend: false
-        });
+        if(id !== null) {
+          this.targetId = id;
+          this.targetChosen.emit({
+            chosen: true,
+            friend: false
+          });
+        }
       }));
       this.scene.blues.forEach((elf) => elf.clickedEmmiter.subscribe((id) => {
-        this.targetId = id;
-        this.targetChosen.emit({
-          chosen: true,
-          friend: true
-        });
+        if (id !== null) {
+          this.targetId = id;
+          this.targetChosen.emit({
+            chosen: true,
+            friend: true
+          });
+        }
       }));
     }, 500);
-    
   }
 
   ngOnChanges(changes: SimpleChanges) {
