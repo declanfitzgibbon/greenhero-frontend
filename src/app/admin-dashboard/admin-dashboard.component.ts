@@ -9,6 +9,7 @@ import { ThemeService } from '../theme.service';
 export class AdminDashboardComponent implements OnInit {
 
   isDark: boolean;
+  timeFrame: number = 0;
 
   constructor(private themeService: ThemeService) { }
 

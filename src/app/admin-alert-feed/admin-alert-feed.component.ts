@@ -67,14 +67,6 @@ export class AdminAlertFeedComponent implements OnInit {
       content: "Lights are too bright"
     }];
 
-    setInterval(() => {
-      this.feed.unshift({
-        icon: '<i class="fas fa-exclamation"></i>',
-        title: "System recommendation",
-        content: "Lights are too bright"
-      });
-    }, 1000);
-
     this.loading = false;
   }
 

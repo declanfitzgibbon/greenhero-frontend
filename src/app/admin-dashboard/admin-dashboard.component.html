@@ -1,12 +1,15 @@
-<div gdAreas="header header | graph_1 graph_2 | graph_3 feed"
+<div gdAreas="selector selector | bars bars | header header | graph_1 graph_2 | graph_3 feed"
 gdGap="10px"
-gdRows="auto auto 200px"
-gdAreas.lt-md="header | graph_1 | graph_2 | graph_3 | feed"
-gdRows.lt-md="auto auto auto auto 400px"
+gdRows="60px auto auto auto 200px"
+gdAreas.lt-md="selector | bars | header | graph_1 | graph_2 | graph_3 | feed"
+gdRows.lt-md="60px auto auto auto auto 400px"
 class="admin-content">
-    <app-admin-cards gdArea="header"></app-admin-cards>
-    <app-admin-doughnut gdArea="graph_1"></app-admin-doughnut>
-    <app-admin-line-graph gdArea="graph_2"></app-admin-line-graph>
-    <app-admin-bar-chart gdArea="graph_3"></app-admin-bar-chart>
+    <app-admin-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-admin-time-selector>
+    <app-admin-bars gdArea="bars" [timeFrame]="timeFrame"></app-admin-bars>
+    <app-admin-cards gdArea="header" [timeFrame]="timeFrame"></app-admin-cards>
+    <app-admin-doughnut gdArea="graph_1" [timeFrame]="timeFrame"></app-admin-doughnut>
+    <app-admin-pie-chart gdArea="graph_2" [timeFrame]="timeFrame"></app-admin-pie-chart>
+    <!-- <app-admin-line-graph gdArea="graph_2" [timeFrame]="timeFrame"></app-admin-line-graph> -->
+    <app-admin-bar-chart gdArea="graph_3" [timeFrame]="timeFrame"></app-admin-bar-chart>
     <app-admin-alert-feed gdArea="feed"></app-admin-alert-feed>
 </div>

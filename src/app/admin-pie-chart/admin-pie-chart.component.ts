@@ -2,14 +2,14 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { ThemeService } from '../theme.service';
 
 @Component({
-  selector: 'app-admin-doughnut',
-  templateUrl: './admin-doughnut.component.html',
-  styleUrls: ['./admin-doughnut.component.css']
+  selector: 'app-admin-pie-chart',
+  templateUrl: './admin-pie-chart.component.html',
+  styleUrls: ['./admin-pie-chart.component.css']
 })
-export class AdminDoughnutComponent implements OnInit, OnChanges {
+export class AdminPieChartComponent implements OnInit, OnChanges {
 
   isDark: boolean;
-  @Input() title: string = 'Energy consumption';
+  @Input() title: string = 'User engagement';
   @Input() isFull: boolean = false;
   @Input() timeFrame: number = 0;
 
@@ -21,6 +21,7 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
   // options
   labels: boolean = true;
   legend: boolean = true;
+  trimLabels: boolean = false;
 
   colorScheme: { domain: Array<string> };
 
@@ -49,24 +50,24 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
       case 0:
         this.single = [
           {
-            name: 'Stations',
-            label: 'Stations',
-            value: 300
+            name: 'Spent coins',
+            label: 'Spent coins',
+            value: 200
           },
           {
-            name: 'Light',
-            label: 'Light',
+            name: 'Mission coins',
+            label: 'Mission coins',
             value: 100
           },
           {
-            name: 'Heating',
-            label: 'Heating',
+            name: 'Earned coins',
+            label: 'Earned coins',
             value: 100
           },
           {
-            name: 'Outlets',
-            label: 'Outlets',
-            value: 50
+            name: 'Coin balance',
+            label: 'Coin balance',
+            value: 500
           }
         ];
         break;
@@ -74,23 +75,23 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
       case 1:
         this.single = [
           {
-            name: 'Stations',
-            label: 'Stations',
-            value: 400
-          },
-          {
-            name: 'Light',
-            label: 'Light',
+            name: 'Spent coins',
+            label: 'Spent coins',
             value: 100
           },
           {
-            name: 'Heating',
-            label: 'Heating',
+            name: 'Mission coins',
+            label: 'Mission coins',
+            value: 100
+          },
+          {
+            name: 'Earned coins',
+            label: 'Earned coins',
             value: 600
           },
           {
-            name: 'Outlets',
-            label: 'Outlets',
+            name: 'Coin balance',
+            label: 'Coin balance',
             value: 700
           }
         ];
@@ -100,24 +101,24 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
       case 2:
         this.single = [
           {
-            name: 'Stations',
-            label: 'Stations',
+            name: 'Spent coins',
+            label: 'Spent coins',
             value: 1100
           },
           {
-            name: 'Light',
-            label: 'Light',
+            name: 'Mission coins',
+            label: 'Mission coins',
             value: 700
           },
           {
-            name: 'Heating',
-            label: 'Heating',
+            name: 'Earned coins',
+            label: 'Earned coins',
             value: 500
           },
           {
-            name: 'Outlets',
-            label: 'Outlets',
-            value: 400
+            name: 'Coin balance',
+            label: 'Coin balance',
+            value: 900
           }
         ];
         break;
@@ -126,24 +127,24 @@ export class AdminDoughnutComponent implements OnInit, OnChanges {
 
           this.single = [
             {
-              name: 'Stations',
-              label: 'Stations',
+              name: 'Spent coins',
+              label: 'Spent coins',
               value: 1400
             },
             {
-              name: 'Light',
-              label: 'Light',
+              name: 'Mission coins',
+              label: 'Mission coins',
               value: 400
             },
             {
-              name: 'Heating',
-              label: 'Heating',
+              name: 'Earned coins',
+              label: 'Earned coins',
               value: 800
             },
             {
-              name: 'Outlets',
-              label: 'Outlets',
-              value: 400
+              name: 'Coin balance',
+              label: 'Coin balance',
+              value: 900
             }
           ];
         

@@ -8,6 +8,15 @@
           (select)="onSelect($event)">
         </ngx-charts-number-card>
     </div>
+    <div class="card-container">
+        <ngx-charts-number-card
+          (window:resize)="onResize($event)"
+          [scheme]="colorScheme"
+          [results]="single1"
+          [view] = "view"
+          (select)="onSelect($event)">
+        </ngx-charts-number-card>
+    </div>
 </ng-container>
 <ng-container *ngIf="loading">
     <mat-progress-spinner

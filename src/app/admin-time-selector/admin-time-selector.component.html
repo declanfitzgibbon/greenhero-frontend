@@ -1,0 +1,8 @@
+<div class="time-selector-container" >
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style" (change)="choice($event.value)" [value]="timeSelected">
+        <mat-button-toggle [value]="3">Year</mat-button-toggle>
+        <mat-button-toggle [value]="2">Month</mat-button-toggle>
+        <mat-button-toggle [value]="1">Week</mat-button-toggle>
+        <mat-button-toggle [value]="0">Day</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>

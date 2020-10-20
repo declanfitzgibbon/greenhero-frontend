@@ -44,6 +44,9 @@ import { AppComponent } from './app.component';
 import { AdminDoughnutComponent } from './admin-doughnut/admin-doughnut.component';
 import { AdminLineGraphComponent } from './admin-line-graph/admin-line-graph.component';
 import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.component';
+import { AdminBarsComponent } from './admin-bars/admin-bars.component';
+import { AdminPieChartComponent } from './admin-pie-chart/admin-pie-chart.component';
+import { AdminTimeSelectorComponent } from './admin-time-selector/admin-time-selector.component';
 import { UserConsumptionComponent } from './user-consumption/user-consumption.component';
 import { UserMissionsComponent } from './user-missions/user-missions.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
@@ -76,8 +79,11 @@ import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.
     AdminCardsComponent,
     AdminAlertFeedComponent,
     AdminDoughnutComponent,
+    AdminPieChartComponent,
     AdminLineGraphComponent,
     AdminBarChartComponent,
+    AdminBarsComponent,
+    AdminTimeSelectorComponent,
     UserConsumptionComponent,
     UserMissionsComponent,
     UserStatsComponent,

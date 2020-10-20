@@ -1,0 +1,9 @@
+.time-selector-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.time-selector-container > a {
+    width: 100%;
+}

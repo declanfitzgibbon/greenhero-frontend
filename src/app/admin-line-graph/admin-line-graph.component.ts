@@ -10,6 +10,7 @@ export class AdminLineGraphComponent implements OnInit {
 
   isDark: boolean;
   @Input() title: string = 'Consumption per profession and month';
+  @Input() timeFrame: number = 0;
 
   multi: any[];
   view: any[] = [innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20, ((innerHeight / 2) - (innerHeight / 5)) - 28];
@@ -41,104 +42,320 @@ export class AdminLineGraphComponent implements OnInit {
     this.isDark = this.themeService.getCurrentThemeType();
 
     this.legend = !(innerWidth < 960);
-
-    this.multi = [
-      {
-        "name": "Developer",
-        "series": [
-          {
-            "name": "January",
-            "value": 6200
-          },
-          {
-            "name": "February",
-            "value": 7300
-          },
-          {
-            "name": "March",
-            "value": 8940
-          }
-        ]
-      },
-      {
-        "name": "Designer",
-        "series": [
-          {
-            "name": "January",
-            "value": 5000
-          },
-          {
-            "name": "February",
-            "value": 7800
-          },
-          {
-            "name": "March",
-            "value": 9840
-          }
-        ]
-      },
-      {
-        "name": "Lawyer",
-        "series": [
-          {
-            "name": "January",
-            "value": 2600
-          },
-          {
-            "name": "February",
-            "value": 3700
-          },
-          {
-            "name": "March",
-            "value": 2940
-          }
-        ]
-      },
-      {
-        "name": "Engineer",
-        "series": [
-          {
-            "name": "January",
-            "value": 3100
-          },
-          {
-            "name": "February",
-            "value": 3750
-          },
-          {
-            "name": "March",
-            "value": 4540
-          }
-        ]
-      }
-    ];
     
     if(this.isDark) {
       this.colorScheme = { domain: ["#375c66", "#37665b", "#327785", "#344b80"] }
     } else {
       this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
     }
-
-    setInterval(() => {
-      
-      for(let entry of this.multi) {
-        for(let month of entry.series) {
-          month.value += Math.floor(Math.random() * 1000);
-        }
-      }
-      this.multi = [...this.multi];
-      console.log("hola", this.multi);
-    }, 1000);
     
+    switch (this.timeFrame) {
+      case 0:
+        this.multi = [
+          {
+            "name": "Developer",
+            "series": [
+              {
+                "name": "January",
+                "value": 6200
+              },
+              {
+                "name": "February",
+                "value": 7300
+              },
+              {
+                "name": "March",
+                "value": 8940
+              }
+            ]
+          },
+          {
+            "name": "Designer",
+            "series": [
+              {
+                "name": "January",
+                "value": 5000
+              },
+              {
+                "name": "February",
+                "value": 7800
+              },
+              {
+                "name": "March",
+                "value": 9840
+              }
+            ]
+          },
+          {
+            "name": "Lawyer",
+            "series": [
+              {
+                "name": "January",
+                "value": 2600
+              },
+              {
+                "name": "February",
+                "value": 3700
+              },
+              {
+                "name": "March",
+                "value": 2940
+              }
+            ]
+          },
+          {
+            "name": "Engineer",
+            "series": [
+              {
+                "name": "January",
+                "value": 3100
+              },
+              {
+                "name": "February",
+                "value": 3750
+              },
+              {
+                "name": "March",
+                "value": 4540
+              }
+            ]
+          }
+        ];
+        break;
+
+      case 1:
+        this.multi = [
+          {
+            "name": "Developer",
+            "series": [
+              {
+                "name": "January",
+                "value": 5200
+              },
+              {
+                "name": "February",
+                "value": 6300
+              },
+              {
+                "name": "March",
+                "value": 7940
+              }
+            ]
+          },
+          {
+            "name": "Designer",
+            "series": [
+              {
+                "name": "January",
+                "value": 6000
+              },
+              {
+                "name": "February",
+                "value": 8800
+              },
+              {
+                "name": "March",
+                "value": 8840
+              }
+            ]
+          },
+          {
+            "name": "Lawyer",
+            "series": [
+              {
+                "name": "January",
+                "value": 4600
+              },
+              {
+                "name": "February",
+                "value": 5700
+              },
+              {
+                "name": "March",
+                "value": 4940
+              }
+            ]
+          },
+          {
+            "name": "Engineer",
+            "series": [
+              {
+                "name": "January",
+                "value": 4100
+              },
+              {
+                "name": "February",
+                "value": 5750
+              },
+              {
+                "name": "March",
+                "value": 2540
+              }
+            ]
+          }
+        ];
+
+        break;
+
+      case 2:
+
+        this.multi = [
+          {
+            "name": "Developer",
+            "series": [
+              {
+                "name": "January",
+                "value": 4200
+              },
+              {
+                "name": "February",
+                "value": 3300
+              },
+              {
+                "name": "March",
+                "value": 5940
+              }
+            ]
+          },
+          {
+            "name": "Designer",
+            "series": [
+              {
+                "name": "January",
+                "value": 4000
+              },
+              {
+                "name": "February",
+                "value": 5800
+              },
+              {
+                "name": "March",
+                "value": 7840
+              }
+            ]
+          },
+          {
+            "name": "Lawyer",
+            "series": [
+              {
+                "name": "January",
+                "value": 4600
+              },
+              {
+                "name": "February",
+                "value": 5700
+              },
+              {
+                "name": "March",
+                "value": 4940
+              }
+            ]
+          },
+          {
+            "name": "Engineer",
+            "series": [
+              {
+                "name": "January",
+                "value": 5100
+              },
+              {
+                "name": "February",
+                "value": 7950
+              },
+              {
+                "name": "March",
+                "value": 5540
+              }
+            ]
+          }
+        ];
+
+        break;
+
+      case 3:
+
+        this.multi = [
+          {
+            "name": "Developer",
+            "series": [
+              {
+                "name": "January",
+                "value": 4200
+              },
+              {
+                "name": "February",
+                "value": 9000
+              },
+              {
+                "name": "March",
+                "value": 5940
+              }
+            ]
+          },
+          {
+            "name": "Designer",
+            "series": [
+              {
+                "name": "January",
+                "value": 6000
+              },
+              {
+                "name": "February",
+                "value": 4800
+              },
+              {
+                "name": "March",
+                "value": 8840
+              }
+            ]
+          },
+          {
+            "name": "Lawyer",
+            "series": [
+              {
+                "name": "January",
+                "value": 5600
+              },
+              {
+                "name": "February",
+                "value": 7700
+              },
+              {
+                "name": "March",
+                "value": 4940
+              }
+            ]
+          },
+          {
+            "name": "Engineer",
+            "series": [
+              {
+                "name": "January",
+                "value": 7100
+              },
+              {
+                "name": "February",
+                "value": 5750
+              },
+              {
+                "name": "March",
+                "value": 6540
+              }
+            ]
+          }
+        ];
+
+        break;
+
+      default:
+        break;
+    }
+
     this.loading = false;
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(this.isDark) {
-      this.colorScheme = { domain: ["#375c66", "#37665b", "#327785", "#344b80"] }
-    } else {
-      this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
-    }
+    this.ngOnInit();
   }
 
   onResize(event) {
