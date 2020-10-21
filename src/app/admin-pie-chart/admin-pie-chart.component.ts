@@ -9,7 +9,7 @@ import { ThemeService } from '../theme.service';
 export class AdminPieChartComponent implements OnInit, OnChanges {
 
   isDark: boolean;
-  @Input() title: string = 'User engagement';
+  @Input() title: string = 'Completed missions per profession';
   @Input() isFull: boolean = false;
   @Input() timeFrame: number = 0;
 
@@ -50,23 +50,23 @@ export class AdminPieChartComponent implements OnInit, OnChanges {
       case 0:
         this.single = [
           {
-            name: 'Spent coins',
-            label: 'Spent coins',
+            name: 'Developers',
+            label: 'Developers',
             value: 200
           },
           {
-            name: 'Mission coins',
-            label: 'Mission coins',
+            name: 'Lawyers',
+            label: 'Lawyers',
             value: 100
           },
           {
-            name: 'Earned coins',
-            label: 'Earned coins',
+            name: 'Designers',
+            label: 'Designers',
             value: 100
           },
           {
-            name: 'Coin balance',
-            label: 'Coin balance',
+            name: 'Engineers',
+            label: 'Engineers',
             value: 500
           }
         ];
@@ -75,23 +75,23 @@ export class AdminPieChartComponent implements OnInit, OnChanges {
       case 1:
         this.single = [
           {
-            name: 'Spent coins',
-            label: 'Spent coins',
+            name: 'Developers',
+            label: 'Developers',
             value: 100
           },
           {
-            name: 'Mission coins',
-            label: 'Mission coins',
+            name: 'Lawyers',
+            label: 'Lawyers',
             value: 100
           },
           {
-            name: 'Earned coins',
-            label: 'Earned coins',
+            name: 'Designers',
+            label: 'Designers',
             value: 600
           },
           {
-            name: 'Coin balance',
-            label: 'Coin balance',
+            name: 'Engineers',
+            label: 'Engineers',
             value: 700
           }
         ];
@@ -101,23 +101,23 @@ export class AdminPieChartComponent implements OnInit, OnChanges {
       case 2:
         this.single = [
           {
-            name: 'Spent coins',
-            label: 'Spent coins',
+            name: 'Developers',
+            label: 'Developers',
             value: 1100
           },
           {
-            name: 'Mission coins',
-            label: 'Mission coins',
+            name: 'Lawyers',
+            label: 'Lawyers',
             value: 700
           },
           {
-            name: 'Earned coins',
-            label: 'Earned coins',
+            name: 'Designers',
+            label: 'Designers',
             value: 500
           },
           {
-            name: 'Coin balance',
-            label: 'Coin balance',
+            name: 'Engineers',
+            label: 'Engineers',
             value: 900
           }
         ];
@@ -127,23 +127,23 @@ export class AdminPieChartComponent implements OnInit, OnChanges {
 
           this.single = [
             {
-              name: 'Spent coins',
-              label: 'Spent coins',
+              name: 'Developers',
+              label: 'Developers',
               value: 1400
             },
             {
-              name: 'Mission coins',
-              label: 'Mission coins',
+              name: 'Lawyers',
+              label: 'Lawyers',
               value: 400
             },
             {
-              name: 'Earned coins',
-              label: 'Earned coins',
+              name: 'Designers',
+              label: 'Designers',
               value: 800
             },
             {
-              name: 'Coin balance',
-              label: 'Coin balance',
+              name: 'Engineers',
+              label: 'Engineers',
               value: 900
             }
           ];
