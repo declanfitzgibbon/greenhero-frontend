@@ -10,6 +10,11 @@ export class AdminDashboardComponent implements OnInit {
 
   isDark: boolean;
   timeFrame: number = 0;
+  value_card_consumption: Array<{ name: string, value: number }>;
+  value_card_mission: Array<{ name: string, value: number }>;
+  value_pie_consumption: any[];
+  value_pie_mission: any[];
+
 
   constructor(private themeService: ThemeService) { }
 
