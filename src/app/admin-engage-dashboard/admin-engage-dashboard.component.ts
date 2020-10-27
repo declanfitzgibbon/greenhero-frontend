@@ -10,6 +10,8 @@ import { ThemeService } from '../theme.service';
 export class AdminEngageDashboardComponent implements OnInit {
   isDark: boolean;
   timeFrame: number = 0;
+  missionBar: number = 0;
+  groupBar: number = 1;
 
   constructor(private themeService: ThemeService) { }
 

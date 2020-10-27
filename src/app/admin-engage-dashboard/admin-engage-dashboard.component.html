@@ -6,7 +6,7 @@ gdRows.lt-md="auto auto auto auto auto"
 class="admin-content">
     <h1 class="title" gdArea="title">User engagement</h1>
     <app-admin-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-admin-time-selector>
-    <app-admin-bars gdArea="bar_mission" [timeFrame]="timeFrame"></app-admin-bars>
-    <app-admin-bars gdArea="bar_group" [timeFrame]="timeFrame"></app-admin-bars>
+    <app-admin-bar-chart gdArea="bar_mission" [timeFrame]="timeFrame" [barSelector]="missionBar"></app-admin-bar-chart>
+    <app-admin-bar-chart gdArea="bar_group" [timeFrame]="timeFrame" [barSelector]="groupBar"></app-admin-bar-chart>
     <app-admin-cards gdArea="card" [timeFrame]="timeFrame"></app-admin-cards>
 </div>

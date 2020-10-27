@@ -1,0 +1,24 @@
+<ng-container *ngIf="!loading">
+    <h3 class="bar-chart-title">{{ title }}</h3>
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="multi"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [barPadding]="barPadding"
+      (window:resize)="onResize($event)"
+      >
+    </ngx-charts-bar-vertical>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-progress-spinner
+        [color]="'primary'">
+    </mat-progress-spinner>
+</ng-container>

@@ -11,7 +11,6 @@ export class AdminPowerDashboardComponent implements OnInit {
   
   isDark: boolean;
   timeFrame: number = 0;
-  powerBar: number = 1;
   usePie: number = 1;
   professionPie: number = 2;
 

@@ -12,8 +12,7 @@ export class AdminCardsComponent implements OnInit, OnChanges {
   @Input() timeFrame: number = 0;
 
   colorScheme: { domain: Array<string> };
-  single: Array<{ name: string, value: number }>;
-  single1: Array<{ name: string, value: number }>;
+  single: any[];
   view: Array<number> = [innerWidth - 20, innerWidth < 500 ? 500 : innerHeight / 5];
   loading: boolean;
 
@@ -36,38 +35,16 @@ export class AdminCardsComponent implements OnInit, OnChanges {
       case 0:
         this.single = [
           {
-            name: 'Kw',
-            value: 550
+            name: 'Most completed mission',
+            value: 'Water saving'
           },
           {
-            name: 'Projected Kw',
-            value: 1100
+            name: 'Most completed event',
+            value: 'Dungeon of dragon'
           },
           {
-            name: 'People inside',
-            value: 4
-          },
-          {
-            name: 'Outlets used',
-            value: 1
-          }
-        ];
-        this.single1 = [
-          {
-            name: 'Completed missions',
-            value: 10
-          },
-          {
-            name: 'Earned coins',
-            value: 34
-          },
-          {
-            name: 'Number of teams',
-            value: 8
-          },
-          {
-            name: 'Onging missions',
-            value: 16
+            name: 'Most activative user',
+            value: 'Reynaldo'
           }
         ];
         break;
@@ -75,125 +52,52 @@ export class AdminCardsComponent implements OnInit, OnChanges {
       case 1:
         this.single = [
           {
-            name: 'Kw',
-            value: 750
+            name: 'Most completed mission',
+            value: 'Water saving'
           },
           {
-            name: 'Projected Kw',
-            value: 1300
+            name: 'Most completed event',
+            value: 'Dungeon of dragon'
           },
           {
-            name: 'People inside',
-            value: 6
-          },
-          {
-            name: 'Outlets used',
-            value: 3
+            name: 'Most activative user',
+            value: 'Reynaldo'
           }
         ];
-        this.single1 = [
-          {
-            name: 'Completed missions',
-            value: 14
-          },
-          {
-            name: 'Earned coins',
-            value: 56
-          },
-          {
-            name: 'Number of teams',
-            value: 6
-          },
-          {
-            name: 'Onging missions',
-            value: 14
-          }
-        ];
-
         break;
 
       case 2:
-
         this.single = [
           {
-            name: 'Kw',
-            value: 950
+            name: 'Most completed mission',
+            value: 'Water saving'
           },
           {
-            name: 'Projected Kw',
-            value: 1500
+            name: 'Most completed event',
+            value: 'Dungeon of dragon'
           },
           {
-            name: 'People inside',
-            value: 8
-          },
-          {
-            name: 'Outlets used',
-            value: 5
-          }
-        ];
-        this.single1 = [
-          {
-            name: 'Completed missions',
-            value: 21
-          },
-          {
-            name: 'Earned coins',
-            value: 89
-          },
-          {
-            name: 'Number of teams',
-            value: 13
-          },
-          {
-            name: 'Onging missions',
-            value: 10
+            name: 'Most activative user',
+            value: 'Reynaldo'
           }
         ];
         break;
 
       case 3:
-
         this.single = [
           {
-            name: 'Kw',
-            value: 650
+            name: 'Most completed mission',
+            value: 'Water saving'
           },
           {
-            name: 'Projected Kw',
-            value: 1200
+            name: 'Most completed event',
+            value: 'Dungeon of dragon'
           },
           {
-            name: 'People inside',
-            value: 5
-          },
-          {
-            name: 'Outlets used',
-            value: 2
+            name: 'Most activative user',
+            value: 'Reynaldo'
           }
         ];
-        this.single1 = [
-          {
-            name: 'Completed missions',
-            value: 34
-          },
-          {
-            name: 'Earned coins',
-            value: 100
-          },
-          {
-            name: 'Number of teams',
-            value: 14
-          },
-          {
-            name: 'Onging missions',
-            value: 20
-          }
-        ];
-
-        break;
-
-      default:
         break;
     }
 

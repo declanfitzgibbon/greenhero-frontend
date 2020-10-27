@@ -10,7 +10,6 @@ export class AdminBarsComponent implements OnInit {
 
   isDark: boolean;
   @Input() timeFrame: number = 0;
-  @Input() barSelector: number;
 
 
   multi: any[];
@@ -36,7 +35,7 @@ export class AdminBarsComponent implements OnInit {
   constructor(private themeService: ThemeService) { }
 
   ngOnInit(): void {
-    console.log(this.barSelector)
+    
     this.loading = true;
 
     this.themeService.getThemeType().subscribe((theme) => {
@@ -51,8 +50,8 @@ export class AdminBarsComponent implements OnInit {
     this.isDark = this.themeService.getCurrentThemeType();
     this.showLegend = false;
 
-    if (this.barSelector == 1) {
-      if (this.timeFrame == 0) {
+    switch (this.timeFrame) {
+      case 0:
         this.multi = [
           {
             name: '5 hours ago',
@@ -120,8 +119,8 @@ export class AdminBarsComponent implements OnInit {
             ]
           }
         ];
-      }
-      if (this.timeFrame == 1) {
+        break;
+      case 1:
         this.multi = [
           {
             name: '5 days ago',
@@ -189,9 +188,8 @@ export class AdminBarsComponent implements OnInit {
             ]
           }
         ];
-      }
-      if (this.timeFrame == 2) {
-
+        break;
+      case 2:
         this.multi = [
           {
             name: '5 weeks ago',
@@ -259,9 +257,8 @@ export class AdminBarsComponent implements OnInit {
             ]
           }
         ];
-      }
-      if (this.timeFrame == 3) {
-
+        break;
+      case 3:
         this.multi = [
           {
             name: '5 months ago',
@@ -329,290 +326,8 @@ export class AdminBarsComponent implements OnInit {
             ]
           }
         ];
-      }
-    }
-    if (this.barSelector == 2) {
-      if (this.timeFrame == 0) {
-        this.multi = [
-          {
-            name: '5 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 100
-              },
-              {
-                name: "Profession average",
-                value: 100
-              }
-            ]
-          },
-          {
-            name: '4 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 200
-              },
-              {
-                name: "Profession average",
-                value: 100
-              }
-            ]
-          },
-          {
-            name: '3 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 400
-              },
-              {
-                name: "Profession average",
-                value: 800
-              }
-            ]
-          },
-          {
-            name: '2 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 200
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
-          },
-          {
-            name: '1 hour ago',
-            series: [
-              {
-                name: "You",
-                value: 1000
-              },
-              {
-                name: "Profession average",
-                value: 600
-              }
-            ]
-          }
-        ];
-      }
-      if (this.timeFrame == 1) {
-        this.multi = [
-          {
-            name: '5 days ago',
-            series: [
-              {
-                name: "You",
-                value: 300
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
-          },
-          {
-            name: '4 days ago',
-            series: [
-              {
-                name: "You",
-                value: 300
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
-          },
-          {
-            name: '3 days ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 700
-              }
-            ]
-          },
-          {
-            name: '2 days ago',
-            series: [
-              {
-                name: "You",
-                value: 300
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
-          },
-          {
-            name: 'Yesterday',
-            series: [
-              {
-                name: "You",
-                value: 900
-              },
-              {
-                name: "Profession average",
-                value: 800
-              }
-            ]
-          }
-        ];
-
-      }
-      if (this.timeFrame == 2) {
-
-        this.multi = [
-          {
-            name: '5 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 500
-              }
-            ]
-          },
-          {
-            name: '4 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 700
-              },
-              {
-                name: "Profession average",
-                value: 500
-              }
-            ]
-          },
-          {
-            name: '3 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
-          },
-          {
-            name: '2 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 400
-              },
-              {
-                name: "Profession average",
-                value: 500
-              }
-            ]
-          },
-          {
-            name: '1 week ago',
-            series: [
-              {
-                name: "You",
-                value: 800
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
-          }
-        ];
-
-      }
-      if (this.timeFrame == 3) {
-
-        this.multi = [
-          {
-            name: '5 months ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
-          },
-          {
-            name: '4 months ago',
-            series: [
-              {
-                name: "You",
-                value: 400
-              },
-              {
-                name: "Profession average",
-                value: 700
-              }
-            ]
-          },
-          {
-            name: '3 months ago',
-            series: [
-              {
-                name: "You",
-                value: 900
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
-          },
-          {
-            name: '2 months ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 300
-              }
-            ]
-          },
-          {
-            name: 'Last month',
-            series: [
-              {
-                name: "You",
-                value: 1100
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
-          }
-        ];
-      }
-    }
+        break;
+    };
 
     if (this.isDark) {
       this.colorScheme = { domain: ["#375c66", "#37665b", "#327785", "#344b80"] }

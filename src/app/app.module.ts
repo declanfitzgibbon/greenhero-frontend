@@ -44,6 +44,7 @@ import { AppComponent } from './app.component';
 import { AdminDoughnutComponent } from './admin-doughnut/admin-doughnut.component';
 import { AdminLineGraphComponent } from './admin-line-graph/admin-line-graph.component';
 import { AdminBarsComponent } from './admin-bars/admin-bars.component';
+import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.component';
 import { AdminPieChartComponent } from './admin-pie-chart/admin-pie-chart.component';
 import { AdminProgressBarComponent } from './admin-progress-bar/admin-progress-bar.component';
 import { AdminPowerDashboardComponent } from './admin-power-dashboard/admin-power-dashboard.component';
@@ -84,6 +85,7 @@ import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.
     AdminPieChartComponent,
     AdminLineGraphComponent,
     AdminBarsComponent,
+    AdminBarChartComponent,
     AdminProgressBarComponent,
     AdminTimeSelectorComponent,
     AdminPowerDashboardComponent,
