@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminBarChartComponent } from './admin-bar-chart.component';
+import { AdminProgressBarComponent } from './admin-progress-bar.component';
 
-describe('AdminBarChartComponent', () => {
-  let component: AdminBarChartComponent;
-  let fixture: ComponentFixture<AdminBarChartComponent>;
+describe('AdminProgressBarComponent', () => {
+  let component: AdminProgressBarComponent;
+  let fixture: ComponentFixture<AdminProgressBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminBarChartComponent ]
+      declarations: [ AdminProgressBarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminBarChartComponent);
+    fixture = TestBed.createComponent(AdminProgressBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,12 @@
+<div gdAreas="title title | selector  selector | bar_mission bar_group | card card"
+gdGap="40px"
+gdRows="auto auto auto auto"
+gdAreas.lt-md="title | selector| bar_mission | bar_group | card"
+gdRows.lt-md="auto auto auto auto auto"
+class="admin-content">
+    <h1 class="title" gdArea="title">User engagement</h1>
+    <app-admin-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-admin-time-selector>
+    <app-admin-bars gdArea="bar_mission" [timeFrame]="timeFrame"></app-admin-bars>
+    <app-admin-bars gdArea="bar_group" [timeFrame]="timeFrame"></app-admin-bars>
+    <app-admin-cards gdArea="card" [timeFrame]="timeFrame"></app-admin-cards>
+</div>

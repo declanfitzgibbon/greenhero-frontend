@@ -1,0 +1,15 @@
+.progress-bar-title{
+  padding: 0 20px;
+}
+
+.mat-progress-bar {
+  padding: 0 20px;
+  height: 20px;
+}
+
+.label{
+  position: relative;
+  top: -20px; 
+  left: 30px; 
+  color: white;
+}

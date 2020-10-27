@@ -6,6 +6,8 @@ import { UserBattleComponent } from './user-battle/user-battle.component';
 import { UserConsumptionComponent } from './user-consumption/user-consumption.component';
 import { UserMissionsComponent } from './user-missions/user-missions.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
+import { AdminPowerDashboardComponent } from './admin-power-dashboard/admin-power-dashboard.component';
+import { AdminEngageDashboardComponent } from './admin-engage-dashboard/admin-engage-dashboard.component';
 
 const routes: Routes = [
   {
@@ -13,27 +15,40 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
-    path:'user',
+    path: 'user',
     children: [
       {
-        path:'missions',
+        path: 'missions',
         component: UserMissionsComponent
       },
       {
-        path:'stats',
+        path: 'stats',
         component: UserStatsComponent
       },
       {
-        path:'consumption',
+        path: 'consumption',
         component: UserConsumptionComponent
       },
       {
-        path:'reservation',
+        path: 'reservation',
         component: RoomReserverComponent
       },
       {
-        path:'battle',
+        path: 'battle',
         component: UserBattleComponent
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: 'power',
+        component: AdminPowerDashboardComponent
+      },
+      {
+        path: 'engage',
+        component: AdminEngageDashboardComponent
       }
     ]
   }
