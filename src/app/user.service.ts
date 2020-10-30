@@ -12,7 +12,7 @@ export class UserService {
 
   constructor() { 
     this.isUser = true;
-    this.coinAmount = 2000;
+    this.coinAmount = 200;
   }
 
   changeUser() {
@@ -22,6 +22,11 @@ export class UserService {
 
   addCoins(coins: number) {
     this.coinAmount += coins;
+    this.coinAmount$.emit(this.coinAmount);
+  }
+  
+  substractCoins(coins: number) {
+    this.coinAmount -= coins;
     this.coinAmount$.emit(this.coinAmount);
   }
 

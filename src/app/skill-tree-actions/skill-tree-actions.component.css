@@ -1,0 +1,52 @@
+.action-title {
+    margin-top: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.action-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 5px;
+}
+
+.action-card{
+    text-align: center;
+    width: 250px;
+    border: 1px solid;
+    padding: 10px;
+    font-size: 2em;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 10px;
+    box-shadow: 0 0 2px 2px #6d6161;
+}
+
+.action-card.disabled {
+    box-shadow: none;
+    cursor: default;
+    background-color: gray;
+    color: rgb(192, 192, 192);
+}
+
+.red {
+    color: rgb(151, 26, 26);
+}
+
+.coins-to-spend {
+    text-align: center;
+    font-size: 16px;
+    padding: 0 20px;
+    margin: 5px;
+}
+
+.coin-icon {
+    height: 1em;
+    width: 1em;
+}
+
+.action-name {
+    margin: 0;
+}

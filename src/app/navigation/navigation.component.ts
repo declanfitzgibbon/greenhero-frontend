@@ -11,7 +11,7 @@ export class NavigationComponent implements OnInit {
 
   isDark: boolean = false;
   isUser: boolean = false;
-  coinAmount: number = 2000;
+  coinAmount: number = 200;
 
   constructor(private themeService: ThemeService, private userService: UserService) { }
 

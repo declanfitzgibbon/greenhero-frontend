@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RoomReserverComponent } from './room-reserver/room-reserver.component';
+import { SkillTreeDashboardComponent } from './skill-tree-dashboard/skill-tree-dashboard.component';
 import { UserBattleComponent } from './user-battle/user-battle.component';
 import { UserConsumptionComponent } from './user-consumption/user-consumption.component';
 import { UserMissionsComponent } from './user-missions/user-missions.component';
@@ -34,6 +35,10 @@ const routes: Routes = [
       {
         path:'battle',
         component: UserBattleComponent
+      },
+      {
+        path:'skill-tree',
+        component: SkillTreeDashboardComponent
       }
     ]
   }
