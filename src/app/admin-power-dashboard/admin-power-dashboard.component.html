@@ -1,0 +1,14 @@
+<div gdAreas="title title | selector selector | bars  bars | title_1 title_2 | pie_1 pie_2" 
+     gdGap="40px" 
+     gdRows="auto auto auto auto auto"
+     gdAreas.lt-md="title | selector | bars| title_1| pie_1 | title_2 |pie_2" 
+     gdRows.lt-md="auto auto auto auto auto auto auto" 
+     class="admin-content">
+     <h1 class="title" gdArea="title">Power saving</h1>
+     <h3 class="title" gdArea="title_1">The way of power usage</h3>
+     <h3 class="title" gdArea="title_2">Power usage by profession</h3>
+     <app-admin-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-admin-time-selector>
+     <app-admin-bars gdArea="bars" [timeFrame]="timeFrame"></app-admin-bars>
+     <app-admin-doughnut gdArea="pie_1" [timeFrame]="timeFrame" [pieSelector]="usePie"></app-admin-doughnut>
+     <app-admin-doughnut gdArea="pie_2" [timeFrame]="timeFrame" [pieSelector]="professionPie"></app-admin-doughnut>
+</div>

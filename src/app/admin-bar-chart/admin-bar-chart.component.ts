@@ -9,10 +9,10 @@ import { ThemeService } from '../theme.service';
 export class AdminBarChartComponent implements OnInit {
 
   isDark: boolean;
-  @Input() title: string = 'Consumption per profession';
+  @Input() title: string;
   @Input() timeFrame: number = 0;
+  @Input() barSelector: number;
 
-  single: any[];
   multi: any[];
 
   view: any[] = [innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20, ((innerHeight / 2) - (innerHeight / 5)) - 28];
@@ -26,6 +26,7 @@ export class AdminBarChartComponent implements OnInit {
   xAxisLabel = 'Country';
   showYAxisLabel = true;
   yAxisLabel = 'Population';
+  barPadding = 80;
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -49,113 +50,164 @@ export class AdminBarChartComponent implements OnInit {
       this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
     }
 
-    switch (this.timeFrame) {
+    switch (this.barSelector) {
       case 0:
-        this.single = [
-          {
-            name: 'Developers',
-            label: 'Developers',
-            value: 300
-          },
-          {
-            name: 'Lawyers',
-            label: 'Lawyers',
-            value: 100
-          },
-          {
-            name: 'Designers',
-            label: 'Designers',
-            value: 100
-          },
-          {
-            name: 'Engineers',
-            label: 'Engineers',
-            value: 50
-          }
-        ];
+        this.title = "Mission engagement"
+        this.xAxisLabel = 'Mission';
+        this.yAxisLabel = 'Number of people completed';
+        switch (this.timeFrame) {
+          case 0:
+            this.multi = [
+              {
+                name: 'Water saving',
+                value: 100
+              },
+              {
+                name: 'Electricity',
+                value: 150
+              },
+              {
+                name: 'Aircondition',
+                value: 80
+              }
+            ];
+            break;
+          case 1:
+            this.multi = [
+              {
+                name: 'Water saving',
+                value: 300
+              },
+              {
+                name: 'Electricity',
+                value: 550
+              },
+              {
+                name: 'Aircondition',
+                value: 700
+              }
+            ];
+            break;
+          case 2:
+            this.multi = [
+              {
+                name: 'Water saving',
+                value: 600
+              },
+              {
+                name: 'Electricity',
+                value: 850
+              },
+              {
+                name: 'Aircondition',
+                value: 980
+              }
+            ];
+            break;
+          case 3:
+            this.multi = [
+              {
+                name: 'Water saving',
+                value: 1100
+              },
+              {
+                name: 'Electricity',
+                value: 1250
+              },
+              {
+                name: 'Aircondition',
+                value: 1580
+              }
+            ];
+            break;
+        };
         break;
-
       case 1:
-        this.single = [
-          {
-            name: 'Developers',
-            label: 'Developers',
-            value: 400
-          },
-          {
-            name: 'Lawyers',
-            label: 'Lawyers',
-            value: 200
-          },
-          {
-            name: 'Designers',
-            label: 'Designers',
-            value: 500
-          },
-          {
-            name: 'Engineers',
-            label: 'Engineers',
-            value: 100
-          }
-        ];
-
-        break;
-
-      case 2:
-
-        this.single = [
-          {
-            name: 'Developers',
-            label: 'Developers',
-            value: 600
-          },
-          {
-            name: 'Lawyers',
-            label: 'Lawyers',
-            value: 200
-          },
-          {
-            name: 'Designers',
-            label: 'Designers',
-            value: 300
-          },
-          {
-            name: 'Engineers',
-            label: 'Engineers',
-            value: 400
-          }
-        ];
-
-        break;
-
-      case 3:
-
-        this.single = [
-          {
-            name: 'Developers',
-            label: 'Developers',
-            value: 20
-          },
-          {
-            name: 'Lawyers',
-            label: 'Lawyers',
-            value: 100
-          },
-          {
-            name: 'Designers',
-            label: 'Designers',
-            value: 300
-          },
-          {
-            name: 'Engineers',
-            label: 'Engineers',
-            value: 300
-          }
-        ];
-
-        break;
-
-      default:
+        this.title = "Event engagement"
+        this.xAxisLabel = 'Profession';
+        this.yAxisLabel = 'Number of people formed a group';
+        switch (this.timeFrame) {
+          case 0:
+            this.multi = [
+              {
+                name: 'Developers',
+                value: 100
+              },
+              {
+                name: 'Lawyers',
+                value: 50
+              },
+              {
+                name: 'Designers',
+                value: 80
+              },
+              {
+                name: 'Engineers',
+                value: 120
+              }
+            ];
+            break;
+          case 1:
+            this.multi = [
+              {
+                name: 'Developers',
+                value: 300
+              },
+              {
+                name: 'Lawyers',
+                value: 250
+              },
+              {
+                name: 'Designers',
+                value: 120
+              },
+              {
+                name: 'Engineers',
+                value: 420
+              }
+            ];
+            break;
+          case 2:
+            this.multi = [
+              {
+                name: 'Developers',
+                value: 500
+              },
+              {
+                name: 'Lawyers',
+                value: 450
+              },
+              {
+                name: 'Designers',
+                value: 380
+              },
+              {
+                name: 'Engineers',
+                value: 820
+              }
+            ];
+            break;
+          case 3:
+            this.multi = [
+              {
+                name: 'Developers',
+                value: 900
+              },
+              {
+                name: 'Lawyers',
+                value: 690
+              },
+              {
+                name: 'Designers',
+                value: 780
+              },
+              {
+                name: 'Engineers',
+                value: 1200
+              }
+            ];
+            break;
+        };
         break;
     }
 

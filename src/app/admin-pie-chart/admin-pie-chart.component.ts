@@ -9,7 +9,7 @@ import { ThemeService } from '../theme.service';
 export class AdminPieChartComponent implements OnInit, OnChanges {
 
   isDark: boolean;
-  @Input() title: string = 'Completed missions per profession';
+  @Input() title: string = 'Mission completed per profession';
   @Input() isFull: boolean = false;
   @Input() timeFrame: number = 0;
 
