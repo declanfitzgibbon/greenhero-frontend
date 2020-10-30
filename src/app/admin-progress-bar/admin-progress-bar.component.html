@@ -1,11 +1,12 @@
 <ng-container *ngIf="!loading">
     <h3 class="progress-bar-title">{{title}}</h3>
-    <mat-progress-bar
+    <mat-progress-bar 
+        class="bar"
         [color]="primary"
         [mode]="mode"
         [value]="value">
     </mat-progress-bar>
-    <div class="label"> {{value}}% </div>
+    <div class="label" > {{value}}% </div>
 </ng-container>
 <ng-container *ngIf="loading">
     <mat-progress-spinner
