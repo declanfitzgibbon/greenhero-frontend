@@ -1,1 +1,28 @@
+.title{
+    padding: 20px 20px;
+  }
 
+.progressBar{
+    position: relative;
+    padding: 20px 0;
+    height: 20px;
+    width: calc(90% - 40px);
+}
+
+.button{
+    width: 60px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.content{
+    padding: 20px 20px;
+}
+
+.cards{
+    width: 50px;
+    padding: 20px 20px;
+    position: relative;
+}

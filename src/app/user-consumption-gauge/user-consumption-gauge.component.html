@@ -1,0 +1,19 @@
+<ng-container *ngIf="!loading">
+    <h3 class="title">{{title}}</h3>
+    <ngx-charts-gauge
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="single"
+    [legend]="legend"
+    [legendPosition]="legendPosition"
+    [units]="units"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)">
+</ngx-charts-gauge>
+</ng-container>
+<ng-container *ngIf="loading">
+    <mat-progress-spinner
+        [color]="'primary'">
+    </mat-progress-spinner>
+</ng-container>
