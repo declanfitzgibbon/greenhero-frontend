@@ -9,3 +9,8 @@
 .button{
     padding: 0 20px;
 }
+
+.detail-button {
+    width: 80%;
+    margin: 0 5%;
+}
