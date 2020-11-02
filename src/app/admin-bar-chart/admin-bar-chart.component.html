@@ -3,7 +3,7 @@
     <ngx-charts-bar-vertical
       [view]="view"
       [scheme]="colorScheme"
-      [results]="single"
+      [results]="multi"
       [gradient]="gradient"
       [xAxis]="showXAxis"
       [yAxis]="showYAxis"
@@ -12,6 +12,7 @@
       [showYAxisLabel]="showYAxisLabel"
       [xAxisLabel]="xAxisLabel"
       [yAxisLabel]="yAxisLabel"
+      [barPadding]="barPadding"
       (window:resize)="onResize($event)"
       >
     </ngx-charts-bar-vertical>

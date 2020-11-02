@@ -43,9 +43,12 @@ import { AdminAlertFeedComponent } from './admin-alert-feed/admin-alert-feed.com
 import { AppComponent } from './app.component';
 import { AdminDoughnutComponent } from './admin-doughnut/admin-doughnut.component';
 import { AdminLineGraphComponent } from './admin-line-graph/admin-line-graph.component';
-import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.component';
 import { AdminBarsComponent } from './admin-bars/admin-bars.component';
+import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.component';
 import { AdminPieChartComponent } from './admin-pie-chart/admin-pie-chart.component';
+import { AdminProgressBarComponent } from './admin-progress-bar/admin-progress-bar.component';
+import { AdminPowerDashboardComponent } from './admin-power-dashboard/admin-power-dashboard.component';
+import { AdminEngageDashboardComponent } from './admin-engage-dashboard/admin-engage-dashboard.component';
 import { AdminTimeSelectorComponent } from './admin-time-selector/admin-time-selector.component';
 import { UserConsumptionComponent } from './user-consumption/user-consumption.component';
 import { UserMissionsComponent } from './user-missions/user-missions.component';
@@ -84,9 +87,12 @@ import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actio
     AdminDoughnutComponent,
     AdminPieChartComponent,
     AdminLineGraphComponent,
-    AdminBarChartComponent,
     AdminBarsComponent,
+    AdminBarChartComponent,
+    AdminProgressBarComponent,
     AdminTimeSelectorComponent,
+    AdminPowerDashboardComponent,
+    AdminEngageDashboardComponent,
     UserConsumptionComponent,
     UserMissionsComponent,
     UserStatsComponent,
@@ -143,6 +149,8 @@ import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actio
     WorkWeekService, 
     MonthService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,3 +1,16 @@
 .admin-content {
     width: 100%;
 }
+
+.title {
+    padding: 0 20px;
+}
+
+.button{
+    padding: 0 20px;
+}
+
+.detail-button {
+    width: 80%;
+    margin: 0 5%;
+}

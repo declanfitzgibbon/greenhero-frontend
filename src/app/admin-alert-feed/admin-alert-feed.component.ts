@@ -30,7 +30,7 @@ const right = [
 })
 export class AdminAlertFeedComponent implements OnInit {
 
-  @Input() title: string = "Feed";
+  @Input() title: string = "New messages";
 
   feed: Array<{
     icon: string;
@@ -47,21 +47,6 @@ export class AdminAlertFeedComponent implements OnInit {
     this.loading = true;
 
     this.feed = [{
-      icon: '<i class="fas fa-exclamation"></i>',
-      title: "System recommendation",
-      content: "Lights are too bright"
-    },
-    {
-      icon: '<i class="fas fa-exclamation"></i>',
-      title: "System recommendation",
-      content: "Lights are too bright"
-    },
-    {
-      icon: '<i class="fas fa-exclamation"></i>',
-      title: "System recommendation",
-      content: "Lights are too bright"
-    },
-    {
       icon: '<i class="fas fa-exclamation"></i>',
       title: "System recommendation",
       content: "Lights are too bright"
