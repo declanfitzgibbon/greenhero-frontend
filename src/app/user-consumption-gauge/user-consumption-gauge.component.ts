@@ -31,7 +31,7 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
     this.loading = true;
 
     this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : innerWidth / 2) : innerWidth - 20, !this.isFull ? (((innerHeight / 2) - 40)) : innerHeight / 2];
-    
+
     this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
     this.isDark = this.themeService.getCurrentThemeType();
 
@@ -70,6 +70,6 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
   }
 
   onResize(event) {
-    this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : (innerWidth / 2) - 20) : innerWidth - 20, !this.isFull ? (((innerHeight / 2) - (innerHeight / 5)) - 28) : innerHeight / 2];
+    this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : innerWidth / 2) : innerWidth - 20, !this.isFull ? (((innerHeight / 2) - 40)) : innerHeight / 2];
   }
 }

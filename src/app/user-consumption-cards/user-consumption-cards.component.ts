@@ -10,12 +10,14 @@ export class UserConsumptionCardsComponent implements OnInit {
 
   isDark: boolean;
 
+  @Input() isFull: boolean = false;
   @Input() timeFrame: number = 0;
   @Input() cardSelector: number;
 
   colorScheme: { domain: Array<string> };
   single: Array<{ name: string, value: number | string }>;
-  view: Array<number> = [innerWidth - 20, innerWidth < 500 ? 500 : (innerHeight / 4) - 40];
+  view: Array<number>;
+  
   loading: boolean;
 
   constructor(private themeService: ThemeService) {
@@ -34,7 +36,7 @@ export class UserConsumptionCardsComponent implements OnInit {
     });
 
     this.isDark = this.themeService.getCurrentThemeType();
-
+    
     if (this.isDark) {
       this.colorScheme = { domain: ["#375c66", "#37665b"] }
     } else {
@@ -43,6 +45,7 @@ export class UserConsumptionCardsComponent implements OnInit {
 
     switch (this.cardSelector) {
       case 0:
+        this.view = [innerWidth - 20, innerWidth < 500 ? 500 : innerHeight / 5];
         switch (this.timeFrame) {
           case 0:
             this.single = [
@@ -137,6 +140,7 @@ export class UserConsumptionCardsComponent implements OnInit {
         };
         break;
       case 1:
+        this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : innerWidth / 3 - 40) : innerWidth / 2 - 20, !this.isFull ? ((innerHeight / 3 - 40)) : innerHeight / 2];
         this.single = [
           {
             name: "Power used",
@@ -158,7 +162,7 @@ export class UserConsumptionCardsComponent implements OnInit {
   }
 
   onResize(event) {
-    this.view = [innerWidth - 20, innerWidth < 500 ? 500 : (innerHeight / 4) - 40];
-  }
+    this.view = [!this.isFull ? (innerWidth < 960 ? innerWidth - 20 : innerWidth / 2) : innerWidth - 20, !this.isFull ? (((innerHeight / 3) - 40)) : innerHeight / 2];
+}
 
 }
