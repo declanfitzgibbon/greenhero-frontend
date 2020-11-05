@@ -1,6 +1,7 @@
 <ng-container *ngIf="!loading">
-    <h3 class="title">{{title}}</h3>
+    <h2 class="title">{{title}}</h2>
     <ngx-charts-gauge
+    class="chart"
     [view]="view"
     [scheme]="colorScheme"
     [results]="single"

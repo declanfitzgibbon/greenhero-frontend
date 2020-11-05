@@ -1,5 +1,10 @@
 .title{
   padding: 20px 20px;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.chart{
+  margin: 0 auto;
 }
