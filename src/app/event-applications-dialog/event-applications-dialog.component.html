@@ -3,21 +3,36 @@
     <div mat-dialog-content>
         <div class="user-applications-container">
             <ng-container *ngFor="let application of data.applications">
-                <div *ngIf="!application.accepted && !application.rejected" class="user-application">
+                <div *ngIf="!application.accepted && !application.rejected" class="user-application" fxLayout="row">
                     <div class="character-avatar">
                         <img [src]="application.character.avatar">
                     </div>
                     <div class="character-name">
-                        
+                        <div>
+                            {{ application.character.name }}
+                        </div>
                     </div>
                     <div class="character-stats">
-
+                        <div>
+                            <div fxLayout="row">
+                                <p>{{ application.character.health || '0'}} <img src="/assets/health-normal.png"></p>
+                                <p>{{ application.character.defense || '0'}} <img src="/assets/breastplate.png"></p>
+                                <p>{{ application.character.attack || '0'}} <img src="/assets/swords-power.png"></p>
+                                <p>{{ application.character.heal_factor || '0'}} <img src="/assets/healing.png"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <div>
+                            <button mat-button (click)="application.accepted = true">Accept</button>
+                            <button mat-button (click)="application.rejected = true">Reject</button>
+                        </div>
                     </div>
                 </div>
             </ng-container>
         </div>
     </div>
-    <div mat-dialog-actions>
-        <button mat-button [mat-dialog-close]="data.applications" >Close</button>
+    <div mat-dialog-actions style="text-align: center; margin-top: 20px;">
+        <button mat-button [mat-dialog-close]="data" >Save</button>
     </div>
 </div>

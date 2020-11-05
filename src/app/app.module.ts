@@ -80,6 +80,7 @@ import { UserEventCreateTeamComponent } from './user-event-create-team/user-even
 import { UserEventSeeTeamComponent } from './user-event-see-team/user-event-see-team.component';
 import { EventTeamLobbyComponent } from './event-team-lobby/event-team-lobby.component';
 import { EventApplicationsDialogComponent } from './event-applications-dialog/event-applications-dialog.component';
+import { EventSearchTeamComponent } from './event-search-team/event-search-team.component';
 
 
 
@@ -127,7 +128,8 @@ import { EventApplicationsDialogComponent } from './event-applications-dialog/ev
     UserEventCreateTeamComponent,
     UserEventSeeTeamComponent,
     EventTeamLobbyComponent,
-    EventApplicationsDialogComponent
+    EventApplicationsDialogComponent,
+    EventSearchTeamComponent
   ],
   imports: [
     BrowserModule,
