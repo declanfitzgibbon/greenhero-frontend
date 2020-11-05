@@ -1,0 +1,91 @@
+<div class="tab-container">
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Actions">
+            <div *ngIf="!loading" gdAreas="event_selection action_cards action_cards"
+                gdColumns="calc(33% - 5px) calc(66% - 5px)"
+                gdGap="10px" 
+                gdRows="auto"
+                gdColumns.lt-md="100%"
+                gdAreas.lt-md="event-selection | action-cards"
+                gdRows.lt-md="auto auto" 
+                class="event-actions">
+                <div class="event-selection" gdArea="event_selection">
+                    <div class="selector-container event-selector-first-page">
+                        <mat-form-field>
+                            <mat-label>Select an option</mat-label>
+                            <mat-select [(value)]="selected" (selectionChange)="newEventSelected()">
+                              <mat-option *ngFor="let event of events" [value]="event._id">{{ event.name }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="event-image-container">
+                        <img class="event-image" [src]="selectedEvent.src">
+                    </div>
+                    <div class="begin-event-time">
+                        <p>Opens: {{ selectedEvent.date | date:"dd/MM/yyyy HH:MM" }}</p>
+                    </div>
+                </div>
+                <div class="action-cards" gdArea="action_cards" *ngIf="!currentTeam">
+                    <div>
+                        <div class="create-div" *ngIf="!createIntention" (click)="createIntention = true" [ngStyle]="{}">
+                            <p class="event-icon-container-first-page"><mat-icon>add_circle</mat-icon></p>
+                            <p>CREATE TEAM</p>
+                        </div>
+                        <div class="create-div" *ngIf="createIntention">
+                            <app-user-event-create-team [event_id]="selectedEvent._id" (teamCreated)="teamCreated(selectedEvent._id, $event)"></app-user-event-create-team>
+                            <div class="cancel" (click)="createIntention = false">
+                                <p class="event-icon-container-first-page"><mat-icon>cancel</mat-icon></p>
+                                <p>Cancel</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="join-div" *ngIf="!searchIntention">
+                            <p class="event-icon-container-first-page"><mat-icon>search</mat-icon></p>
+                            <p>SEARCH TEAM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-summary" *ngIf="currentTeam">
+                    <app-event-team-lobby [team]="currentTeam"></app-event-team-lobby>
+                </div>
+            </div>
+            <ng-container *ngIf="loading">
+                <mat-progress-spinner
+                    [color]="'primary'">
+                </mat-progress-spinner>
+            </ng-container>
+        </mat-tab>
+        <mat-tab label="Boss Description">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div class="boss-container">
+                    <div class="boss-image">
+                        <img [src]="selectedEvent.boss.avatar">
+                    </div>
+                    <div class="boss-name">
+                        <p>{{ selectedEvent.boss.name }}</p>
+                    </div>
+                    <div class="boss-description">
+                        <p>{{ selectedEvent.boss.description }}</p>
+                    </div>
+                    <div class="boss-stats">
+                        <p><span class="label">Health:</span> {{ selectedEvent.boss.health }} <img src="/assets/health-normal.png" alt=""></p>
+                        <p><span class="label">Defense:</span> {{ selectedEvent.boss.defense }} <img src="/assets/breastplate.png" alt=""></p>
+                        <p><span class="label">Attack:</span> {{ selectedEvent.boss.attack }} <img src="/assets/swords-power.png" alt=""></p>
+                        <p><span class="label">Healing factor:</span> {{ selectedEvent.boss.healing_factor }} <img src="/assets/healing.png" alt=""></p>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Past Winners">
+            <div class="under-construction">
+                <p>UNDER CONSTRUCTION</p>
+            </div>
+        </mat-tab>
+        <mat-tab label="Awards">
+            <div class="under-construction">
+                <p>UNDER CONSTRUCTION</p>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

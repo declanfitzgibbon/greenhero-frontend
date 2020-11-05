@@ -1,0 +1,23 @@
+<div class="dialog-container">
+    <h1 mat-dialog-title>Applications</h1>
+    <div mat-dialog-content>
+        <div class="user-applications-container">
+            <ng-container *ngFor="let application of data.applications">
+                <div *ngIf="!application.accepted && !application.rejected" class="user-application">
+                    <div class="character-avatar">
+                        <img [src]="application.character.avatar">
+                    </div>
+                    <div class="character-name">
+                        
+                    </div>
+                    <div class="character-stats">
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="data.applications" >Close</button>
+    </div>
+</div>

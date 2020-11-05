@@ -1,0 +1,79 @@
+<div fxLayout="row">
+    <div class="lobby-container" fxFlex="100">
+        <div class="team-description" fxLayout="row">
+            <div class="team-avatar" fxFlex="30">
+                <img [src]="team.avatar">
+            </div>
+            <div class="team-name" fxFlex="70">
+                <div>
+                    {{ team.name }}
+                </div>
+            </div>
+        </div>
+        <div class="team-list">
+            <div class="team-captain" fxLayout="row">
+                <div class="character-avatar" fxFlex="30">
+                    <img [src]="team.teamLeader.avatar">
+                </div>
+                <div class="character-name" fxFlex="30">
+                    <div>
+                        {{ team.teamLeader.name }}
+                    </div>
+                </div>
+                <div class="character-stats" fxFlex="40">
+                    <div>
+                        <div>
+                            <p>{{ team.teamLeader.health || '0'}} <img src="/assets/health-normal.png" alt=""></p>
+                            <p>{{ team.teamLeader.defense || '0'}} <img src="/assets/breastplate.png" alt=""></p>
+                            <p>{{ team.teamLeader.attack || '0'}} <img src="/assets/swords-power.png" alt=""></p>
+                            <p>{{ team.teamLeader.heal_factor || '0'}} <img src="/assets/healing.png" alt=""></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member" *ngFor="let member of team.teamMembers" fxLayout="row">
+                <div class="character-avatar" fxFlex="30">
+                    <img [src]="member.avatar">
+                </div>
+                <div class="character-name" fxFlex="30">
+                    <div>
+                        {{ member.name }}
+                    </div>
+                </div>
+                <div class="character-stats" fxFlex="40">
+                    <div>
+                        <div>
+                            <p>{{ member.health || '0'}} <img src="/assets/health-normal.png" alt=""></p>
+                            <p>{{ member.defense || '0'}} <img src="/assets/breastplate.png" alt=""></p>
+                            <p>{{ member.attack || '0'}} <img src="/assets/swords-power.png" alt=""></p>
+                            <p>{{ member.heal_factor || '0'}} <img src="/assets/healing.png" alt=""></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-member" *ngFor="let number of [].constructor(3 - team.teamMembers.length)" fxLayout="row">
+                <div class="character-avatar" fxFlex="30">
+                    <div class="event-icon-container-team-list"><mat-icon>account_circle</mat-icon></div>
+                </div>
+                <div class="character-name" fxFlex="70">
+                    <div>
+                        Waiting for team member...
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="team-actions" fxLayout="row" fxLayoutAlign="space-around center">
+            <button mat-raised-button (click)="navigateToEvent()" [disabled]="false">Lock in</button>
+            <button mat-raised-button (click)="abandonTeam()" [disabled]="true">Abandon</button>
+        </div>
+    </div>
+    <div class="team-applications" fxLayout="column" fxLayoutAlign="start start" (click)="openApplications()">
+        <div class="applications-icon">
+            <mat-icon>assignment_ind</mat-icon>
+            <div class="applications-number">
+                {{ applications.length }}
+            </div>
+        </div>
+    </div>
+</div>

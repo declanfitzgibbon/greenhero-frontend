@@ -23,6 +23,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ScheduleModule, AgendaService, DayService, 
   WeekService, WorkWeekService, MonthService } 
@@ -73,6 +74,12 @@ import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.
 import { SkillTreeComponent } from './skill-tree/skill-tree.component';
 import { SkillTreeDashboardComponent } from './skill-tree-dashboard/skill-tree-dashboard.component';
 import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actions.component';
+import { UserEventFirstPageComponent } from './user-event-first-page/user-event-first-page.component';
+import { UserEventSearchTeamComponent } from './user-event-search-team/user-event-search-team.component';
+import { UserEventCreateTeamComponent } from './user-event-create-team/user-event-create-team.component';
+import { UserEventSeeTeamComponent } from './user-event-see-team/user-event-see-team.component';
+import { EventTeamLobbyComponent } from './event-team-lobby/event-team-lobby.component';
+import { EventApplicationsDialogComponent } from './event-applications-dialog/event-applications-dialog.component';
 
 
 
@@ -114,7 +121,13 @@ import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actio
     UserBattleTurnsComponent,
     SkillTreeComponent,
     SkillTreeDashboardComponent,
-    SkillTreeActionsComponent
+    SkillTreeActionsComponent,
+    UserEventFirstPageComponent,
+    UserEventSearchTeamComponent,
+    UserEventCreateTeamComponent,
+    UserEventSeeTeamComponent,
+    EventTeamLobbyComponent,
+    EventApplicationsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +154,8 @@ import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actio
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ScheduleModule
+    ScheduleModule,
+    MatDialogModule
   ],
   providers: [
     UserService,

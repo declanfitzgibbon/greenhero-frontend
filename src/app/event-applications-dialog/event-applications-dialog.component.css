@@ -1,0 +1,7 @@
+.dialog-container {
+    min-height: 30vh;
+    padding: 60px;
+    background-color: #cdcdcd;
+    max-height: 500px;
+    border-radius: 10px;
+}

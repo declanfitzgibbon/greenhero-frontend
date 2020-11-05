@@ -9,6 +9,7 @@ import { UserMissionsComponent } from './user-missions/user-missions.component';
 import { UserStatsComponent } from './user-stats/user-stats.component';
 import { AdminPowerDashboardComponent } from './admin-power-dashboard/admin-power-dashboard.component';
 import { AdminEngageDashboardComponent } from './admin-engage-dashboard/admin-engage-dashboard.component';
+import { UserEventFirstPageComponent } from './user-event-first-page/user-event-first-page.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
       {
         path: 'reservation',
         component: RoomReserverComponent
+      },
+      {
+        path: 'event',
+        component: UserEventFirstPageComponent
       },
       {
         path: 'battle',
