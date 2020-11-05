@@ -1,0 +1,50 @@
+<div class="create-team-container">
+
+    <div fxLayout="row" fxAlign="center center" fxLayoutGap="10px">
+        <div class="team-stuff" fxLayout="column" fxAlign="start center">
+            <div class="team-avatar-container">
+                <img class="team-avatar" [src]="selectedAvatar.src" >
+            </div>
+            <div class="inputs" fxLayout="column" fxAlign="start center">
+                <div class="avatar-selection">
+                    <div class="selector-container">
+                        <mat-form-field>
+                            <mat-label>Select a team avatar</mat-label>
+                            <mat-select [(value)]="selected" (selectionChange)="newAvatarSelected()">
+                              <mat-option *ngFor="let avatar of avatars" [value]="avatar.src">{{ avatar.name }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="team-name-container">
+                    <mat-form-field>
+                        <mat-label>Team Name</mat-label>
+                        <input matInput type="text" [(ngModel)]="teamName">
+                      </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="character-stuff" fxLayout="column" fxAlign="start center">
+            <div class="character-avatar-container">
+                <img class="character-avatar" [src]="characterSelected.avatar" >
+            </div>
+            <div class="character-stats">
+                <p>{{ characterSelected.health || '0'}} <img src="/assets/health-normal.png" alt=""></p>
+                <p>{{ characterSelected.defense || '0'}} <img src="/assets/breastplate.png" alt=""></p>
+                <p>{{ characterSelected.attack || '0'}} <img src="/assets/swords-power.png" alt=""></p>
+                <p>{{ characterSelected.heal_factor || '0'}} <img src="/assets/healing.png" alt=""></p>
+            </div>
+            <div class="selector-container">
+                <mat-form-field>
+                    <mat-label>Select a character</mat-label>
+                    <mat-select [(value)]="characterSelectedID" (selectionChange)="newCharacterSelected()">
+                      <mat-option *ngFor="let character of characters" [value]="character._id">{{ character.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="accept-container">
+        <button mat-raised-button style="margin-top: 15px;" (click)="createTeam()" [disabled]="!teamName || !characterSelected || !selectedAvatar">Create</button>
+    </div>
+</div>

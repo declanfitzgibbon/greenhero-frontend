@@ -18,8 +18,6 @@ export class UserBattleComponent implements OnInit {
 
   setTarget(target) {
     this.target = target;
-    console.log(target);
-    
   }
 
   setAction(action) {

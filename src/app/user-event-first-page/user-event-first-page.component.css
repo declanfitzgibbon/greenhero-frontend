@@ -1,0 +1,128 @@
+.tab-container {
+    margin: 10px;
+}
+
+.under-construction {
+    min-height: 60vh;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.event-actions > div {
+    width: 100%;
+    height: 100%;
+}
+
+.event-selection {
+    cursor: default;
+}
+
+.selector-container {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.selector-container.event-selector-first-page /deep/ .mat-form-field {
+    min-width: 100%;
+}
+
+.event-image-container {
+    padding: 10px;
+    text-align: center;
+}
+
+.event-image {
+    width: calc(60% - 20px);
+    min-width: 250px;
+    border: 10px solid;
+    border-radius: 50%;
+}
+
+.begin-event-time {
+    margin: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.action-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    line-height: 1em;
+}
+
+.boss-container {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+    border: 10px solid;
+}
+
+.boss-name {
+    font-size: 3em;
+    line-height: 1em;
+}
+
+.boss-description {
+    font-size: 1.5em;
+    line-height: 1em;
+}
+.boss-stats {
+    font-size: 1.2em;
+    text-align: center;
+}
+.label {
+    font-weight: 500;
+}
+
+.boss-stats img {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: inline;
+    vertical-align: middle;
+}
+
+.action-cards > div {
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    border: 2px solid;
+    display: table;
+}
+
+.action-cards > div > div {
+    text-align: center;
+    cursor: pointer;
+    padding: 20px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cancel {
+    font-size: 0.5em;
+    line-height: 0.5em;
+}
+
+.event-icon-container-first-page /deep/ .mat-icon {
+    font-size: 3em;
+    width: auto;
+    height: auto;
+}
+
+.cancel .event-icon-container-first-page /deep/ .mat-icon {
+    font-size: 1em;
+    width: auto;
+    height: auto;
+}

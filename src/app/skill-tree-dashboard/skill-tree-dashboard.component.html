@@ -1,0 +1,12 @@
+<div class="tab-container">
+    <mat-tab-group mat-align-tabs="center" (selectedIndexChange)="changeRender($event)">
+        <mat-tab *ngFor="let class of classess" label="{{ class.name }}">
+            <div class="skill-tree-container">
+                <app-skill-tree [skillTree]="class.skillTree" [render]="class.render" (targetChosen)="nodeClicked($event)"></app-skill-tree>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div class="action-container">
+    <app-skill-tree-actions [actions]="actions" [coinsHad]="totalCoinsHad" [coinsToSpend]="totalCoinsToSpend" (actionChosen)="actionDone($event)"></app-skill-tree-actions>
+</div>

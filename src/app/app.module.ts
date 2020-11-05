@@ -23,6 +23,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ScheduleModule, AgendaService, DayService, 
   WeekService, WorkWeekService, MonthService } 
@@ -70,6 +71,15 @@ import { UserBattleComponent } from './user-battle/user-battle.component';
 import { UserBattleActionsComponent } from './user-battle-actions/user-battle-actions.component';
 import { UserBattleCanvasComponent } from './user-battle-canvas/user-battle-canvas.component';
 import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.component';
+import { SkillTreeComponent } from './skill-tree/skill-tree.component';
+import { SkillTreeDashboardComponent } from './skill-tree-dashboard/skill-tree-dashboard.component';
+import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actions.component';
+import { UserEventFirstPageComponent } from './user-event-first-page/user-event-first-page.component';
+import { UserEventSearchTeamComponent } from './user-event-search-team/user-event-search-team.component';
+import { UserEventCreateTeamComponent } from './user-event-create-team/user-event-create-team.component';
+import { UserEventSeeTeamComponent } from './user-event-see-team/user-event-see-team.component';
+import { EventTeamLobbyComponent } from './event-team-lobby/event-team-lobby.component';
+import { EventApplicationsDialogComponent } from './event-applications-dialog/event-applications-dialog.component';
 
 
 
@@ -108,7 +118,16 @@ import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.
     UserBattleComponent,
     UserBattleActionsComponent,
     UserBattleCanvasComponent,
-    UserBattleTurnsComponent
+    UserBattleTurnsComponent,
+    SkillTreeComponent,
+    SkillTreeDashboardComponent,
+    SkillTreeActionsComponent,
+    UserEventFirstPageComponent,
+    UserEventSearchTeamComponent,
+    UserEventCreateTeamComponent,
+    UserEventSeeTeamComponent,
+    EventTeamLobbyComponent,
+    EventApplicationsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +154,8 @@ import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ScheduleModule
+    ScheduleModule,
+    MatDialogModule
   ],
   providers: [
     UserService,

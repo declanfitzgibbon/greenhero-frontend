@@ -1,0 +1,38 @@
+.create-team-container {
+    font-size: 0.4em;
+    margin: 30px 5px;
+}
+
+.character-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.team-avatar, .character-avatar {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid;
+    margin: 20px 5px;
+}
+
+.avatar-selection, .team-name-container, .accept-container, .select-container {
+    padding: 5px;
+}
+
+.character-stats {
+    font-size: 1em;
+    line-height: normal;
+    display: flex;
+    height: 73.3px;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.character-stats img {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: block;
+    vertical-align: middle;
+}

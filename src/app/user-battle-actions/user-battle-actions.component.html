@@ -1,6 +1,6 @@
 <!-- <h1 class="action-title">Select your action</h1> -->
 <div class="action-container">
-    <div class="action-card" *ngFor="let action of actions" (click)="!isMyTurn || !targetChosen || !targetChosen.chosen || (targetChosen.friend && action.code === 'attack') || (!targetChosen.friend && action.code === 'heal') ? null : actionClicked(action)" [ngClass]="{'disabled': !isMyTurn || !targetChosen || !targetChosen.chosen || (targetChosen.friend && action.code === 'attack') || (!targetChosen.friend && action.code === 'heal')}">
+    <div class="action-card" *ngFor="let action of actions" (click)="!targetChosen || !targetChosen.chosen || (targetChosen.friend && action.code === 'attack') || (!targetChosen.friend && action.code === 'heal') ? null : actionClicked(action)" [ngClass]="{'disabled': !targetChosen || !targetChosen.chosen || (targetChosen.friend && action.code === 'attack') || (!targetChosen.friend && action.code === 'heal')}">
         <p class="action-name"> {{ action.name }} </p>
     </div>
 </div>

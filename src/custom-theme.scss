@@ -55,8 +55,16 @@ $power-saving-dark-theme: mat-dark-theme((
     fill: white;
   }
 
+  .team-applications {
+    background-color: #303030;
+  }
+
   .mat-option-text {
     color: white;
+  }
+
+  .team-captain .character-avatar img {
+    border-color: rgb(55, 102, 91);
   }
 
   img.avatar-img.you {
@@ -99,6 +107,14 @@ $power-saving-dark-theme: mat-dark-theme((
   @include angular-material-theme($power-saving-light-theme);
   text {
     fill: black;
+  }
+
+  .team-applications {
+    background-color: white;
+  }
+
+  .team-captain .character-avatar img {
+    border-color: rgb(112, 204, 183);
   }
 
   img.avatar-img.you {
