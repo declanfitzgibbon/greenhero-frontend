@@ -1,0 +1,9 @@
+div {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+div > canvas {
+    border: 5px solid;
+}

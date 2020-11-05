@@ -1,0 +1,8 @@
+<div class="action-container">
+    <div class="action-card" *ngFor="let action of actions" (click)="action.disabled ? null : actionClicked(action)" [ngClass]="{'disabled': action.disabled}">
+        <p class="action-name"> {{ action.name }} </p>
+    </div>
+</div>
+<div *ngIf="coinsToSpend" class="coins-to-spend" [ngClass]="{'red': coinsToSpend > coinsHad}">
+    Total: <img _ngcontent-eib-c293="" src="assets/green-coing.png" class="coin-icon"> {{ coinsToSpend }}
+</div>

@@ -37,7 +37,12 @@ export class UserBattleActionsComponent implements OnInit {
   actionClicked(action: { name: string, code: string }) {
     this.actionNumber++;
     this.actionChosen.emit({action: action.code, actionNumber: this.actionNumber});
-    this.turnService.nextTurn();
+    this.targetChosen = null;
+    setTimeout(() => {
+      this.turnService.nextTurn();
+      console.log(this.targetChosen);
+      
+    }, 1000);
   }
 
 }

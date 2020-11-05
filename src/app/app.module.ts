@@ -70,6 +70,9 @@ import { UserBattleComponent } from './user-battle/user-battle.component';
 import { UserBattleActionsComponent } from './user-battle-actions/user-battle-actions.component';
 import { UserBattleCanvasComponent } from './user-battle-canvas/user-battle-canvas.component';
 import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.component';
+import { SkillTreeComponent } from './skill-tree/skill-tree.component';
+import { SkillTreeDashboardComponent } from './skill-tree-dashboard/skill-tree-dashboard.component';
+import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actions.component';
 
 
 
@@ -108,7 +111,10 @@ import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.
     UserBattleComponent,
     UserBattleActionsComponent,
     UserBattleCanvasComponent,
-    UserBattleTurnsComponent
+    UserBattleTurnsComponent,
+    SkillTreeComponent,
+    SkillTreeDashboardComponent,
+    SkillTreeActionsComponent
   ],
   imports: [
     BrowserModule,
