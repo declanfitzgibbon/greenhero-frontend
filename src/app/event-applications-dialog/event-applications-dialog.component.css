@@ -5,3 +5,40 @@
     max-height: 500px;
     border-radius: 10px;
 }
+
+.user-applications-container {
+    max-height: 500px;
+}
+
+.character-stats img {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: block;
+}
+
+.character-avatar img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 5px solid;
+}
+
+.user-application {
+    border-bottom: 1px solid #9b9b9b;
+}
+
+.user-application > div {
+    flex: 1;
+    height: 80px;
+    display: table;
+}
+
+.user-application > div > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.actions button {
+    margin: 0px 5px;
+}

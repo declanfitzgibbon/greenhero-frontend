@@ -9,10 +9,11 @@ export class UserService {
   private coinAmount: number;
   private isUser$: EventEmitter<boolean> = new EventEmitter();
   private coinAmount$: EventEmitter<number> = new EventEmitter();
-
+  user: {_id: string};
   constructor() { 
     this.isUser = true;
     this.coinAmount = 200;
+    this.user = { _id: "1" };
   }
 
   changeUser() {

@@ -81,6 +81,7 @@ import { UserEventSeeTeamComponent } from './user-event-see-team/user-event-see-
 import { EventTeamLobbyComponent } from './event-team-lobby/event-team-lobby.component';
 import { EventApplicationsDialogComponent } from './event-applications-dialog/event-applications-dialog.component';
 import { UserCharacterComponent } from './user-character/user-character.component';
+import { EventSearchTeamComponent } from './event-search-team/event-search-team.component';
 
 
 
@@ -129,7 +130,8 @@ import { UserCharacterComponent } from './user-character/user-character.componen
     UserEventSeeTeamComponent,
     EventTeamLobbyComponent,
     EventApplicationsDialogComponent,
-    UserCharacterComponent
+    UserCharacterComponent,
+    EventSearchTeamComponent
   ],
   imports: [
     BrowserModule,

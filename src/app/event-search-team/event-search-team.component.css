@@ -1,0 +1,40 @@
+.search-team-container {
+    font-size: 0.4em;
+    margin: 30px 5px;
+}
+
+.character-stuff > div{
+    display: table;
+    height: 120px;
+    margin: 5px;
+}
+
+.team-display {
+    border-bottom: 1px solid;
+}
+
+.team-display > div {
+    flex: 1;
+    height: 80px;
+    display: table;
+}
+
+.team-display > div > div, .character-stuff > div > div{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.team-stats img, .character-stats img {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: block;
+}
+
+.team-avatar > img, .character-avatar{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 5px solid;
+    margin: 20px 5px;
+}

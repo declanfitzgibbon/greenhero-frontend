@@ -40,9 +40,16 @@
                         </div>
                     </div>
                     <div>
-                        <div class="join-div" *ngIf="!searchIntention">
+                        <div class="join-div" *ngIf="!searchIntention" (click)="searchIntention = true">
                             <p class="event-icon-container-first-page"><mat-icon>search</mat-icon></p>
                             <p>SEARCH TEAM</p>
+                        </div>
+                        <div class="join-div" *ngIf="searchIntention">
+                            <app-event-search-team [event_id]="selectedEvent._id"></app-event-search-team>
+                            <div class="cancel" (click)="searchIntention = false">
+                                <p class="event-icon-container-first-page"><mat-icon>cancel</mat-icon></p>
+                                <p>Cancel</p>
+                            </div>
                         </div>
                     </div>
                 </div>

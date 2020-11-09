@@ -1,0 +1,68 @@
+<div class="search-team-container">
+    <h2>Select your character</h2>
+    <div class="character-stuff" fxLayout="row" fxAlign="center center">
+        <div class="character-avatar-container" style="flex: 1">
+            <img class="character-avatar" [src]="characterSelected.avatar" >
+        </div>
+        <div style="flex: 2;">
+            <div>
+                <div class="character-stats" fxLayout="row" fxLayoutAlign="space-around">
+                    <p>{{ characterSelected.health || '0'}} <img src="/assets/health-normal.png" alt=""></p>
+                    <p>{{ characterSelected.defense || '0'}} <img src="/assets/breastplate.png" alt=""></p>
+                    <p>{{ characterSelected.attack || '0'}} <img src="/assets/swords-power.png" alt=""></p>
+                    <p>{{ characterSelected.heal_factor || '0'}} <img src="/assets/healing.png" alt=""></p>
+                </div>
+            </div>
+        </div>
+        <div class="selector-container" style="flex: 1">
+            <div>
+                <mat-form-field>
+                    <mat-label>Select a character</mat-label>
+                    <mat-select [(value)]="characterSelectedID" (selectionChange)="newCharacterSelected()">
+                        <mat-option *ngFor="let character of characters" [value]="character._id">{{ character.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="input-container">
+        <h2>Search for a team</h2>
+        <mat-form-field>
+            <mat-label>Team Name</mat-label>
+            <input matInput type="text" [(ngModel)]="teamName" (change)="filterTeams()">
+        </mat-form-field>
+    </div>
+    <div class="teams-container">
+        <div class="teams-container" *ngIf="teams && teams.length">
+            <div class="team-display" fxLayout="row" *ngFor="let team of teams">
+                <div class="team-avatar">
+                    <img [src]="team.avatar">
+                </div>
+                <div class="team-name">
+                    <div>
+                        {{ team.name }}
+                    </div>
+                </div>
+                <div class="team-stats">
+                    <div>
+                        <div fxLayout="row">
+                            <p>{{ summaryHealth(team) || '0'}} <img src="/assets/health-normal.png"></p>
+                            <p>{{ summaryDefense(team) || '0'}} <img src="/assets/breastplate.png"></p>
+                            <p>{{ summaryAttack(team) || '0'}} <img src="/assets/swords-power.png"></p>
+                            <p>{{ summaryHeal_factor(team) || '0'}} <img src="/assets/healing.png"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <div>
+                        <button *ngIf="!alreadyApplied(team)" mat-button (click)="apply(team)">Apply</button>
+                        <button *ngIf="alreadyApplied(team)" mat-button>Applied!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!teams || !teams.length" class="no-teams">
+
+        </div>
+    </div>
+</div>
