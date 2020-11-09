@@ -13,6 +13,7 @@ export class UserConsumptionCardsComponent implements OnInit {
   @Input() isFull: boolean = false;
   @Input() timeFrame: number = 0;
   @Input() cardSelector: number;
+  @Input() consumption: number;
 
   colorScheme: { domain: Array<string> };
   single: Array<{ name: string, value: number | string }>;
@@ -144,7 +145,7 @@ export class UserConsumptionCardsComponent implements OnInit {
         this.single = [
           {
             name: "Power used",
-            value: 20
+            value: this.consumption
           }
         ];
         break;

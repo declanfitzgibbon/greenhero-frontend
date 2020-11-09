@@ -10,6 +10,7 @@ import { UserStatsComponent } from './user-stats/user-stats.component';
 import { AdminPowerDashboardComponent } from './admin-power-dashboard/admin-power-dashboard.component';
 import { AdminEngageDashboardComponent } from './admin-engage-dashboard/admin-engage-dashboard.component';
 import { UserEventFirstPageComponent } from './user-event-first-page/user-event-first-page.component';
+import { UserCharacterComponent } from './user-character/user-character.component';
 
 const routes: Routes = [
   {
@@ -44,8 +45,17 @@ const routes: Routes = [
         component: UserBattleComponent
       },
       {
-        path:'skill-tree',
-        component: SkillTreeDashboardComponent
+        path: 'character',
+        children: [
+          {
+            path: 'collections',
+            component: UserCharacterComponent,
+          },
+          {
+            path: 'skill-tree',
+            component: SkillTreeDashboardComponent
+          }
+        ]
       }
     ]
   },

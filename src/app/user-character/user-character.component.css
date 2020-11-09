@@ -1,0 +1,77 @@
+.character {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.character-name{
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+}
+
+.character-name p{
+    padding: 20px;
+    text-align: center;
+    font-size: 1.7em;
+}
+
+.character-avatar {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 5px solid;
+    margin: auto auto;
+}
+
+.character-stats {
+    font-size: 1em;
+    line-height: normal;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    position: relative;
+    flex-direction: column;
+    border-radius: 50%;
+    border: 5px solid;
+    height: 450px;
+    width: 450px;
+}
+
+.character-stats p {
+    font-size: 2em;
+    display: inline-block;
+    text-align: center;
+}
+
+.character-stats img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 20px 20px;
+}
+
+.detail /deep/ .mat-icon {
+    font-size: 3em;
+    width: auto;
+    height: auto;
+}
+
+.create /deep/ .mat-icon {
+    padding: 20px 20px;
+    font-size: 10em;
+    width: auto;
+    height: auto;
+}
+
+.create {
+    font-size: 2em;
+    text-align: center;
+}
+
+.button{
+    padding: 20px 20px;
+}

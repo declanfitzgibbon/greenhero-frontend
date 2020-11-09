@@ -4,7 +4,7 @@ gdRows="auto auto auto auto auto auto auto auto"
 style="overflow: hidden;">
     <app-user-consumption-gauge gdArea="gauge" [value]="allowance" [stats]="logIn"></app-user-consumption-gauge>
     <button gdArea="test" class="button" (click)="switchOn()">test</button>
-    <app-user-consumption-cards gdArea="outlet" class="cards" *ngIf="logIn" [cardSelector]="allowance_card"></app-user-consumption-cards>
+    <app-user-consumption-cards gdArea="outlet" class="cards" [cardSelector]="allowance_card" [consumption]="consumption"></app-user-consumption-cards>
     <app-user-consumption-bars gdArea="bars" [timeFrame]="timeFrame"></app-user-consumption-bars>
     <app-user-consumption-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-user-consumption-time-selector>
     <app-user-consumption-cards gdArea="cards" [timeFrame]="timeFrame" [cardSelector]="consumption_card"></app-user-consumption-cards>
