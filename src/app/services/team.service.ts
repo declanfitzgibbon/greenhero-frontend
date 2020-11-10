@@ -561,11 +561,15 @@ export class TeamService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getPlayerTeamForEvent(event_id: string, user_id: string) {
-    return this.teams.find((team) => team.event_id === event_id && (team.teamLeader.user_id === user_id || team.teamMembers.some((member) => member.user_id === user_id)));
+  async getPlayerTeamForEvent(event_id: string, user_id: string) {
+    //return this.teams.find((team) => team.event_id === event_id && (team.teamLeader.user_id === user_id || team.teamMembers.some((member) => member.user_id === user_id)));
+    const teams = await this.http.get<Array<Team>>("http://localhost:8080/Team/getTeamByEventIdAndUserId?event_id="+encodeURIComponent(event_id)+
+                                                   "&user_id="+encodeURIComponent(user_id)).toPromise();
+    return teams;
   }
+
 
   addTeam(team: Team) {
     this.teams.push(team);
