@@ -1,0 +1,22 @@
+<a style="text-decoration: none; color:inherit;" routerLink="user/event">
+    <div class="event-list-container">
+        <h3 class="events-title" style="text-align: center;">Events</h3>
+        <mat-card matRipple class="event-card" *ngFor="let event of events">
+            <mat-card-header>
+                <mat-card-title class="event-card-title">{{ event.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="last-child">
+                <div class="event-content-container">
+                    <div class="event-half">
+                        <img mat-card-image [src]="event.boss.avatar" class="event-img">
+                    </div>
+                    <div class="event-half">
+                        <p>
+                            {{ event.description }}
+                        </p>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</a>

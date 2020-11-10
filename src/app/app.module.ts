@@ -34,55 +34,52 @@ from '@syncfusion/ej2-angular-schedule';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { NavigationComponent } from './navigation/navigation.component';
-import { NavigationCardsComponent } from './navigation-cards/navigation-cards.component';
-import { EventListComponent } from './event-list/event-list.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { AdminCardsComponent } from './admin-cards/admin-cards.component';
-import { AdminAlertFeedComponent } from './admin-alert-feed/admin-alert-feed.component';
+import { NavigationComponent } from './components/shared/navigation/navigation.component';
+import { NavigationCardsComponent } from './components/user/navigation-cards/navigation-cards.component';
+import { EventListComponent } from './components/user/event-list/event-list.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
+import { AdminCardsComponent } from './components/admin/admin-cards/admin-cards.component';
+import { AdminAlertFeedComponent } from './components/admin/admin-alert-feed/admin-alert-feed.component';
 import { AppComponent } from './app.component';
-import { AdminDoughnutComponent } from './admin-doughnut/admin-doughnut.component';
-import { AdminLineGraphComponent } from './admin-line-graph/admin-line-graph.component';
-import { AdminBarsComponent } from './admin-bars/admin-bars.component';
-import { AdminBarChartComponent } from './admin-bar-chart/admin-bar-chart.component';
-import { AdminPieChartComponent } from './admin-pie-chart/admin-pie-chart.component';
-import { AdminProgressBarComponent } from './admin-progress-bar/admin-progress-bar.component';
-import { AdminPowerDashboardComponent } from './admin-power-dashboard/admin-power-dashboard.component';
-import { AdminEngageDashboardComponent } from './admin-engage-dashboard/admin-engage-dashboard.component';
-import { AdminTimeSelectorComponent } from './admin-time-selector/admin-time-selector.component';
-import { UserConsumptionComponent } from './user-consumption/user-consumption.component';
-import { UserMissionsComponent } from './user-missions/user-missions.component';
-import { UserStatsComponent } from './user-stats/user-stats.component';
-import { UserProgressBarComponent } from './user-progress-bar/user-progress-bar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserConsumptionCardsComponent } from './user-consumption-cards/user-consumption-cards.component';
-import { UserConsumptionTimeSelectorComponent } from './user-consumption-time-selector/user-consumption-time-selector.component';
-import { UserConsumptionDoughnutComponent } from './user-consumption-doughnut/user-consumption-doughnut.component';
-import { UserConsumptionBarsComponent } from './user-consumption-bars/user-consumption-bars.component';
-import { UserGaugeChartComponent } from './user-consumption-gauge/user-consumption-gauge.component';
-import { RoomReserverComponent } from './room-reserver/room-reserver.component';
-import { RoomListComponent } from './room-list/room-list.component';
-import { RoomCalendarComponent } from './room-calendar/room-calendar.component';
-import { UserService } from './user.service';
-import { ThemeService } from './theme.service';
-import { EventService } from './event.service';
-import { UserBattleComponent } from './user-battle/user-battle.component';
-import { UserBattleActionsComponent } from './user-battle-actions/user-battle-actions.component';
-import { UserBattleCanvasComponent } from './user-battle-canvas/user-battle-canvas.component';
-import { UserBattleTurnsComponent } from './user-battle-turns/user-battle-turns.component';
-import { SkillTreeComponent } from './skill-tree/skill-tree.component';
-import { SkillTreeDashboardComponent } from './skill-tree-dashboard/skill-tree-dashboard.component';
-import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actions.component';
-import { UserEventFirstPageComponent } from './user-event-first-page/user-event-first-page.component';
-import { UserEventSearchTeamComponent } from './user-event-search-team/user-event-search-team.component';
-import { UserEventCreateTeamComponent } from './user-event-create-team/user-event-create-team.component';
-import { UserEventSeeTeamComponent } from './user-event-see-team/user-event-see-team.component';
-import { EventTeamLobbyComponent } from './event-team-lobby/event-team-lobby.component';
-import { EventApplicationsDialogComponent } from './event-applications-dialog/event-applications-dialog.component';
-import { UserCharacterComponent } from './user-character/user-character.component';
-import { EventSearchTeamComponent } from './event-search-team/event-search-team.component';
+import { AdminDoughnutComponent } from './components/admin/admin-doughnut/admin-doughnut.component';
+import { AdminLineGraphComponent } from './components/admin/admin-line-graph/admin-line-graph.component';
+import { AdminBarsComponent } from './components/admin/admin-bars/admin-bars.component';
+import { AdminBarChartComponent } from './components/admin/admin-bar-chart/admin-bar-chart.component';
+import { AdminPieChartComponent } from './components/admin/admin-pie-chart/admin-pie-chart.component';
+import { AdminProgressBarComponent } from './components/admin/admin-progress-bar/admin-progress-bar.component';
+import { AdminPowerDashboardComponent } from './components/admin/admin-power-dashboard/admin-power-dashboard.component';
+import { AdminEngageDashboardComponent } from './components/admin/admin-engage-dashboard/admin-engage-dashboard.component';
+import { AdminTimeSelectorComponent } from './components/admin/admin-time-selector/admin-time-selector.component';
+import { UserConsumptionComponent } from './components/user/user-consumption/user-consumption.component';
+import { UserMissionsComponent } from './components/user/user-missions/user-missions.component';
+import { UserProgressBarComponent } from './components/user/user-progress-bar/user-progress-bar.component';
+import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
+import { UserConsumptionCardsComponent } from './components/user/user-consumption-cards/user-consumption-cards.component';
+import { UserConsumptionTimeSelectorComponent } from './components/user/user-consumption-time-selector/user-consumption-time-selector.component';
+import { UserConsumptionDoughnutComponent } from './components/user/user-consumption-doughnut/user-consumption-doughnut.component';
+import { UserConsumptionBarsComponent } from './components/user/user-consumption-bars/user-consumption-bars.component';
+import { UserGaugeChartComponent } from './components/user/user-consumption-gauge/user-consumption-gauge.component';
+import { RoomReserverComponent } from './components/user/room-reserver/room-reserver.component';
+import { RoomListComponent } from './components/user/room-list/room-list.component';
+import { RoomCalendarComponent } from './components/user/room-calendar/room-calendar.component';
+import { UserBattleComponent } from './components/user/user-battle/user-battle.component';
+import { UserBattleActionsComponent } from './components/user/user-battle-actions/user-battle-actions.component';
+import { UserBattleCanvasComponent } from './components/user/user-battle-canvas/user-battle-canvas.component';
+import { UserBattleTurnsComponent } from './components/user/user-battle-turns/user-battle-turns.component';
+import { SkillTreeComponent } from './components/user/skill-tree/skill-tree.component';
+import { SkillTreeDashboardComponent } from './components/user/skill-tree-dashboard/skill-tree-dashboard.component';
+import { SkillTreeActionsComponent } from './components/user/skill-tree-actions/skill-tree-actions.component';
+import { UserEventFirstPageComponent } from './components/user/user-event-first-page/user-event-first-page.component';
+import { UserEventCreateTeamComponent } from './components/user/user-event-create-team/user-event-create-team.component';
+import { EventTeamLobbyComponent } from './components/user/event-team-lobby/event-team-lobby.component';
+import { EventApplicationsDialogComponent } from './components/user/event-applications-dialog/event-applications-dialog.component';
+import { UserCharacterComponent } from './components/user/user-character/user-character.component';
+import { EventSearchTeamComponent } from './components/user/event-search-team/event-search-team.component';
 
+import { ThemeService } from './services/theme.service';
+import { EventService } from './services/event.service';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -106,7 +103,6 @@ import { EventSearchTeamComponent } from './event-search-team/event-search-team.
     AdminEngageDashboardComponent,
     UserConsumptionComponent,
     UserMissionsComponent,
-    UserStatsComponent,
     DashboardComponent,
     UserProgressBarComponent,
     UserGaugeChartComponent,
@@ -125,9 +121,7 @@ import { EventSearchTeamComponent } from './event-search-team/event-search-team.
     SkillTreeDashboardComponent,
     SkillTreeActionsComponent,
     UserEventFirstPageComponent,
-    UserEventSearchTeamComponent,
     UserEventCreateTeamComponent,
-    UserEventSeeTeamComponent,
     EventTeamLobbyComponent,
     EventApplicationsDialogComponent,
     UserCharacterComponent,
