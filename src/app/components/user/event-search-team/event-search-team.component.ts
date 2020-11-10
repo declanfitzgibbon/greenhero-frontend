@@ -22,10 +22,10 @@ export class EventSearchTeamComponent implements OnInit {
 
   constructor(private teamService: TeamService, private userService: UserService, private characterService: CharacterService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.user = this.userService.user;
     this.teams = this.teamService.searchTeams(this.event_id, this.teamName);
-    this.characters = this.characterService.getCharacters(this.user._id);
+    this.characters = await this.characterService.getCharacters(this.user._id);
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
   }

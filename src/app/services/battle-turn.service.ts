@@ -10,10 +10,6 @@ export class BattleTurnService {
 
   constructor() { }
 
-  getTurns() {
-    return this.turns;
-  }
-
   nextTurn() {
     this.turns.push(this.turns.shift());
     this.turnChange.emit(this.turns);

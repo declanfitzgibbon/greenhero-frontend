@@ -12,8 +12,8 @@ export class AdminAnnounceService {
     return [{
       _id: "1",
       icon: '<i class="fas fa-exclamation"></i>',
-      title: "System recommendation",
-      content: "Lights are too bright"
+      title: "UNDER CONSTRUCTION",
+      content: "UNDER CONSTRUCTION"
     }];
   }
 }

@@ -12,10 +12,13 @@ export class UserService {
   user: {_id: string};
   constructor() { 
     this.isUser = true;
+    
+    // CALL FROM DB
     this.coinAmount = 200;
     this.user = { _id: "1" };
   }
 
+  // DONT TOUCH
   changeUser() {
     this.isUser = !this.isUser;
     this.isUser$.emit(this.isUser);

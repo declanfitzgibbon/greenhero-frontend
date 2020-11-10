@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Character } from '../models/character';
 import { Node, Ability, AugmentationType, NodeType } from '../models/node';
+import { SkillTree } from '../models/skillTree';
 
 @Injectable({
   providedIn: 'root'
@@ -73,7 +75,7 @@ export class CharacterService {
     health: 400
   }];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   createCharacter(character: Character) {
     this.characters.push(character);
@@ -83,7 +85,23 @@ export class CharacterService {
     return this.characters.find((character) => character._id === character_id);
   }
 
-  getCharacters(user_id: string) {
-    return this.characters;
+  async getCharacters(user_id: string) {
+    const characters = await this.http.get<Array<Character>>('http://localhost:8080/Character/'+encodeURIComponent(user_id)).toPromise();
+    for(let char of characters) {
+      char = await this.getCharacterInfo(char);
+    }
+
+    return characters
+  }
+
+  async getCharacterInfo(character: Character) {
+    character.skillTree = await this.http.get<SkillTree>('http://localhost:8080/Character/'+encodeURIComponent((character.skillTree as any))).toPromise();
+
+    for(let i = 0; i < character.skillTree.nodes.length; i++) {
+      const node = character.skillTree.nodes[i];
+      character.skillTree.nodes[i] = await this.http.get<Node>('http://localhost:8080/Node/'+encodeURIComponent((node as any))).toPromise();
+    }
+
+    return character;
   }
 }

@@ -19,9 +19,9 @@ export class UserCharacterComponent implements OnInit {
 
   constructor(private characterService: CharacterService, private userService: UserService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.loading = false;
-    this.characters = this.characterService.getCharacters(this.userService.user._id);
+    this.characters = await this.characterService.getCharacters(this.userService.user._id);
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
   }
