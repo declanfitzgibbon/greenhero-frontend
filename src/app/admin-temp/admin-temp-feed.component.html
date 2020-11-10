@@ -1,16 +1,9 @@
-<ng-container *ngIf="!loading">
-    <div class="card-container" >
-        <ngx-charts-number-card
-          (window:resize)="onResize($event)"
-          [scheme]="colorScheme"
-          [results]="single"
-          [view] = "view"
-          (select)="onSelect($event)">
-        </ngx-charts-number-card>
+<ng-container *ngFor="let temp of currentTemp; let i = index">
+    <div class="card-item" >
+        <div class="card-container">
+            <h1>{{ temp.title }}</h1>
+            <h2> {{ temp.value }} C°</h2>
+            <p> {{ temp.state }}</p>
+        </div>
     </div>
-</ng-container>
-<ng-container *ngIf="loading">
-    <mat-progress-spinner
-        [color]="'primary'">
-    </mat-progress-spinner>
 </ng-container>
