@@ -60,9 +60,6 @@ import { UserConsumptionTimeSelectorComponent } from './components/user/user-con
 import { UserConsumptionDoughnutComponent } from './components/user/user-consumption-doughnut/user-consumption-doughnut.component';
 import { UserConsumptionBarsComponent } from './components/user/user-consumption-bars/user-consumption-bars.component';
 import { UserGaugeChartComponent } from './components/user/user-consumption-gauge/user-consumption-gauge.component';
-import { RoomReserverComponent } from './components/user/room-reserver/room-reserver.component';
-import { RoomListComponent } from './components/user/room-list/room-list.component';
-import { RoomCalendarComponent } from './components/user/room-calendar/room-calendar.component';
 import { UserBattleComponent } from './components/user/user-battle/user-battle.component';
 import { UserBattleActionsComponent } from './components/user/user-battle-actions/user-battle-actions.component';
 import { UserBattleCanvasComponent } from './components/user/user-battle-canvas/user-battle-canvas.component';
@@ -110,9 +107,6 @@ import { UserService } from './services/user.service';
     UserConsumptionTimeSelectorComponent,
     UserConsumptionDoughnutComponent,
     UserConsumptionBarsComponent,
-    RoomReserverComponent,
-    RoomListComponent,
-    RoomCalendarComponent,
     UserBattleComponent,
     UserBattleActionsComponent,
     UserBattleCanvasComponent,
