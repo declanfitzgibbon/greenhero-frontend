@@ -41,6 +41,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { AdminCardsComponent } from './admin-cards/admin-cards.component';
 import { AdminAlertFeedComponent } from './admin-alert-feed/admin-alert-feed.component';
 import { AppComponent } from './app.component';
+import { AdminTempFeedComponent } from './admin-temp/admin-temp-feed.component';
 import { AdminDoughnutComponent } from './admin-doughnut/admin-doughnut.component';
 import { AdminLineGraphComponent } from './admin-line-graph/admin-line-graph.component';
 import { AdminBarsComponent } from './admin-bars/admin-bars.component';
@@ -82,6 +83,7 @@ import { SkillTreeActionsComponent } from './skill-tree-actions/skill-tree-actio
     EventListComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
+    AdminTempFeedComponent,
     AdminCardsComponent,
     AdminAlertFeedComponent,
     AdminDoughnutComponent,
