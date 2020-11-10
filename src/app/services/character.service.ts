@@ -83,7 +83,7 @@ export class CharacterService {
     return this.characters.find((character) => character._id === character_id);
   }
 
-  getCharacters() {
+  getCharacters(user_id: string) {
     return this.characters;
   }
 }

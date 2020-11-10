@@ -4,6 +4,7 @@ import { Avatar } from 'src/app/models/avatar';
 import { Character } from 'src/app/models/character';
 import { TeamService } from 'src/app/services/team.service';
 import { CharacterService } from 'src/app/services/character.service';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-user-event-create-team',
   templateUrl: './user-event-create-team.component.html',
@@ -36,12 +37,12 @@ export class UserEventCreateTeamComponent implements OnInit {
 
 
 
-  constructor(private teamService: TeamService, private characterService: CharacterService) { }
+  constructor(private teamService: TeamService, private characterService: CharacterService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.selectedAvatar = this.avatars[0];
     this.selected = this.avatars[0].src;
-    this.characters = this.characterService.getCharacters();
+    this.characters = this.characterService.getCharacters(this.userService.user._id);
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
   }
