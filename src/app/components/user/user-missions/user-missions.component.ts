@@ -49,8 +49,9 @@ export class UserMissionsComponent implements OnInit {
     deleted: boolean;
   }>;
   constructor(private userService: UserService, private missionService: MissionService) { }
-
+  
   async ngOnInit() {
+    console.log(this.userService.user)
     this.dailyMissions = await this.missionService.getUserDailyMissions(this.userService.user._id);
     this.weeklyMissions = await this.missionService.getUserWeeklyMissions(this.userService.user._id);
     this.monthlyMissions = await this.missionService.getUserMonthlyMissions(this.userService.user._id);
