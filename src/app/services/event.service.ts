@@ -1,13 +1,13 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable()
 export class EventService {
   events: any;
   eventEmitter: EventEmitter<any> = new EventEmitter();
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   async getEvents() {
     return this.http.get<any>('http://localhost:8080/Event/').toPromise();
@@ -103,5 +103,13 @@ export class EventService {
         date: date.toISOString()
       }
     }).toPromise()).total
+  }
+
+  async getEventByID(event_id) {
+    return (await this.http.get<any>('http://localhost:8080/Event/getEventById', {
+      params: {
+        id: event_id
+      }
+    }).toPromise())
   }
 }

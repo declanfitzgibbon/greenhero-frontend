@@ -18,7 +18,7 @@ export class TeamService {
       teamLeader: {
         _id: '100',
         avatar: "/assets/elf-avatar.png",
-        name: "My Elf Mage",
+        characterName: "My Elf Mage",
         user_id: '48',
         skillTree:  {
           _id: "1",
@@ -75,16 +75,16 @@ export class TeamService {
             }
           ]
         },
-        defense: 100,
+        armor: 100,
         attack: 20,
-        heal_factor: 100,
+        healing_factor: 100,
         health: 400
       },
       teamMembers: [
         {
           _id: '30',
           avatar: "/assets/elf-avatar.png",
-          name: "My Elf Mage",
+          characterName: "My Elf Mage",
           user_id: '43',
           skillTree:  {
             _id: "1",
@@ -141,9 +141,9 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
-          heal_factor: 100,
+          healing_factor: 100,
           health: 400
         }
       ],
@@ -158,7 +158,7 @@ export class TeamService {
       teamLeader: {
         _id: '101',
         avatar: "/assets/elf-avatar.png",
-        name: "My Elf Mage",
+        characterName: "My Elf Mage",
         user_id: '24',
         skillTree:  {
           _id: "1",
@@ -215,16 +215,16 @@ export class TeamService {
             }
           ]
         },
-        defense: 100,
+        armor: 100,
         attack: 20,
-        heal_factor: 100,
+        healing_factor: 100,
         health: 400
       },
       teamMembers: [
         {
           _id: '46',
           avatar: "/assets/elf-avatar.png",
-          name: "My Elf Mage",
+          characterName: "My Elf Mage",
           user_id: '67',
           skillTree:  {
             _id: "1",
@@ -281,15 +281,15 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
-          heal_factor: 100,
+          healing_factor: 100,
           health: 400
         },
         {
           _id: '1',
           avatar: "/assets/elf-avatar.png",
-          name: "My Elf Mage",
+          characterName: "My Elf Mage",
           user_id: '52',
           skillTree:  {
             _id: "1",
@@ -346,9 +346,9 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
-          heal_factor: 100,
+          healing_factor: 100,
           health: 400
         }
       ],
@@ -363,7 +363,7 @@ export class TeamService {
       teamLeader: {
         _id: '101',
         avatar: "/assets/elf-avatar.png",
-        name: "My Elf Mage",
+        characterName: "My Elf Mage",
         user_id: '89',
         skillTree:  {
           _id: "1",
@@ -420,16 +420,16 @@ export class TeamService {
             }
           ]
         },
-        defense: 100,
+        armor: 100,
         attack: 20,
-        heal_factor: 100,
+        healing_factor: 100,
         health: 400
       },
       teamMembers: [
         {
           _id: '1',
           avatar: "/assets/elf-avatar.png",
-          name: "My Elf Mage",
+          characterName: "My Elf Mage",
           user_id: '21',
           skillTree:  {
             _id: "1",
@@ -486,15 +486,15 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
-          heal_factor: 100,
+          healing_factor: 100,
           health: 400
         },
         {
           _id: '2',
           avatar: "/assets/elf-avatar.png",
-          name: "My Elf Mage",
+          characterName: "My Elf Mage",
           user_id: '51',
           skillTree:  {
             _id: "1",
@@ -551,9 +551,9 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
-          heal_factor: 100,
+          healing_factor: 100,
           health: 400
         }
       ],

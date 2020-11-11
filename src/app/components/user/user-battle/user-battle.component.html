@@ -3,6 +3,6 @@ gdGap="10px"
 gdRows="auto auto"
 class="battle-container">
     <app-user-battle-turns gdArea="turns" [team]="team"></app-user-battle-turns>
-    <app-user-battle-canvas gdArea="canvas" (targetChosen)="setTarget($event)" [action]="action"></app-user-battle-canvas>
-    <app-user-battle-actions gdArea="actions" [targetChosen]="target" (actionChosen)="setAction($event)"></app-user-battle-actions>
+    <app-user-battle-canvas gdArea="canvas" (targetChosen)="setTarget($event)" [action]="action" [team]="team" [boss]="event.boss"></app-user-battle-canvas>
+    <app-user-battle-actions gdArea="actions" [targetChosen]="target" (actionChosen)="setAction($event)" [teamId]="team._id"></app-user-battle-actions>
 </div>

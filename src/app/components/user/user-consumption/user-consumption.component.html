@@ -2,7 +2,7 @@
 gdGap="10px"
 gdRows="auto auto auto auto auto auto auto auto"
 style="overflow: hidden;">
-    <app-user-consumption-gauge gdArea="gauge" [value]="allowance" [stats]="logIn"></app-user-consumption-gauge>
+    <app-user-consumption-gauge gdArea="gauge" [value]="allowance" [max]="topAllowance" [stats]="logIn"></app-user-consumption-gauge>
     <app-user-consumption-cards gdArea="outlet" class="cards" [cardSelector]="allowance_card" [consumption]="consumption"></app-user-consumption-cards>
     <app-user-consumption-bars gdArea="bars" [timeFrame]="timeFrame"></app-user-consumption-bars>
     <app-user-consumption-time-selector gdArea="selector" (timeSelector)="timeFrame = $event"></app-user-consumption-time-selector>

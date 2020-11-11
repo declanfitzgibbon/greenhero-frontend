@@ -3,14 +3,12 @@
     <ngx-charts-gauge
     class="chart"
     [view]="view"
+    [max]="max"
     [scheme]="colorScheme"
     [results]="single"
     [legend]="legend"
     [legendPosition]="legendPosition"
-    [units]="units"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)">
+    [units]="units">
 </ngx-charts-gauge>
 </ng-container>
 <ng-container *ngIf="loading">

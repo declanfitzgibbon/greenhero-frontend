@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { AUTO, Game, GameObjects, Scene, Time, Types } from 'phaser';
+import { Character } from 'src/app/models/character';
+import { Boss } from 'src/app/models/event';
+import { Team } from 'src/app/models/team';
 import { BattleTurnService } from 'src/app/services/battle-turn.service';
 
 class MainScene extends Phaser.Scene {
@@ -7,12 +10,16 @@ class MainScene extends Phaser.Scene {
   blues: Array<BlueElf>;
   greens: Array<GreenElf>;
   idOfTurn: string;
+  team: Team;
+  boss: Boss;
 
-  constructor(blues: Array<BlueElf>, greens: Array<GreenElf>, idOfTurn: string) {
+  constructor(blues: Array<BlueElf>, greens: Array<GreenElf>, idOfTurn: string, team: Team, boss: Boss) {
     super({ key: 'main' });
     this.blues = blues;
     this.greens = greens;
     this.idOfTurn = idOfTurn;
+    this.team = team;
+    this.boss = boss;
   }
   preload() {
       //  The graphics used in this example were free downloads from https://craftpix.net
@@ -40,13 +47,13 @@ class MainScene extends Phaser.Scene {
     background.setDisplaySize((this.game.config.width as number), (this.game.config.height as number));
     
 
-    this.blues.push(new BlueElf(this, (2 * parseFloat(this.game.config.width as string)/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '1', (this.idOfTurn === '1') as boolean));
-    this.blues.push(new BlueElf(this, ((3 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '2', (this.idOfTurn === '2') as boolean));
-    this.blues.push(new BlueElf(this, ((4 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '3', (this.idOfTurn === '3') as boolean));
-    this.blues.push(new BlueElf(this, ((5 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], '4', (this.idOfTurn === '4') as boolean));
+    this.blues.push(new BlueElf(this, (2 * parseFloat(this.game.config.width as string)/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], this.team.teamLeader._id, (this.idOfTurn === this.team.teamLeader._id) as boolean, this.team.teamLeader));
+    this.blues.push(new BlueElf(this, ((3 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], this.team.teamMembers[0]._id, (this.idOfTurn === this.team.teamMembers[0]._id) as boolean, this.team.teamMembers[0]));
+    this.blues.push(new BlueElf(this, ((4 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], this.team.teamMembers[1]._id, (this.idOfTurn === this.team.teamMembers[1]._id) as boolean, this.team.teamMembers[1]));
+    this.blues.push(new BlueElf(this, ((5 * parseFloat(this.game.config.width as string))/10) - 30, 5 * parseFloat(this.game.config.height as string) / 6, [], this.team.teamMembers[2]._id, (this.idOfTurn === this.team.teamMembers[2]._id) as boolean, this.team.teamMembers[2]));
 
     // this.greens.push(new GreenElf(this, ((7 * parseFloat(this.game.config.width as string))/10) - 60, 5 * parseFloat(this.game.config.height as string) / 6, [], '5', (this.idOfTurn === '5') as boolean));
-    this.greens.push(new GreenElf(this, ((10 * parseFloat(this.game.config.width as string))/10) - 60, 3.5 * parseFloat(this.game.config.height as string) / 6, [], '6', false));
+    this.greens.push(new GreenElf(this, ((10 * parseFloat(this.game.config.width as string))/10) - 60, 3.5 * parseFloat(this.game.config.height as string) / 6, [], this.boss._id, false, this.boss));
     // this.greens.push(new GreenElf(this, ((9 * parseFloat(this.game.config.width as string))/10) - 60, 5 * parseFloat(this.game.config.height as string) / 6, [], '7', (this.idOfTurn === '7') as boolean));
     // this.greens.push(new GreenElf(this, ((10 * parseFloat(this.game.config.width as string))/10) - 60, 5 * parseFloat(this.game.config.height as string) / 6, [], '8', (this.idOfTurn === '8') as boolean));
 
@@ -98,12 +105,12 @@ class HealthBar {
   p: number;
   isSuper: boolean;
 
-  constructor (scene: Scene, x: number, y: number, isSuper: boolean)
+  constructor (scene: Scene, x: number, y: number, isSuper: boolean, maxHealth: number, currentHealth: number)
   {
       this.isSuper = isSuper;
       this.bar = new GameObjects.Graphics(scene);
-      this.value = this.isSuper ? 1000 : Math.round(Math.random() * 100);
-      this.text = new GameObjects.Text(scene, this.isSuper ? x + 45 : x + 20, y, this.isSuper ? "1000/1000" : "100/100", {
+      this.value = currentHealth;
+      this.text = new GameObjects.Text(scene, this.isSuper ? x + 45 : x + 20, y, currentHealth+'/'+maxHealth, {
         fontSize: '14px',
         fontFamily: 'Arial',
         color: 'black',
@@ -111,7 +118,7 @@ class HealthBar {
       });
       this.x = x;
       this.y = y;
-      this.p = this.isSuper ? 76/1000 : 76/100;
+      this.p = this.isSuper ? 76/maxHealth : 76/maxHealth;
 
       this.draw();
 
@@ -194,14 +201,17 @@ class Elf extends GameObjects.Sprite {
   clickedEmmiter: EventEmitter<string>;
   mainScene: MainScene;
   isHighlighted: boolean;
+  character: Character | Boss;
 
-  constructor (scene: MainScene, color: string, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean)
+  constructor (scene: MainScene, color: string, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean, character: Character | Boss)
   {
       super(scene, x, y, null);
 
       this.isHighlighted = isHighlighted;
       this.mainScene = scene;
       this.color = color;
+
+      this.character = character;
       
 
       this.setTexture('elves');
@@ -215,7 +225,7 @@ class Elf extends GameObjects.Sprite {
       var hx = this.color === 'green' ? 275 : 110;
       var hy = this.color === 'green' ? 230 : 110;
       
-      this.hp = new HealthBar(scene, x - hx, y - hy, this.color === 'green');
+      this.hp = new HealthBar(scene, x - hx, y - hy, this.color === 'green', character.health, character.health);
 
       this.id = id; 
       
@@ -282,7 +292,7 @@ class Elf extends GameObjects.Sprite {
               }
           });
 
-          target.damage(8);
+          target.damage(Math.max(this.character.attack - target.character.armor, 0));
 
       }
   } 
@@ -293,7 +303,7 @@ class Elf extends GameObjects.Sprite {
       {
           this.play(this.color + 'Heal');
           this.once('animationcomplete', () => this.play(this.color + 'Idle'))
-          target.restoreHealth(8);
+          target.restoreHealth(this.character.healing_factor);
 
       }
   }
@@ -349,9 +359,9 @@ class Elf extends GameObjects.Sprite {
 
 class BlueElf extends Elf {
 
-  constructor (scene: MainScene, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean)
+  constructor (scene: MainScene, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean, character: Character)
   {
-      super(scene, 'blue', x, y, enemies, id, isHighlighted);
+      super(scene, 'blue', x, y, enemies, id, isHighlighted, character);
 
       this.missile = new Missile(scene, 'blue-missile');
       
@@ -362,9 +372,9 @@ class BlueElf extends Elf {
 
 class GreenElf extends Elf {
 
-  constructor (scene: MainScene, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean)
+  constructor (scene: MainScene, x: number, y: number, enemies: Array<Elf>, id: string, isHighlighted: boolean, character: Boss)
   {
-      super(scene, 'green', x, y, enemies, id, isHighlighted);
+      super(scene, 'green', x, y, enemies, id, isHighlighted, character);
 
       this.setScale(3);
 
@@ -385,6 +395,8 @@ class GreenElf extends Elf {
 })
 export class UserBattleCanvasComponent implements OnInit, OnChanges {
   @Input() turnId: string = '1';
+  @Input() team: Team;
+  @Input() boss: Boss;
   @Input() action: { action: string, actionNumber: number };
   @Output() targetChosen: EventEmitter<{
     chosen: boolean,
@@ -399,7 +411,7 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
   add: any;
 
   constructor(private turnService: BattleTurnService) {
-    this.scene = new MainScene([], [], this.turnId);
+    this.scene = new MainScene([], [], this.turnId, this.team, this.boss);
     this.config = {
       width:  (5 * window.innerWidth / 6) - 20,
       height: window.innerHeight - 200,
@@ -419,7 +431,7 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
           if(elf.alive) {
             elf.setHighlighted(true);
           } else {
-            this.turnService.nextTurn();
+            this.turnService.nextTurn(this.turnId);
           }
         } else {
           elf.setHighlighted(false);

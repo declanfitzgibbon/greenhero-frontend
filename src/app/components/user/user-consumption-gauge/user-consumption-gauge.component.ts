@@ -12,6 +12,7 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
   @Input() title: string;
   @Input() isFull: boolean = false;
   @Input() value: number;
+  @Input() max: number;
   @Input() stats: boolean = false;
 
   view: Array<number>;
@@ -50,7 +51,6 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
           "value": this.value
         }
       ]
-      this.units = "Not Connected!"
     }
     else {
       this.single = [
@@ -59,7 +59,10 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
           "value": this.value
         }
       ]
-      this.units = "Connected!"
+    }
+
+    if(this.max < this.value) {
+      this.units = 'Max allowance: '+(this.max)
     }
 
     this.loading = false;
