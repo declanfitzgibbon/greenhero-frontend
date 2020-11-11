@@ -42,6 +42,7 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
 import { AdminCardsComponent } from './components/admin/admin-cards/admin-cards.component';
 import { AdminAlertFeedComponent } from './components/admin/admin-alert-feed/admin-alert-feed.component';
+import { AdminTempFeedComponent } from './components/admin/admin-temp/admin-temp-feed.component';
 import { AppComponent } from './app.component';
 import { AdminDoughnutComponent } from './components/admin/admin-doughnut/admin-doughnut.component';
 import { AdminLineGraphComponent } from './components/admin/admin-line-graph/admin-line-graph.component';
@@ -87,6 +88,7 @@ import { UserService } from './services/user.service';
     NavigationCardsComponent,
     EventListComponent,
     AdminDashboardComponent,
+    AdminTempFeedComponent,
     UserDashboardComponent,
     AdminCardsComponent,
     AdminAlertFeedComponent,
