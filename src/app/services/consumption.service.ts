@@ -1134,15 +1134,40 @@ export class ConsumptionService {
       }
     }).toPromise()).total;
   }
+  
+  async getTotalUserConsumptionForMonth(user_id: string, date: Date) {
+    let min_date: Date, max_date: Date;
+    min_date = new Date();
+    max_date = date;
+    min_date.setMonth(date.getMonth());
+    min_date.setFullYear(date.getFullYear());
+    min_date.setDate(1);
+    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForUser', {
+      params: {
+        min_date: min_date.toISOString(),
+        max_date: max_date.toISOString(),
+        user_id: user_id
+      }
+    }).toPromise()).total;
+  }
 
-  getMonthAllowance(date: Date) {
-    return 2000;
+  async getMonthAllowance(date: Date) {
+    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getTotalMonthAllowance', {
+      params: {
+        date: date.toISOString()
+      }
+    }).toPromise()).total;
   }
   
-  getWeekAllowance(date: Date) {
-    return 500;
+  async getWeekAllowance(date: Date) {
+    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getTotalWeekAllowance', {
+      params: {
+        date: date.toISOString()
+      }
+    }).toPromise()).total;
   }
 
+  // WENHAN THIS NEEDS TO BE CONNECTED TO THE DB IN SOME WAY TO BRING THE CONSUMPTION OF THE CURRENT SESSION
   getConsumptionObservable(user_id: string) {
     return new EventEmitter();
   }
