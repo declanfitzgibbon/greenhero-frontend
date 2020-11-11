@@ -9,6 +9,7 @@ import { Team } from '../models/team';
 export class TeamService {
 
   teams: Array<Team> = [
+    /*
     {
       event_id: "1",
       _id: "100",
@@ -559,6 +560,7 @@ export class TeamService {
       ],
       turnOrder: ["101", "2", "1"]
     }
+    */
   ];
 
   constructor(private http: HttpClient) { }
@@ -571,18 +573,27 @@ export class TeamService {
   }
 
 
-  addTeam(team: Team) {
-    
-    this.teams.push(team);
-
+  async addTeam(team: Team) {
+    team.teamLeader = (team.teamLeader._id as any);
+    for (var i=0;i<team.teamMembers.length;i++) {
+      team.teamMembers[i] = (team.teamMembers[i] as any);
+    }
+    //this.teams.push(team);
+    await this.http.post('http://localhost:8080/Team/', {...team}).toPromise();
   }
 
-  saveTeam(team_id: string, team: Team) {
-    this.teams[this.teams.findIndex((team) => team._id === team_id)] = team;
+  async saveTeam(team_id: string, team: Team) {
+    //this.teams[this.teams.findIndex((team) => team._id === team_id)] = team;
+    team.teamLeader = (team.teamLeader._id as any);
+    for (var i=0;i<team.teamMembers.length;i++) {
+      team.teamMembers[i] = (team.teamMembers[i] as any);
+    }
+    await this.http.put('http://localhost:8080/Team/modifyTeamById?_id='+encodeURIComponent(team_id),{...team}).toPromise();
   }
 
   searchTeams(event_id: string, name?: string) {
-    return this.teams.filter((team) => name ? ( team.event_id === event_id && team.name.toLowerCase().includes(name.toLowerCase())) : (team.event_id === event_id) )
+    //return this.teams.filter((team) => name ? ( team.event_id === event_id && team.name.toLowerCase().includes(name.toLowerCase())) : (team.event_id === event_id) )
+    return this.http.get<Array<Team>>('http://localhost:8080/Team/getTeamByEventIdAndTeamName?event_id='+encodeURIComponent(event_id)+'&teamName='+encodeURIComponent(name)).toPromise();
   }
 
 }

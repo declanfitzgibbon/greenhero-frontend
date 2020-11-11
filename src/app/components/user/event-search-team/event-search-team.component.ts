@@ -24,7 +24,7 @@ export class EventSearchTeamComponent implements OnInit {
 
   async ngOnInit() {
     this.user = this.userService.user;
-    this.teams = this.teamService.searchTeams(this.event_id, this.teamName);
+    this.teams = await this.teamService.searchTeams(this.event_id, this.teamName);
     this.characters = await this.characterService.getCharacters(this.user._id);
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
@@ -46,8 +46,8 @@ export class EventSearchTeamComponent implements OnInit {
     this.characterSelected = this.characters.find((char) => char._id === this.characterSelectedID);
   }
 
-  filterTeams() {
-    this.teams = this.teamService.searchTeams(this.event_id, this.teamName);
+  async filterTeams() {
+    this.teams = await this.teamService.searchTeams(this.event_id, this.teamName);
   }
 
   summaryHealth(team: Team) {

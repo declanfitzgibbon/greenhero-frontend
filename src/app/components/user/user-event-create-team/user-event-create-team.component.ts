@@ -60,11 +60,12 @@ export class UserEventCreateTeamComponent implements OnInit {
       _id: "1",
       avatar: this.selectedAvatar.src,
       event_id: this.event_id,
-      name: this.teamName,
+      teamName: this.teamName,
       teamLeader: this.characterSelected,
       teamMembers: [],
-      applications: [],
-      turnOrder: [this.characterSelected._id]
+      completed: false
+      //applications: [],
+      //turnOrder: [this.characterSelected._id]
     };
     this.teamService.addTeam(team);
     this.teamCreated.emit(team);
