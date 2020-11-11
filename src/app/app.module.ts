@@ -79,6 +79,7 @@ import { EventSearchTeamComponent } from './components/user/event-search-team/ev
 import { ThemeService } from './services/theme.service';
 import { EventService } from './services/event.service';
 import { UserService } from './services/user.service';
+import { TemperatureService } from './services/temperature.service';
 
 
 @NgModule({
@@ -161,6 +162,7 @@ import { UserService } from './services/user.service';
     DayService, 
     WeekService, 
     WorkWeekService, 
+    TemperatureService,
     MonthService
   ],
   bootstrap: [

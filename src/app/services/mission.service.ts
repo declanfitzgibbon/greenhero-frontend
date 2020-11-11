@@ -181,6 +181,6 @@ export class MissionService {
   }
 
   async getMissionsCompleted(date: Date) {
-    return 2389;
+    return 100;
   }
 }

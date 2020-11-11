@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { TemperatureService } from 'src/app/services/temperature.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -8,22 +9,23 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 
 export class AdminTempFeedComponent implements OnInit {
-    currentTemp: Array<{
+    loading: boolean;
+    temp: {
       title: string;
       value: number;
       state: string;
-    }>;
+    };
   
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService, private tempService: TemperatureService) {
   }
 
-  ngOnInit(): void {
-    this.currentTemp = [
-      {
+  async ngOnInit() {
+    this.loading = true;
+    this.temp = {
       title: 'Current Temperature',
-      value: 22,
-      state: 'A/C is on'
-      }
-    ]
+      value: (await this.tempService.getLatestTemperature()).temperature,
+      state: (await this.tempService.getLatestACState()).state ? 'AC is on' : 'AC is off' 
+    }
+    this.loading = false;
   }
 }

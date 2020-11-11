@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class TemperatureService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getLatestTemperature() {
+    return this.http.get<any>('http://localhost:8080/Temperature/getLatestTemperature').toPromise();
+  }
+
+  getLatestACState() {
+    return this.http.get<any>('http://localhost:8080/AcState/').toPromise();
+  }
 }
