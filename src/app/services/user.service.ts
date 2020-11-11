@@ -15,7 +15,7 @@ export class UserService {
     
     // CALL FROM DB
     this.coinAmount = 200;
-    this.user = { _id: "1" };
+    this.user = { _id: "5fa177809af0e02777994f80" };
   }
 
   // DONT TOUCH
@@ -61,6 +61,7 @@ export class UserService {
   }
 
   getUserType() {
+
     return this.isUser$;
   }
   

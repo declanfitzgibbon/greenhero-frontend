@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "power-saving"
+  "defaultProject": "power-saving",
+  "cli": {
+    "analytics": "253cf29d-8386-4582-874c-92281a4700d9"
+  }
 }

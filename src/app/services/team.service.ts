@@ -567,12 +567,14 @@ export class TeamService {
     //return this.teams.find((team) => team.event_id === event_id && (team.teamLeader.user_id === user_id || team.teamMembers.some((member) => member.user_id === user_id)));
     const teams = await this.http.get<Array<Team>>("http://localhost:8080/Team/getTeamByEventIdAndUserId?event_id="+encodeURIComponent(event_id)+
                                                    "&user_id="+encodeURIComponent(user_id)).toPromise();
-    return teams;
+    return teams[0];
   }
 
 
   addTeam(team: Team) {
+    
     this.teams.push(team);
+
   }
 
   saveTeam(team_id: string, team: Team) {
