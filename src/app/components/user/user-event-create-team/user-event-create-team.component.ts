@@ -34,17 +34,20 @@ export class UserEventCreateTeamComponent implements OnInit {
   characterSelectedID: string;
   characterSelected: Character;
   characters: Array<Character>;
+  loading: boolean;
 
 
 
   constructor(private teamService: TeamService, private characterService: CharacterService, private userService: UserService) { }
 
   async ngOnInit() {
+    this.loading = true;
     this.selectedAvatar = this.avatars[0];
     this.selected = this.avatars[0].src;
     this.characters = await this.characterService.getCharacters(this.userService.user._id);
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
+    this.loading = false;
   }
 
   newAvatarSelected() {

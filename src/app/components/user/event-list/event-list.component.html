@@ -1,9 +1,9 @@
-<a style="text-decoration: none; color:inherit;" routerLink="user/event">
+<a style="text-decoration: none; color:inherit;" routerLink="user/event" *ngIf="!loading">
     <div class="event-list-container">
         <h3 class="events-title" style="text-align: center;">Events</h3>
         <mat-card matRipple class="event-card" *ngFor="let event of events">
             <mat-card-header>
-                <mat-card-title class="event-card-title">{{ event.name }}</mat-card-title>
+                <mat-card-title class="event-card-title">{{ event.eventName }}</mat-card-title>
             </mat-card-header>
             <mat-card-content class="last-child">
                 <div class="event-content-container">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="event-half">
                         <p>
-                            {{ event.description }}
+                            {{ event.eventDescription }}
                         </p>
                     </div>
                 </div>

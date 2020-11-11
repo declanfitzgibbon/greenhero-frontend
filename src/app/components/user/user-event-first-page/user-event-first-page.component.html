@@ -1,4 +1,4 @@
-<div class="tab-container">
+<div class="tab-container" *ngIf="!loading">
     <mat-tab-group mat-align-tabs="center">
         <mat-tab label="Actions">
             <div *ngIf="!loading" gdAreas="event_selection action_cards action_cards"
@@ -14,7 +14,7 @@
                         <mat-form-field>
                             <mat-label>Select an option</mat-label>
                             <mat-select [(value)]="selected" (selectionChange)="newEventSelected()">
-                              <mat-option *ngFor="let event of events" [value]="event._id">{{ event.name }}</mat-option>
+                              <mat-option *ngFor="let event of events" [value]="event._id">{{ event.eventName }}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -22,7 +22,7 @@
                         <img class="event-image" [src]="selectedEvent.src">
                     </div>
                     <div class="begin-event-time">
-                        <p>Opens: {{ selectedEvent.date | date:"dd/MM/yyyy HH:MM" }}</p>
+                        <p>Opens: {{ selectedEvent.openDate | date:"dd/MM/yyyy h:mm a" }}</p>
                     </div>
                 </div>
                 <div class="action-cards" gdArea="action_cards" *ngIf="!currentTeam">
