@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,13 +6,20 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class BattleTurnService {
 
-  turns = ['1', '3', '2', '4'];
+  turns;
   turnChange: EventEmitter<Array<string>> = new EventEmitter();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  nextTurn() {
+  setLocalTurns(turns: Array<string>) {
+    this.turns = turns;
+  }
+  nextTurn(team_id: string) {
     this.turns.push(this.turns.shift());
     this.turnChange.emit(this.turns);
+    this.http.put('http://localhost:8080/Team/updateTeamTurns', {
+      turns: this.turns,
+      team_id: team_id
+    }).toPromise();
   }
 }

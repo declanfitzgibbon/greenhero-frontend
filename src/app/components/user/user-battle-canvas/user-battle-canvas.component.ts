@@ -385,6 +385,7 @@ class GreenElf extends Elf {
 })
 export class UserBattleCanvasComponent implements OnInit, OnChanges {
   @Input() turnId: string = '1';
+  @Input() teamId: string = '1';
   @Input() action: { action: string, actionNumber: number };
   @Output() targetChosen: EventEmitter<{
     chosen: boolean,
@@ -419,7 +420,7 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
           if(elf.alive) {
             elf.setHighlighted(true);
           } else {
-            this.turnService.nextTurn();
+            this.turnService.nextTurn(this.teamId);
           }
         } else {
           elf.setHighlighted(false);

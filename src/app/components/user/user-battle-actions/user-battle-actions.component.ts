@@ -11,6 +11,7 @@ export class UserBattleActionsComponent implements OnInit {
   @Input() actions: Array<{ name: string, code: string }>;
   @Input() targetChosen: { chosen: boolean, friend: boolean};
   @Input() turnId: string = '1';
+  @Input() teamId: string = '1';
   @Output() actionChosen: EventEmitter<{action: string, actionNumber: number}> = new EventEmitter();
   actionNumber: number = 0;
   isMyTurn: boolean;
@@ -39,7 +40,7 @@ export class UserBattleActionsComponent implements OnInit {
     this.actionChosen.emit({action: action.code, actionNumber: this.actionNumber});
     this.targetChosen = null;
     setTimeout(() => {
-      this.turnService.nextTurn();
+      this.turnService.nextTurn(this.teamId);
       console.log(this.targetChosen);
       
     }, 1000);
