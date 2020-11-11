@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
 import { ThemeService } from './services/theme.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,13 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent {
 
-  isDark: boolean
+  isDark: boolean;
+  loading: boolean;
 
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService, private userService: UserService) {
     this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
     this.isDark = this.themeService.getCurrentThemeType();
+    this.userService.getCoinsEmitter().subscribe((coins) => this.loading = false);
   }
 
   @HostBinding('class')
