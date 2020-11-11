@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,292 +7,303 @@ import { Observable } from 'rxjs';
 })
 export class ConsumptionService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getConsumptionSummary(timeFrame: number) {
+  async getConsumptionSummary(timeFrame: number) {
     let min_date: Date;
+    let max_date: Date;
+    let firstValue: number, secondValue: number, thirdValue: number, fourthValue: number, fifthValue: number;
     switch(timeFrame) {
       case 0:
+        
         min_date = new Date();
-        min_date.setDate(min_date.getDate() - 1);
+        max_date = new Date();
+        min_date.setHours((new Date()).getHours() - 1);
+        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setHours((new Date()).getHours() - 2);
+        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setHours((new Date()).getHours() - 3);
+        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setHours((new Date()).getHours() - 4);
+        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setHours((new Date()).getHours() - 5);
+        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
         return [
           {
             name: '5 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 100
-              },
-              {
-                name: "Profession average",
-                value: 100
-              }
-            ]
+            value: firstValue
           },
           {
             name: '4 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 200
-              },
-              {
-                name: "Profession average",
-                value: 100
-              }
-            ]
+            value: secondValue
           },
           {
             name: '3 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 400
-              },
-              {
-                name: "Profession average",
-                value: 800
-              }
-            ]
+            value: thirdValue
           },
           {
             name: '2 hours ago',
-            series: [
-              {
-                name: "You",
-                value: 200
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
+            value: fourthValue
           },
           {
             name: '1 hour ago',
-            series: [
-              {
-                name: "You",
-                value: 1000
-              },
-              {
-                name: "Profession average",
-                value: 600
-              }
-            ]
+            value: fifthValue
           }
         ];
         break;
       case 1:
         min_date = new Date();
-        min_date.setDate(min_date.getDate() - 7);
+        max_date = new Date();
+        min_date.setDate((new Date()).getDate() - 1);
+        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 2);
+        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 3);
+        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 4);
+        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 5);
+        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
         return [
           {
             name: '5 days ago',
-            series: [
-              {
-                name: "You",
-                value: 300
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
+            value: firstValue
           },
           {
             name: '4 days ago',
-            series: [
-              {
-                name: "You",
-                value: 300
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
+            value: secondValue
           },
           {
             name: '3 days ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 700
-              }
-            ]
+            value: thirdValue
           },
           {
             name: '2 days ago',
-            series: [
-              {
-                name: "You",
-                value: 300
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
+            value: fourthValue
           },
           {
             name: 'Yesterday',
-            series: [
-              {
-                name: "You",
-                value: 900
-              },
-              {
-                name: "Profession average",
-                value: 800
-              }
-            ]
+            value: fifthValue
           }
         ];
         break;
       case 2:
         min_date = new Date();
-        min_date.setDate(min_date.getDate() - 28);
+        max_date = new Date();
+        min_date.setDate((new Date()).getDate() - 7);
+        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 14);
+        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 21);
+        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 28);
+        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setDate((new Date()).getDate() - 35);
+        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
         return  [
           {
             name: '5 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 500
-              }
-            ]
+            value: firstValue
           },
           {
             name: '4 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 700
-              },
-              {
-                name: "Profession average",
-                value: 500
-              }
-            ]
+            value: secondValue
           },
           {
             name: '3 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
+            value: thirdValue
           },
           {
             name: '2 weeks ago',
-            series: [
-              {
-                name: "You",
-                value: 400
-              },
-              {
-                name: "Profession average",
-                value: 500
-              }
-            ]
+            value: fourthValue
           },
           {
             name: '1 week ago',
-            series: [
-              {
-                name: "You",
-                value: 800
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
+            value: fifthValue
           }
         ];
         break;
       case 3:
         min_date = new Date();
-        min_date.setDate(min_date.getDate() - 365);
+        max_date = new Date();
+        min_date.setMonth((new Date()).getMonth() - 1);
+        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setMonth((new Date()).getMonth() - 2);
+        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setMonth((new Date()).getMonth() - 3);
+        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setMonth((new Date()).getMonth() - 4);
+        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
+        
+        max_date = new Date(min_date);
+        min_date = new Date();
+        min_date.setMonth((new Date()).getMonth() - 5);
+        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+          params: {
+            min_date: min_date.toISOString(),
+            max_date: min_date.toISOString()  
+          }
+        }).toPromise()).total;
         return [
           {
             name: '5 months ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
+            value: firstValue
           },
           {
             name: '4 months ago',
-            series: [
-              {
-                name: "You",
-                value: 400
-              },
-              {
-                name: "Profession average",
-                value: 700
-              }
-            ]
+            value: secondValue
           },
           {
             name: '3 months ago',
-            series: [
-              {
-                name: "You",
-                value: 900
-              },
-              {
-                name: "Profession average",
-                value: 200
-              }
-            ]
+            value: thirdValue
           },
           {
             name: '2 months ago',
-            series: [
-              {
-                name: "You",
-                value: 600
-              },
-              {
-                name: "Profession average",
-                value: 300
-              }
-            ]
+            value: fourthValue
           },
           {
             name: 'Last month',
-            series: [
-              {
-                name: "You",
-                value: 1100
-              },
-              {
-                name: "Profession average",
-                value: 400
-              }
-            ]
+            value: fifthValue
           }
         ];
         break;

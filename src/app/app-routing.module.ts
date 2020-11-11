@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/shared/dashboard/dashboard.component';
-import { RoomReserverComponent } from './components/user/room-reserver/room-reserver.component';
 import { SkillTreeDashboardComponent } from './components/user/skill-tree-dashboard/skill-tree-dashboard.component';
 import { UserBattleComponent } from './components/user/user-battle/user-battle.component';
 import { UserConsumptionComponent } from './components/user/user-consumption/user-consumption.component';
