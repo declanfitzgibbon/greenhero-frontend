@@ -61,6 +61,7 @@ export class UserService {
   }
 
   getUserType() {
+
     return this.isUser$;
   }
   
