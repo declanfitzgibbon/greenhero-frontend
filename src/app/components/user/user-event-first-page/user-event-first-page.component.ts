@@ -16,7 +16,7 @@ export class UserEventFirstPageComponent implements OnInit {
   events: Array<Event>;
   createIntention: boolean;
   searchIntention: boolean;
-  user = {_id: '1'};
+  user;
 
   loading: boolean;
   selectedEvent: Event;
@@ -26,6 +26,7 @@ export class UserEventFirstPageComponent implements OnInit {
 
   async ngOnInit() {
     this.loading = true;
+    this.user = this.userService.user;
     this.events = await this.eventService.getEvents();
     this.selected = this.events[0]._id;
     this.selectedEvent = this.events[0];

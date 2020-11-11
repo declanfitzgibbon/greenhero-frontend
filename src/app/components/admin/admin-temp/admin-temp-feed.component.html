@@ -1,9 +1,18 @@
-<ng-container *ngFor="let temp of currentTemp; let i = index">
-    <div class="card-item" >
-        <div class="card-container">
-            <h1>{{ temp.title }}</h1>
-            <h2> {{ temp.value }} C°</h2>
-            <p> {{ temp.state }}</p>
+<div class="card-item" *ngIf="!loading">
+    <div class="card-container">
+        <h1>{{ temp.title }}</h1>
+        <h2> {{ temp.value }} C°</h2>
+        <p> {{ temp.state }}</p>
+    </div>
+    <div class="card-container">
+        <div class="input-container">
+            <h2>Set desired temperature</h2>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="desiredTemp">
+            </mat-form-field>
+            <div>
+                <mat-button-toggle class="detail-button" (click)="saveTemp()">Submit</mat-button-toggle>
+            </div>
         </div>
     </div>
-</ng-container>
+</div>

@@ -1,4 +1,4 @@
-<div class="create-team-container">
+<div class="create-team-container" *ngIf="!loading">
 
     <div fxLayout="row" fxAlign="center center" fxLayoutGap="10px">
         <div class="team-stuff" fxLayout="column" fxAlign="start center">
@@ -38,7 +38,7 @@
                 <mat-form-field>
                     <mat-label>Select a character</mat-label>
                     <mat-select [(value)]="characterSelectedID" (selectionChange)="newCharacterSelected()">
-                      <mat-option *ngFor="let character of characters" [value]="character._id">{{ character.name }}</mat-option>
+                      <mat-option *ngFor="let character of characters" [value]="character._id">{{ character.characterName }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

@@ -19,15 +19,20 @@ export class EventSearchTeamComponent implements OnInit {
   characterSelected: Character;
   characterSelectedID: string;
   user;
+  loading: boolean;
 
   constructor(private teamService: TeamService, private userService: UserService, private characterService: CharacterService) { }
 
   async ngOnInit() {
+    this.loading = true;
     this.user = this.userService.user;
     this.teams = await this.teamService.searchTeams(this.event_id, this.teamName);
     this.characters = await this.characterService.getCharacters(this.user._id);
+    console.log(this.characters);
+    
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
+    this.loading = false;
   }
 
   apply(team: Team) {

@@ -1,186 +1,130 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MissionService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   async getUserDailyMissions(user_id: string) {
-    return [
-      {
-        title: 'Gather energy',
-        description: 'Use a power station with the brightness set to 60% maximum for 2 hours',
-        goal: 2,
-        reward: 20,
-        value: 0.8,
-        image: "/assets/lightning-icon.png",
-        deleted: false
-      },
-      {
-        title: 'Reduce sources',
-        description: 'Use an outlet for a max amount of 30 minutes 3 times today',
-        goal: 3,
-        reward: 10,
-        value: 3,
-        image: "/assets/outlet-icon.png",
-        deleted: false
+    return (await this.http.get<any>('http://localhost:8080/Mission/getMissionByUserIdAndType', {
+      params: {
+        "user_id": user_id,
+        "type": "daily"
       }
-    ]
+    }).toPromise())
   }
   
   async getUserWeeklyMissions(user_id: string) {
-    return [
-      {
-        title: 'Gather energy',
-        description: 'Use a power station with the brightness set to 60% maximum for 2 hours',
-        goal: 2,
-        reward: 20,
-        value: 0.8,
-        image: "/assets/lightning-icon.png",
-        deleted: false
-      },
-      {
-        title: 'Reduce sources',
-        description: 'Use an outlet for a max amount of 30 minutes 3 times today',
-        goal: 3,
-        reward: 10,
-        value: 3,
-        image: "/assets/outlet-icon.png",
-        deleted: false
+    return (await this.http.get<any>('http://localhost:8080/Mission/getMissionByUserIdAndType', {
+      params: {
+        "user_id": user_id,
+        "type": "weekly"
       }
-    ]
+    }).toPromise())
   }
   
   async getUserMonthlyMissions(user_id: string) {
-    return [
-      {
-        title: 'Gather energy',
-        description: 'Use a power station with the brightness set to 60% maximum for 2 hours',
-        goal: 2,
-        reward: 20,
-        value: 0.8,
-        image: "/assets/lightning-icon.png",
-        deleted: false
-      },
-      {
-        title: 'Reduce sources',
-        description: 'Use an outlet for a max amount of 30 minutes 3 times today',
-        goal: 3,
-        reward: 10,
-        value: 3,
-        image: "/assets/outlet-icon.png",
-        deleted: false
+    return (await this.http.get<any>('http://localhost:8080/Mission/getMissionByUserIdAndType', {
+      params: {
+        "user_id": user_id,
+        "type": "monthly"
       }
-    ]
+    }).toPromise())
   }
 
-  async getMostCompleted(timeFrame: number) {
-    let min_date: Date;
-    switch(timeFrame) {
-      case 0:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 1);
-        return [
-              {
-                name: 'Water saving',
-                value: 100
-              },
-              {
-                name: 'Electricity',
-                value: 150
-              },
-              {
-                name: 'Aircondition',
-                value: 80
-              }
-            ];
-        break;
-      case 1:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 7);
-        return [
-              {
-                name: 'Water saving',
-                value: 100
-              },
-              {
-                name: 'Electricity',
-                value: 150
-              },
-              {
-                name: 'Aircondition',
-                value: 80
-              }
-            ];
-        break;
-      case 2:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 28);
-        return [
-              {
-                name: 'Water saving',
-                value: 100
-              },
-              {
-                name: 'Electricity',
-                value: 150
-              },
-              {
-                name: 'Aircondition',
-                value: 80
-              }
-            ];
-        break;
-      case 3:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 365);
-        return [
-              {
-                name: 'Water saving',
-                value: 100
-              },
-              {
-                name: 'Electricity',
-                value: 150
-              },
-              {
-                name: 'Aircondition',
-                value: 80
-              }
-            ];
-        break;
-    }
-  }
-  
   async getTopCompleted(timeFrame: number) {
     let min_date: Date;
     switch(timeFrame) {
       case 0:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 1);
-        return 'Water saving';
+        return (await this.http.get<{ res: string }>('http://localhost:8080/Mission/getTopMission', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise()).res
         break;
       case 1:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 7);
-        return 'Water saving';
+        return (await this.http.get<{ res: string }>('http://localhost:8080/Mission/getTopMission', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise()).res
         break;
       case 2:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 28);
-        return 'Water saving';
+        return (await this.http.get<{ res: string }>('http://localhost:8080/Mission/getTopMission', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise()).res
         break;
       case 3:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 365);
-        return 'Water saving';
+        return (await this.http.get<{ res: string }>('http://localhost:8080/Mission/getTopMission', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise()).res
+        break;
+    }
+  }
+  
+  async getMostCompleted(timeFrame: number) {
+    let min_date: Date;
+    switch(timeFrame) {
+      case 0:
+        min_date = new Date();
+        min_date.setDate(min_date.getDate() - 1);
+        return (await this.http.get<any>('http://localhost:8080/Mission/getCompletedMissionByType', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise())
+        break;
+      case 1:
+        min_date = new Date();
+        min_date.setDate(min_date.getDate() - 7);
+        return (await this.http.get<any>('http://localhost:8080/Mission/getCompletedMissionByType', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise())
+        break;
+      case 2:
+        min_date = new Date();
+        min_date.setDate(min_date.getDate() - 28);
+        return (await this.http.get<any>('http://localhost:8080/Mission/getCompletedMissionByType', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise())
+        break;
+      case 3:
+        min_date = new Date();
+        min_date.setDate(min_date.getDate() - 365);
+        return (await this.http.get<any>('http://localhost:8080/Mission/getCompletedMissionByType', {
+          params: {
+            date: min_date.toISOString()
+          }
+        }).toPromise())
         break;
     }
   }
 
   async getMissionsCompleted(date: Date) {
-    return 2389;
+    date.setDate(date.getDate() - 28);
+    return (await this.http.get<{ total: number }>('http://localhost:8080/Mission/getNumberofCompletedMission', {
+      params: {
+        date: date.toISOString()
+      }
+    }).toPromise()).total
   }
 }
