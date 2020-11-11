@@ -77,11 +77,11 @@ export class EventSearchTeamComponent implements OnInit {
     return total;
   }
 
-  summaryHeal_factor(team: Team) {
+  summaryHealing_factor(team: Team) {
     let total = 0;
-    total += team.teamLeader.heal_factor;
+    total += team.teamLeader.healing_factor;
     for(let member of team.teamMembers) {
-      total += member.heal_factor;
+      total += member.healing_factor;
     }
     return total;
   }
