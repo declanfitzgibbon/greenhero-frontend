@@ -15,7 +15,7 @@ export class UserService {
     
     // CALL FROM DB
     this.coinAmount = 200;
-    this.user = { _id: "5fa177809af0e02777994f80" };
+    this.user = { _id: "1" };
   }
 
   // DONT TOUCH
