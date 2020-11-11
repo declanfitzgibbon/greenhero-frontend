@@ -54,7 +54,7 @@ export class UserConsumptionDoughnutComponent implements OnInit {
       {
         name: 'Stations',
         label: 'Stations',
-        value: await this.consumptionService.getUserCategoryConsumption(this.userService.user._id, 'Light', this.timeFrame)
+        value: await this.consumptionService.getUserCategoryConsumption(this.userService.user._id, 'Stations', this.timeFrame)
       },
       {
         name: 'Light',
@@ -64,12 +64,12 @@ export class UserConsumptionDoughnutComponent implements OnInit {
       {
         name: 'Heating',
         label: 'Heating',
-        value: await this.consumptionService.getUserCategoryConsumption(this.userService.user._id, 'Light', this.timeFrame)
+        value: await this.consumptionService.getUserCategoryConsumption(this.userService.user._id, 'Heating', this.timeFrame)
       },
       {
         name: 'Outlets',
         label: 'Outlets',
-        value: await this.consumptionService.getUserCategoryConsumption(this.userService.user._id, 'Light', this.timeFrame)
+        value: await this.consumptionService.getUserCategoryConsumption(this.userService.user._id, 'Outlets', this.timeFrame)
       }
     ];
 

@@ -59,6 +59,9 @@ export class UserConsumptionBarsComponent implements OnInit {
       this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
     }
 
+    console.log(this.multi);
+    
+
     this.loading = false;
   }
 

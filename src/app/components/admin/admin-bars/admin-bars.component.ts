@@ -54,6 +54,9 @@ export class AdminBarsComponent implements OnInit {
 
     this.multi = await this.consumptionService.getConsumptionSummary(this.timeFrame);
 
+    console.log(this.multi);
+    
+
     if (this.isDark) {
       this.colorScheme = { domain: ["#375c66", "#37665b", "#327785", "#344b80"] }
     } else {

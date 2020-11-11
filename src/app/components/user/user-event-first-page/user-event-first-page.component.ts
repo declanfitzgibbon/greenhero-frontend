@@ -29,15 +29,15 @@ export class UserEventFirstPageComponent implements OnInit {
     this.events = await this.eventService.getEvents();
     this.selected = this.events[0]._id;
     this.selectedEvent = this.events[0];
-    this.currentTeam = this.teamService.getPlayerTeamForEvent(this.user._id, this.selectedEvent._id);
+    this.currentTeam = await this.teamService.getPlayerTeamForEvent(this.user._id, this.selectedEvent._id);
     this.loading = false;
   }
 
-  newEventSelected() {
+  async newEventSelected() {
     this.loading = true;
     this.selectedEvent = this.events.find((event) => event._id === this.selected);
 
-    this.currentTeam = this.teamService.getPlayerTeamForEvent(this.user._id, this.selectedEvent._id);
+    this.currentTeam = await this.teamService.getPlayerTeamForEvent(this.user._id, this.selectedEvent._id);
     
     this.loading = false;
   }

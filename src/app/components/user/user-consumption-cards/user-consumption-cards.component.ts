@@ -61,10 +61,6 @@ export class UserConsumptionCardsComponent implements OnInit {
           {
             name: 'Highest day',
             value: await this.consumptionService.getUserHighestDay(this.userService.user._id, this.timeFrame)
-          },
-          {
-            name: 'Coins saved',
-            value: await this.consumptionService.getUserCoinsSaved(this.userService.user._id, this.timeFrame)
           }
         ];
         break;
@@ -78,6 +74,9 @@ export class UserConsumptionCardsComponent implements OnInit {
         ];
         break;
     }
+
+    console.log(this.single);
+    
 
     this.loading = false;
   }

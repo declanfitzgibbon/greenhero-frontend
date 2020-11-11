@@ -1,6 +1,6 @@
 <ng-container *ngIf="!loading">
     <div>
-        <ngx-charts-bar-vertical-2d
+        <ngx-charts-bar-vertical
           [view]="view"
           [scheme]="colorScheme"
           [results]="multi"
@@ -14,7 +14,7 @@
           [yAxisLabel]="yAxisLabel"
           (window:resize)="onResize($event)"
           >
-        </ngx-charts-bar-vertical-2d>
+        </ngx-charts-bar-vertical>
     </div>
 </ng-container>
 <ng-container *ngIf="loading">
