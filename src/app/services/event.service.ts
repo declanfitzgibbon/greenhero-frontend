@@ -17,7 +17,7 @@ export class EventService {
             name: "Energy Lich",
             avatar: '/assets/enemy-example.png',
             description: "LOREM IPSUM!!!!!!",
-            defense: 200,
+            armor: 200,
             attack: 130,
             healing_factor: 20,
             health: 2000
@@ -34,7 +34,7 @@ export class EventService {
             name: "Water Lich",
             avatar: '/assets/enemy-example.png',
             description: "LOREM IPSUM!!!!!!",
-            defense: 200,
+            armor: 200,
             attack: 130,
             healing_factor: 20,
             health: 2000
@@ -49,6 +49,10 @@ export class EventService {
     addEvent(event) {
         (this.events.dataSource as Object[]).push(event);
         this.eventEmitter.emit();
+    }
+
+    getEventByID(event_id){
+      return this.events[0];
     }
 
     async getMostGrouped(timeFrame: number) {

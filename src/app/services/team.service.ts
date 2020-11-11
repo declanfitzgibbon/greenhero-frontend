@@ -75,7 +75,7 @@ export class TeamService {
             }
           ]
         },
-        defense: 100,
+        armor: 100,
         attack: 20,
         healing_factor: 100,
         health: 400
@@ -141,7 +141,7 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
           healing_factor: 100,
           health: 400
@@ -215,7 +215,7 @@ export class TeamService {
             }
           ]
         },
-        defense: 100,
+        armor: 100,
         attack: 20,
         healing_factor: 100,
         health: 400
@@ -281,7 +281,7 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
           healing_factor: 100,
           health: 400
@@ -346,7 +346,7 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
           healing_factor: 100,
           health: 400
@@ -420,7 +420,7 @@ export class TeamService {
             }
           ]
         },
-        defense: 100,
+        armor: 100,
         attack: 20,
         healing_factor: 100,
         health: 400
@@ -486,7 +486,7 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
           healing_factor: 100,
           health: 400
@@ -551,7 +551,7 @@ export class TeamService {
               }
             ]
           },
-          defense: 100,
+          armor: 100,
           attack: 20,
           healing_factor: 100,
           health: 400

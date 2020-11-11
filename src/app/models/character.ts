@@ -7,7 +7,7 @@ export interface Character {
     characterDescription?: string;
     avatar: string;
     skillTree: SkillTree;
-    defense?: number;
+    armor?: number;
     health?: number;
     attack?: number;
     healing_factor?: number;

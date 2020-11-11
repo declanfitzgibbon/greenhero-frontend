@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Event } from 'src/app/models/event';
 import { Team } from 'src/app/models/team';
 import { BattleTurnService } from 'src/app/services/battle-turn.service';
+import { EventService } from 'src/app/services/event.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,13 +16,15 @@ export class UserBattleComponent implements OnInit {
 
   target: {chosen: boolean, friend: boolean};
   team: Team;
+  event: Event;
   action: { action: string, actionNumber: number };
 
-  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private battleTurnService: BattleTurnService) { }
+  constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private battleTurnService: BattleTurnService, private eventService: EventService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(async (params) => {
       this.team = await this.teamService.getPlayerTeamForEvent(params.eventId, this.userService.user._id);
+      this.event = await this.eventService.getEventByID(params.eventId);
       this.battleTurnService.setLocalTurns(this.team.turnOrder);
     });
   }

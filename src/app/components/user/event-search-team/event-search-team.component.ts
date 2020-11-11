@@ -59,11 +59,11 @@ export class EventSearchTeamComponent implements OnInit {
     return total;
   }
 
-  summaryDefense(team: Team) {
+  summaryarmor(team: Team) {
     let total = 0;
-    total += team.teamLeader.defense;
+    total += team.teamLeader.armor;
     for(let member of team.teamMembers) {
-      total += member.defense;
+      total += member.armor;
     }
     return total;
   }

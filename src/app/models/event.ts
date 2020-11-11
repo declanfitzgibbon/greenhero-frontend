@@ -10,7 +10,7 @@ export interface Event {
 export interface Boss {
     _id: string;
     health: number;
-    defense: number;
+    armor: number;
     attack: number;
     healing_factor: number;
     name: string;
