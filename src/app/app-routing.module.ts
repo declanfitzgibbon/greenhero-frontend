@@ -26,6 +26,10 @@ const routes: Routes = [
         path: 'consumption',
         component: UserConsumptionComponent
       },
+      // {
+      //   path: 'reservation',
+      //   component: RoomReserverComponent
+      // },
       {
         path: 'event',
         component: UserEventFirstPageComponent

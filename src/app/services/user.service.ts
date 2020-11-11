@@ -1,22 +1,27 @@
-import { EventEmitter, Injectable } from '@angular/core';
-
+import { EventEmitter, Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnInit {
 
   private isUser: boolean;
   private coinAmount: number;
   private isUser$: EventEmitter<boolean> = new EventEmitter();
   private coinAmount$: EventEmitter<number> = new EventEmitter();
   user: {_id: string};
-  constructor() { 
-    this.isUser = true;
+  constructor(private http: HttpClient) { 
+
     
-    // CALL FROM DB
-    this.coinAmount = 200;
-    this.user = { _id: "5fa839e5b8e195e535220ea4" };
   }
+  async ngOnInit() {
+    this.isUser = true;
+    // CALL FROM DB
+    var userObtained = (await this.http.get<any>('http://localhost:8080/User/getCoinAmountByUserId?user_id=5fa177809af0e02777994f80').toPromise());
+    this.coinAmount = userObtained.abilityPoints;
+    this.user = userObtained;
+  }
+  
 
   // DONT TOUCH
   changeUser() {
