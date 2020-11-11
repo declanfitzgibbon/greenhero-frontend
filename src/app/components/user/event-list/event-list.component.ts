@@ -9,12 +9,15 @@ import { Event } from '../../../models/event';
 })
 export class EventListComponent implements OnInit {
 
+  loading: boolean;
   events: Array<Event> = [];
 
   constructor(private eventService: EventService) { }
 
   async ngOnInit() {
+    this.loading = true;
     this.events = await this.eventService.getEvents();
+    this.loading = false;
   }
 
 }

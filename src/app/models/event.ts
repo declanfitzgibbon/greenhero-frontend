@@ -1,9 +1,9 @@
 export interface Event {
     _id: string,
-    name: string,
-    description: string,
+    eventName: string,
+    eventDescription: string,
     src: string;
-    date: Date;
+    openDate: Date;
     boss: Boss;
 }
   

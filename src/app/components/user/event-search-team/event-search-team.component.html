@@ -1,4 +1,4 @@
-<div class="search-team-container">
+<div class="search-team-container" *ngIf="!loading">
     <h2>Select your character</h2>
     <div class="character-stuff" fxLayout="row" fxAlign="center center">
         <div class="character-avatar-container" style="flex: 1">
@@ -19,7 +19,7 @@
                 <mat-form-field>
                     <mat-label>Select a character</mat-label>
                     <mat-select [(value)]="characterSelectedID" (selectionChange)="newCharacterSelected()">
-                        <mat-option *ngFor="let character of characters" [value]="character._id">{{ character.name }}</mat-option>
+                        <mat-option *ngFor="let character of characters" [value]="character._id">{{ character.characterName }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

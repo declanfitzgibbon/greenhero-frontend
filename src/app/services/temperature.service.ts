@@ -13,6 +13,19 @@ export class TemperatureService {
   }
 
   getLatestACState() {
-    return this.http.get<any>('http://localhost:8080/AcState/').toPromise();
+    return this.http.get<any>('http://localhost:8080/AcState/getLatestACState').toPromise();
   }
+  
+  getDesiredTemp() {
+    return this.http.get<any>('http://localhost:8080/TemperatureDesired/getLatestTemperatureDesired').toPromise();
+  }
+  
+  saveDesiredTemp(getDesiredTemp: number) {
+    return this.http.post<any>('http://localhost:8080/TemperatureDesired', {
+      "temperatureDesired": +getDesiredTemp,
+      "_id": "_id",
+      "time": (new Date()).toISOString()
+    }).toPromise();
+  }
+
 }

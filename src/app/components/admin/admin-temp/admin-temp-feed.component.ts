@@ -15,6 +15,7 @@ export class AdminTempFeedComponent implements OnInit {
       value: number;
       state: string;
     };
+    desiredTemp: number;
   
   constructor(private themeService: ThemeService, private tempService: TemperatureService) {
   }
@@ -26,6 +27,12 @@ export class AdminTempFeedComponent implements OnInit {
       value: (await this.tempService.getLatestTemperature()).temperature,
       state: (await this.tempService.getLatestACState()).state ? 'AC is on' : 'AC is off' 
     }
+    this.desiredTemp = (await this.tempService.getDesiredTemp()).temperatureDesired
     this.loading = false;
+  }
+
+  async saveTemp() {
+    await this.tempService.saveDesiredTemp(this.desiredTemp);
+    this.ngOnInit();
   }
 }
