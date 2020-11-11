@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Body } from 'matter';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,10 +11,11 @@ export class UserService {
   private isUser$: EventEmitter<boolean> = new EventEmitter();
   private coinAmount$: EventEmitter<number> = new EventEmitter();
   user: {_id: string};
+  currentUserId = '5fa177809af0e02777994f80';
   constructor(private http: HttpClient) { 
     this.isUser = true;
     // CALL FROM DB
-    (this.http.get<any>('http://localhost:8080/User/getCoinAmountByUserId?user_id=5fa177809af0e02777994f80').toPromise()).then((userObtained) => {
+    (this.http.get<any>('http://localhost:8080/User/getCoinAmountByUserId?user_id='+this.currentUserId).toPromise()).then((userObtained) => {
       this.coinAmount = userObtained[0].abilityPoints;
       this.user = userObtained[0];
       this.coinAmount$.emit(this.coinAmount);
@@ -28,12 +30,16 @@ export class UserService {
     this.isUser$.emit(this.isUser);
   }
 
-  addCoins(coins: number) {
+  async addCoins(coins: number) {
+
+    await this.http.put<any>('http://localhost:8080/User/addCoinsByUserId?_id='+this.currentUserId+'&addCoins='+coins+'&oldCoins='+this.coinAmount,null).toPromise();
     this.coinAmount += coins;
     this.coinAmount$.emit(this.coinAmount);
   }
   
-  substractCoins(coins: number) {
+  async substractCoins(coins: number) {
+
+    await this.http.put<any>('http://localhost:8080/User/substractCoinsByUserId?_id='+this.currentUserId+'&substractCoins='+coins+'&oldCoins='+this.coinAmount,null).toPromise();
     this.coinAmount -= coins;
     this.coinAmount$.emit(this.coinAmount);
   }
