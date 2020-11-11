@@ -10,7 +10,7 @@ import { UserService } from './services/user.service';
 export class AppComponent {
 
   isDark: boolean;
-  loading: boolean;
+  loading: boolean = true;
 
   constructor(private themeService: ThemeService, private userService: UserService) {
     this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
