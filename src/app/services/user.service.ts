@@ -38,32 +38,6 @@ export class UserService {
     this.coinAmount$.emit(this.coinAmount);
   }
 
-  async getTopActive(timeFrame: number) {
-    let min_date: Date;
-    switch(timeFrame) {
-      case 0:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 1);
-        return 'Reynaldo Quintero';
-        break;
-      case 1:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 7);
-        return 'Reynaldo Quintero';
-        break;
-      case 2:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 28);
-        return 'Reynaldo Quintero';
-        break;
-      case 3:
-        min_date = new Date();
-        min_date.setDate(min_date.getDate() - 365);
-        return 'Reynaldo Quintero';
-        break;
-    }
-  }
-
   getUserType() {
 
     return this.isUser$;
@@ -73,6 +47,7 @@ export class UserService {
     return this.coinAmount$;
   }
 
+  
   getCurrentUserType() {
     return this.isUser;
   }

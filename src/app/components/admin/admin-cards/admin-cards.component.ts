@@ -42,10 +42,6 @@ export class AdminCardsComponent implements OnInit, OnChanges {
       {
         name: 'Most completed event',
         value: await this.eventService.getTopCompleted(this.timeFrame)
-      },
-      {
-        name: 'Most activative user',
-        value: await this.userService.getTopActive(this.timeFrame)
       }
     ];
 
