@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService implements OnInit {
+export class UserService {
 
   private isUser: boolean;
   private coinAmount: number;
@@ -11,15 +11,14 @@ export class UserService implements OnInit {
   private coinAmount$: EventEmitter<number> = new EventEmitter();
   user: {_id: string};
   constructor(private http: HttpClient) { 
-
-    
-  }
-  async ngOnInit() {
     this.isUser = true;
     // CALL FROM DB
-    var userObtained = (await this.http.get<any>('http://localhost:8080/User/getCoinAmountByUserId?user_id=5fa177809af0e02777994f80').toPromise());
-    this.coinAmount = userObtained.abilityPoints;
-    this.user = userObtained;
+    (this.http.get<any>('http://localhost:8080/User/getCoinAmountByUserId?user_id=5fa177809af0e02777994f80').toPromise()).then((userObtained) => {
+      this.coinAmount = userObtained[0].abilityPoints;
+      this.user = userObtained[0];
+      this.coinAmount$.emit(this.coinAmount);
+    });
+    
   }
   
 
