@@ -13,15 +13,15 @@ export class CharacterService {
 
   async createCharacter(character: Character) {
     character.skillTree = (character.skillTree._id as any);
-    await this.http.post('http://localhost:8080/Character/', {...character}).toPromise();
+    await this.http.post('https://greenhero.herokuapp.com/Character/', {...character}).toPromise();
   }
 
   getCharacter(character_id: string) {
-    return this.http.get<Character>('http://localhost:8080/Character/getCharacterById/'+encodeURIComponent(character_id)).toPromise();
+    return this.http.get<Character>('https://greenhero.herokuapp.com/Character/getCharacterById/'+encodeURIComponent(character_id)).toPromise();
   }
 
   async getCharacters(user_id: string) {
-    const characters = await this.http.get<Array<Character>>('http://localhost:8080/Character/getByUserId/'+encodeURIComponent(user_id)).toPromise();
+    const characters = await this.http.get<Array<Character>>('https://greenhero.herokuapp.com/Character/getByUserId/'+encodeURIComponent(user_id)).toPromise();
     return characters;
   }
 }

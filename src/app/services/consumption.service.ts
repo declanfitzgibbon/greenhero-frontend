@@ -19,7 +19,7 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setHours((new Date()).getHours() - 1);
-        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fifthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -29,7 +29,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 2);
-        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fourthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -39,7 +39,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 3);
-        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        thirdValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -49,7 +49,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 4);
-        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        secondValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -59,7 +59,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 5);
-        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        firstValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -92,7 +92,7 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setDate((new Date()).getDate() - 1);
-        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fifthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -102,7 +102,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 2);
-        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fourthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -112,7 +112,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 3);
-        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        thirdValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -122,7 +122,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 4);
-        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        secondValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -132,7 +132,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 5);
-        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        firstValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -165,7 +165,7 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setDate((new Date()).getDate() - 7);
-        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fifthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -175,7 +175,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 14);
-        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fourthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -185,7 +185,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 21);
-        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        thirdValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -195,7 +195,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 28);
-        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        secondValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -205,7 +205,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 35);
-        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        firstValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -238,7 +238,7 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 1);
-        fifthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fifthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -248,7 +248,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 2);
-        fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        fourthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -258,7 +258,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 3);
-        thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        thirdValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -268,7 +268,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 4);
-        secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        secondValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -278,7 +278,7 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 5);
-        firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetween', {
+        firstValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetween', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString()  
@@ -336,28 +336,28 @@ export class ConsumptionService {
         min_date.setDate((new Date()).getDate() - 365);
         break;
       }
-      firstValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForCategory', {
+      firstValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForCategory', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             category: 'Stations'
           }
         }).toPromise()).total;
-      secondValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForCategory', {
+      secondValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForCategory', {
         params: {
           min_date: min_date.toISOString(),
           max_date: max_date.toISOString(),
           category: 'Light'
         }
       }).toPromise()).total;
-      thirdValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForCategory', {
+      thirdValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForCategory', {
         params: {
           min_date: min_date.toISOString(),
           max_date: max_date.toISOString(),
           category: 'Heating'
         }
       }).toPromise()).total;
-      fourthValue = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForCategory', {
+      fourthValue = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForCategory', {
         params: {
           min_date: min_date.toISOString(),
           max_date: max_date.toISOString(),
@@ -400,14 +400,14 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setHours((new Date()).getHours() - 1);
-        fifthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fifthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fifthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fifthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -418,14 +418,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 2);
-        fourthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fourthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fourthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fourthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -436,14 +436,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 3);
-        thirdValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        thirdValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        thirdValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        thirdValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -454,14 +454,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 4);
-        secondValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        secondValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        secondValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        secondValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -472,14 +472,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setHours((new Date()).getHours() - 5);
-        firstValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        firstValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        firstValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        firstValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -514,14 +514,14 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setDate((new Date()).getDate() - 1);
-        fifthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fifthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fifthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fifthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -533,14 +533,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 2);
-        fourthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fourthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fourthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fourthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -552,14 +552,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 3);
-        thirdValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        thirdValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        thirdValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        thirdValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -571,14 +571,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 4);
-        secondValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        secondValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        secondValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        secondValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -590,14 +590,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 5);
-        firstValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        firstValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        firstValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        firstValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -632,14 +632,14 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setDate((new Date()).getDate() - 7);
-        fifthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fifthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fifthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fifthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -651,14 +651,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 14);
-        fourthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fourthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fourthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fourthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -670,14 +670,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 21);
-        thirdValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        thirdValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        thirdValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        thirdValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -689,14 +689,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 28);
-        secondValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        secondValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        secondValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        secondValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -708,14 +708,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setDate((new Date()).getDate() - 35);
-        firstValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        firstValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        firstValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        firstValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -750,14 +750,14 @@ export class ConsumptionService {
         min_date = new Date();
         max_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 1);
-        fifthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fifthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fifthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fifthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -769,14 +769,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 2);
-        fourthValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        fourthValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        fourthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        fourthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -788,14 +788,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 3);
-        thirdValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        thirdValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        thirdValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        thirdValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -807,14 +807,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 4);
-        secondValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        secondValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        secondValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        secondValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -826,14 +826,14 @@ export class ConsumptionService {
         max_date = new Date(min_date);
         min_date = new Date();
         min_date.setMonth((new Date()).getMonth() - 5);
-        firstValueU = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenUser', {
+        firstValueU = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenUser', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
             user_id: user_id
           }
         }).toPromise()).total;
-        firstValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAverageConsumptionBetweenUserProfession', {
+        firstValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAverageConsumptionBetweenUserProfession', {
           params: {
             min_date: min_date.toISOString(),
             max_date: max_date.toISOString(),
@@ -935,28 +935,28 @@ export class ConsumptionService {
         min_date.setDate((new Date()).getDate() - 365);
         break;
     }
-    firstValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getConsumptionBetweenProfession', {
+    firstValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getConsumptionBetweenProfession', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
         occupation: 'Developers'
       }
     }).toPromise()).total;
-    secondValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getConsumptionBetweenProfession', {
+    secondValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getConsumptionBetweenProfession', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
         occupation: 'Lawyers'
       }
     }).toPromise()).total;
-    thirdValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getConsumptionBetweenProfession', {
+    thirdValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getConsumptionBetweenProfession', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
         occupation: 'Designers'
       }
     }).toPromise()).total;
-    fourthValueP = (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getConsumptionBetweenProfession', {
+    fourthValueP = (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getConsumptionBetweenProfession', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
@@ -1013,7 +1013,7 @@ export class ConsumptionService {
         break;
     }
 
-    return (await this.http.get<{category: string}>('http://localhost:8080/Consumption/getConsumptionHighestCategoryForUser', {
+    return (await this.http.get<{category: string}>('https://greenhero.herokuapp.com/Consumption/getConsumptionHighestCategoryForUser', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
@@ -1048,7 +1048,7 @@ export class ConsumptionService {
         min_date.setDate((new Date()).getDate() - 365);
         break;
     }
-    return (await this.http.get<{day: string}>('http://localhost:8080/Consumption/getConsumptionHighestDayForUser', {
+    return (await this.http.get<{day: string}>('https://greenhero.herokuapp.com/Consumption/getConsumptionHighestDayForUser', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
@@ -1082,7 +1082,7 @@ export class ConsumptionService {
         min_date.setDate((new Date()).getDate() - 365);
         break;
     }
-    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForCategoryAndUser', {
+    return (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForCategoryAndUser', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
@@ -1117,7 +1117,7 @@ export class ConsumptionService {
         min_date.setDate((new Date()).getDate() - 365);
         break;
     }
-    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForUser', {
+    return (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForUser', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
@@ -1127,7 +1127,7 @@ export class ConsumptionService {
   }
 
   async getUserMonthAllowance(user_id: string, date: Date) {
-    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getUserMonthAllowance', {
+    return (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getUserMonthAllowance', {
       params: {
         user_id: user_id,
         date: date.toISOString()
@@ -1142,7 +1142,7 @@ export class ConsumptionService {
     min_date.setMonth(date.getMonth());
     min_date.setFullYear(date.getFullYear());
     min_date.setDate(1);
-    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getAllConsumptionBetweenForUser', {
+    return (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getAllConsumptionBetweenForUser', {
       params: {
         min_date: min_date.toISOString(),
         max_date: max_date.toISOString(),
@@ -1152,7 +1152,7 @@ export class ConsumptionService {
   }
 
   async getMonthAllowance(date: Date) {
-    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getTotalMonthAllowance', {
+    return (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getTotalMonthAllowance', {
       params: {
         date: date.toISOString()
       }
@@ -1160,7 +1160,7 @@ export class ConsumptionService {
   }
   
   async getWeekAllowance(date: Date) {
-    return (await this.http.get<{total: number}>('http://localhost:8080/Consumption/getTotalWeekAllowance', {
+    return (await this.http.get<{total: number}>('https://greenhero.herokuapp.com/Consumption/getTotalWeekAllowance', {
       params: {
         date: date.toISOString()
       }

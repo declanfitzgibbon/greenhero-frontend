@@ -9,19 +9,19 @@ export class TemperatureService {
   constructor(private http: HttpClient) { }
 
   getLatestTemperature() {
-    return this.http.get<any>('http://localhost:8080/Temperature/getLatestTemperature').toPromise();
+    return this.http.get<any>('https://greenhero.herokuapp.com/Temperature/getLatestTemperature').toPromise();
   }
 
   getLatestACState() {
-    return this.http.get<any>('http://localhost:8080/AcState/getLatestACState').toPromise();
+    return this.http.get<any>('https://greenhero.herokuapp.com/AcState/getLatestACState').toPromise();
   }
   
   getDesiredTemp() {
-    return this.http.get<any>('http://localhost:8080/TemperatureDesired/getLatestTemperatureDesired').toPromise();
+    return this.http.get<any>('https://greenhero.herokuapp.com/TemperatureDesired/getLatestTemperatureDesired').toPromise();
   }
   
   saveDesiredTemp(getDesiredTemp: number) {
-    return this.http.post<any>('http://localhost:8080/TemperatureDesired', {
+    return this.http.post<any>('https://greenhero.herokuapp.com/TemperatureDesired', {
       "temperatureDesired": +getDesiredTemp,
       "_id": "_id",
       "time": (new Date()).toISOString()

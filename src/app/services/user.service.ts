@@ -15,7 +15,7 @@ export class UserService {
   constructor(private http: HttpClient) { 
     this.isUser = true;
     // CALL FROM DB
-    (this.http.get<any>('http://localhost:8080/User/getCoinAmountByUserId?user_id='+this.currentUserId).toPromise()).then((userObtained) => {
+    (this.http.get<any>('https://greenhero.herokuapp.com/User/getCoinAmountByUserId?user_id='+this.currentUserId).toPromise()).then((userObtained) => {
       this.coinAmount = userObtained[0].abilityPoints;
       this.user = userObtained[0];
       this.coinAmount$.emit(this.coinAmount);
@@ -32,14 +32,14 @@ export class UserService {
 
   async addCoins(coins: number) {
 
-    await this.http.put<any>('http://localhost:8080/User/addCoinsByUserId?_id='+this.currentUserId+'&addCoins='+coins+'&oldCoins='+this.coinAmount,null).toPromise();
+    await this.http.put<any>('https://greenhero.herokuapp.com/User/addCoinsByUserId?_id='+this.currentUserId+'&addCoins='+coins+'&oldCoins='+this.coinAmount,null).toPromise();
     this.coinAmount += coins;
     this.coinAmount$.emit(this.coinAmount);
   }
   
   async substractCoins(coins: number) {
 
-    await this.http.put<any>('http://localhost:8080/User/substractCoinsByUserId?_id='+this.currentUserId+'&substractCoins='+coins+'&oldCoins='+this.coinAmount,null).toPromise();
+    await this.http.put<any>('https://greenhero.herokuapp.com/User/substractCoinsByUserId?_id='+this.currentUserId+'&substractCoins='+coins+'&oldCoins='+this.coinAmount,null).toPromise();
     this.coinAmount -= coins;
     this.coinAmount$.emit(this.coinAmount);
   }

@@ -12,7 +12,7 @@ export class SkillTreeService {
   constructor(private http: HttpClient) { }
 
   async getTree(tree_id: string) {
-    return (await this.http.get<SkillTree>('http://localhost:8080/SkillTree/'+encodeURIComponent(tree_id)).toPromise())
+    return (await this.http.get<SkillTree>('https://greenhero.herokuapp.com/SkillTree/'+encodeURIComponent(tree_id)).toPromise())
   }
 
   async updateNode(node: Node) {
@@ -21,7 +21,7 @@ export class SkillTreeService {
         node.sons[i] = (node.sons[i]._id as any);
       }
     }
-    return (await this.http.put<any>('http://localhost:8080/Node', {
+    return (await this.http.put<any>('https://greenhero.herokuapp.com/Node', {
       ...node
     }).toPromise())
   }

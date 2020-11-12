@@ -15,7 +15,7 @@ export class TeamService {
 
   async getPlayerTeamForEvent(event_id: string, user_id: string) {
     //return this.teams.find((team) => team.event_id === event_id && (team.teamLeader.user_id === user_id || team.teamMembers.some((member) => member.user_id === user_id)));
-    const team = await this.http.get<Team>("http://localhost:8080/Team/getTeamByEventIdAndUserId?event_id="+encodeURIComponent(event_id)+
+    const team = await this.http.get<Team>("https://greenhero.herokuapp.com/Team/getTeamByEventIdAndUserId?event_id="+encodeURIComponent(event_id)+
                                                    "&user_id="+encodeURIComponent(user_id)).toPromise();
     return team;
   }
@@ -27,7 +27,7 @@ export class TeamService {
       team.teamMembers[i] = (team.teamMembers[i] as any);
     }
     //this.teams.push(team);
-    return await this.http.post('http://localhost:8080/Team/', {...team}).toPromise();
+    return await this.http.post('https://greenhero.herokuapp.com/Team/', {...team}).toPromise();
   }
 
   async saveTeam(team_id: string, team: Team) {
@@ -43,12 +43,12 @@ export class TeamService {
         team.applications[i] = (team.applications[i]._id as any);
       }
     }
-   return await this.http.put('http://localhost:8080/Team/modifyTeamById?_id='+encodeURIComponent(team_id),{...team}).toPromise();
+   return await this.http.put('https://greenhero.herokuapp.com/Team/modifyTeamById?_id='+encodeURIComponent(team_id),{...team}).toPromise();
   }
 
   searchTeams(event_id: string, name?: string) {
     //return this.teams.filter((team) => name ? ( team.event_id === event_id && team.name.toLowerCase().includes(name.toLowerCase())) : (team.event_id === event_id) )
-    let url = 'http://localhost:8080/Team/getTeamByEventIdAndTeamName?event_id='+encodeURIComponent(event_id);
+    let url = 'https://greenhero.herokuapp.com/Team/getTeamByEventIdAndTeamName?event_id='+encodeURIComponent(event_id);
     if(name) {
       url += '&teamName='+encodeURIComponent(name)
     }
@@ -56,11 +56,11 @@ export class TeamService {
   }
 
   async createApplication(application: Application) {
-    return await this.http.post('http://localhost:8080/Application/', {...application, character: application.character._id}).toPromise();
+    return await this.http.post('https://greenhero.herokuapp.com/Application/', {...application, character: application.character._id}).toPromise();
   }
   
   async updateApplication(application: Application) {
-    return await this.http.put('http://localhost:8080/Application/', {...application, character: application.character._id}).toPromise();
+    return await this.http.put('https://greenhero.herokuapp.com/Application/', {...application, character: application.character._id}).toPromise();
   }
 
 }
