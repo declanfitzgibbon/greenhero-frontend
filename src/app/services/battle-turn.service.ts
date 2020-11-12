@@ -13,13 +13,10 @@ export class BattleTurnService {
 
   setLocalTurns(turns: Array<string>) {
     this.turns = turns;
+    this.turnChange.emit(this.turns);
   }
   nextTurn(team_id: string) {
     this.turns.push(this.turns.shift());
     this.turnChange.emit(this.turns);
-    this.http.put('http://localhost:8080/Team/updateTeamTurns', {
-      turns: this.turns,
-      team_id: team_id
-    }).toPromise();
   }
 }

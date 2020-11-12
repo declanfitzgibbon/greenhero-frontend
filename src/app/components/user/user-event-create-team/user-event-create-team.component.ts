@@ -58,7 +58,7 @@ export class UserEventCreateTeamComponent implements OnInit {
     this.characterSelected = this.characters.find((char) => char._id === this.characterSelectedID);
   }
 
-  createTeam() {
+  async createTeam() {
     const team: Team = {
       _id: "1",
       avatar: this.selectedAvatar.src,
@@ -66,11 +66,11 @@ export class UserEventCreateTeamComponent implements OnInit {
       teamName: this.teamName,
       teamLeader: this.characterSelected,
       teamMembers: [],
-      completed: false
-      //applications: [],
-      //turnOrder: [this.characterSelected._id]
+      completed: false,
+      applications: [],
+      turnOrder: [this.characterSelected._id]
     };
-    this.teamService.addTeam(team);
+    await this.teamService.addTeam(team);
     this.teamCreated.emit(team);
   }
 

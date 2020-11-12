@@ -16,10 +16,10 @@ export interface Node {
 }
 
 export enum Ability {
-    'attack' = 'Attack',
-    'armor' = 'armor',
-    'health' = 'Health',
-    'healing_factor' = 'Heal factor'
+    'Attack' = 'Attack',
+    'Armor' = 'Armor',
+    'Health' = 'Health',
+    'Healing_Factor' = 'Healing_Factor'
   }
   
   export enum NodeType {

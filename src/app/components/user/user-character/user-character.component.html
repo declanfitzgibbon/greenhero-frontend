@@ -2,27 +2,22 @@
      gdGap="40px" 
      gdRows="auto auto"
      class="character_container">
-     <div class="character" gdArea="character">
-        <div class="character-name" >
+     <div class="character" gdArea="character" *ngFor="let characterSelected of characters; let i = index">
+        <div class="character-name" style="position: relative">
+            <button mat-button class="detail-button" (click)="goToTree(i)">Detail</button>
             <img class="character-avatar" src="/assets/elf-avatar.png" alt="">
-            <p>{{characterSelected.name}}</p>
-            <a [routerLink]="['/user/character/skill-tree']">
-                <div class="detail">
-                    <p class="detail"><mat-icon>add_circle</mat-icon></p>
-                    <p>Detail</p>
-                </div>
-            </a>
-        </div>
-        <div class="character-stats" >
-            <p><img src="/assets/health-normal.png" alt="">Health: {{ characterSelected.health || '0'}}</p>
-            <p><img src="/assets/breastplate.png" alt="">armor: {{ characterSelected.armor || '0'}}</p>
-            <p><img src="/assets/swords-power.png" alt="">Attack: {{ characterSelected.attack || '0'}}</p>
-            <p><img src="/assets/healing.png" alt="">Heal: {{ characterSelected.healing_factor || '0'}}</p>
+            <p>{{characterSelected.characterName}}</p>
+            <div class="character-stats" >
+                <p><img src="/assets/health-normal.png" alt="">Health: {{ characterSelected.health || '0'}}</p>
+                <p><img src="/assets/breastplate.png" alt="">Armor: {{ characterSelected.armor || '0'}}</p>
+                <p><img src="/assets/swords-power.png" alt="">Attack: {{ characterSelected.attack || '0'}}</p>
+                <p><img src="/assets/healing.png" alt="">Heal: {{ characterSelected.healing_factor || '0'}}</p>
+            </div>
         </div>
     </div>
     <div class="create" gdArea="create" (click)="createAvatar()">
         <p><mat-icon>add_circle</mat-icon></p>
-        <p>Creat a new avatar</p>
+        <p>Creat a new character</p>
     </div>
 </div>
 <ng-container *ngIf="loading">

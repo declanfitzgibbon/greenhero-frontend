@@ -18,14 +18,19 @@ export class UserBattleComponent implements OnInit {
   team: Team;
   event: Event;
   action: { action: string, actionNumber: number };
+  firstTurnId: string;
+  loading: boolean;
 
   constructor(private teamService: TeamService, private route: ActivatedRoute, private userService: UserService, private battleTurnService: BattleTurnService, private eventService: EventService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.route.queryParams.subscribe(async (params) => {
       this.team = await this.teamService.getPlayerTeamForEvent(params.eventId, this.userService.user._id);
       this.event = await this.eventService.getEventByID(params.eventId);
       this.battleTurnService.setLocalTurns(this.team.turnOrder);
+      this.firstTurnId = this.team.turnOrder[0];
+      this.loading = false;
     });
   }
 

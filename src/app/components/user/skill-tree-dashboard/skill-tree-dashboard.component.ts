@@ -3,6 +3,7 @@ import { Node, Ability, AugmentationType, NodeType } from 'src/app/models/node';
 import { SkillTree } from 'src/app/models/skillTree';
 import { UserService } from 'src/app/services/user.service';
 import { SkillTreeService } from 'src/app/services/skill-tree.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-skill-tree-dashboard',
@@ -11,11 +12,7 @@ import { SkillTreeService } from 'src/app/services/skill-tree.service';
 })
 export class SkillTreeDashboardComponent implements OnInit {
 
-  classess: Array<{
-    name: string,
-    render: boolean,
-    skillTree: SkillTree
-  }> = [];
+  classess: Array<{render: boolean, tree: SkillTree}> = [];
 
   actions: Array<{ name: string, code: string, disabled: boolean }>;
 
@@ -24,20 +21,27 @@ export class SkillTreeDashboardComponent implements OnInit {
   totalCoinsToSpend: number;
   totalCoinsHad: number;
   
-  constructor(private coinService: UserService, private skillTreeService: SkillTreeService) { }
+  constructor(private coinService: UserService, private skillTreeService: SkillTreeService, private route: ActivatedRoute) { }
 
   async ngOnInit() {
-    this.nodesChosen = [];
-    this.actions = [
-      {
-        code: "confirm",
-        name: "Confirm",
-        disabled: true
-      }
-    ];
-    this.classess = await this.skillTreeService.getTrees();
-    this.totalCoinsHad = this.coinService.getCurrentCoinAmount();
-    this.coinService.getCoinsEmitter().subscribe((amount) => this.totalCoinsHad = amount);
+
+    this.route.queryParams.subscribe(async (params) => {
+      this.nodesChosen = [];
+      this.actions = [
+        {
+          code: "confirm",
+          name: "Confirm",
+          disabled: true
+        }
+      ];
+      this.classess = [{
+        tree: await this.skillTreeService.getTree(params.tree_id),
+        render: true
+      }];
+      this.totalCoinsHad = this.coinService.getCurrentCoinAmount();
+      this.totalCoinsToSpend = 0;
+      this.coinService.getCoinsEmitter().subscribe((amount) => this.totalCoinsHad = amount);
+    })
   }
 
   changeRender(index: number) {
@@ -85,23 +89,30 @@ export class SkillTreeDashboardComponent implements OnInit {
     }
   }
 
-  actionDone(action: { name: string, code: string, disabled: boolean }) {
+  async actionDone(action: { name: string, code: string, disabled: boolean }) {
     if(action.code === 'confirm' && !action.disabled) {
+      let found;
       for(let node of this.nodesChosen) {
-        const found = this.findNode(this.classess.find((tree) => tree.skillTree._id === node.tree_id).skillTree, node.node._id).locked = true;
+        found = this.findNode(this.classess.find((tree) => tree.tree._id === node.tree_id).tree, node.node._id);
+        found.locked = true;
+
+        const updatable = this.copyNode(found);
+        
+        await this.skillTreeService.updateNode(JSON.parse(JSON.stringify(updatable)));
       }
       this.coinService.substractCoins(this.totalCoinsToSpend);
-      this.totalCoinsToSpend = null;
-      const treeIndex = this.classess.findIndex((tree) => tree.skillTree._id === this.nodesChosen[0].tree_id);
-      this.nodesChosen = [];
-      this.reRender(treeIndex);
-      this.actions.find((oa) => oa.code === action.code).disabled = true;
+      this.ngOnInit()
+      // this.totalCoinsToSpend = null;
+      // const treeIndex = this.classess.findIndex((tree) => tree.tree._id === this.nodesChosen[0].tree_id);
+      // this.nodesChosen = [];
+      // this.reRender(treeIndex);
+      // this.actions.find((oa) => oa.code === action.code).disabled = true;
     }
   }
 
   resetTrees() {
     for(let tree of this.classess) {
-      for(let son of tree.skillTree.nodes) {
+      for(let son of tree.tree.nodes) {
         this.resetTree(son);
       }
     }
@@ -109,36 +120,66 @@ export class SkillTreeDashboardComponent implements OnInit {
 
   resetTree(node: Node) {
     node.owned = node.locked;
-    for(let son of node.sons) {
-      this.resetTree(son);
+    if(node.sons) {
+      for(let son of node.sons) {
+        this.resetTree(son);
+      }
     }
   }
   
   findNode(skillTree: SkillTree, _id: string, currentNode: Node = null): Node {
+    
     if(!currentNode) {
-      let node = skillTree.nodes.find((node) => node._id === _id);
+      let node;
+      if(skillTree.nodes) {
+        node = skillTree.nodes.find((nodeSON) => nodeSON._id === _id);
+      }
       if(node) {
         return node;
       }
       let searchedIndex = -1;
       while(!node) {
         searchedIndex++;
-        node = this.findNode(skillTree, _id, node[searchedIndex]);
+        if(skillTree.nodes && skillTree.nodes.length && skillTree.nodes.length > searchedIndex){
+          node = this.findNode(skillTree, _id, skillTree.nodes[searchedIndex]);
+        } else {
+          return null;
+        }
       }
       return node;
     } else {
-      let node = currentNode.sons.find((node) => node._id === _id);
+      let node;
+      if(currentNode.sons) {
+        node = currentNode.sons.find((nodeSON) => nodeSON._id === _id);
+      }
       if(node) {
         return node;
       }
       let searchedIndex = -1;
       while(!node) {
         searchedIndex++;
-        node = this.findNode(skillTree, _id, node[searchedIndex]);
+        if(currentNode.sons && currentNode.sons.length && currentNode.sons.length > searchedIndex) {
+          node = this.findNode(skillTree, _id, currentNode.sons[searchedIndex]);
+        } else {
+          return null;
+        }
       }
       return node;
     }
     
+  }
+
+  copyNode(node: Node) {
+    let sons = node.sons;
+    const returnable = {...node, sons: []};
+    returnable.clickedEmmiter = undefined;
+    if(sons) {
+      for(let son of sons) {
+        const copy = this.copyNode(son);
+        returnable.sons.push(copy);
+      }
+    }
+    return returnable;
   }
 
 }

@@ -2,9 +2,9 @@
 <div class="turn-container">
     <div class="turn-avatar" *ngFor="let participant of participants; let i = index">
         <div class="name">
-            {{ participant.name }}
+            {{ participant.characterName }}
         </div>
-        <img class="avatar-img" [src]="participant.src" [ngClass]="{'you': participant.id === userId}">
+        <img class="avatar-img" [src]="participant.avatar" [ngClass]="{'you': participant.id === userId}">
         <div class="position">
             {{ i + 1 }}
         </div>

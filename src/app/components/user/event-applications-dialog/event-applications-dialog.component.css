@@ -17,6 +17,10 @@
     display: block;
 }
 
+.character-stats p {
+    text-align: center;
+}
+
 .character-avatar img {
     height: 60px;
     width: 60px;

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Application } from 'src/app/models/application';
@@ -16,6 +16,7 @@ import { EventApplicationsDialogComponent } from '../event-applications-dialog/e
 export class EventTeamLobbyComponent implements OnInit {
 
   @Input() team: Team;
+  @Output() applicationChange: EventEmitter<any> = new EventEmitter();
   applications: Array<Application>;
   user;
   loading: boolean;
@@ -40,13 +41,13 @@ export class EventTeamLobbyComponent implements OnInit {
   abandonTeam() {
   }
 
-  openApplications() {
+  openApplications() { 
     const dialogRef = this.dialog.open(EventApplicationsDialogComponent, {
       width: '90%',
       data: { applications: this.applications }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async (result) => {
       if(result) {
         this.applications = [];
         for(let app of result.applications) {
@@ -55,13 +56,17 @@ export class EventTeamLobbyComponent implements OnInit {
           } else if (!app.rejected) {
             this.applications.push(app);
           }
+          await this.teamService.updateApplication(app);
         }
-        this.teamService.saveTeam(this.team._id, this.team);
+        this.team.applications = this.applications;
+        await this.teamService.saveTeam(this.team._id, this.team);
+        this.applicationChange.emit(true);
       } else {
         this.applications.forEach((app) => { app.accepted = false; app.rejected = false });
       }
     });
   }
+
   membersMissing() {
     return this.team.teamMembers.length !== 3;
   }

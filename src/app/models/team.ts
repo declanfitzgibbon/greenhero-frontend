@@ -8,8 +8,8 @@ export interface Team {
     event_id: string;
     teamLeader: Character;
     teamMembers: Array<Character>;
-   // applications: Array<Application>;
-   //turnOrder: Array<string>;
+    applications: Array<Application>;
+    turnOrder: Array<string>;
     completed: boolean
   }
   

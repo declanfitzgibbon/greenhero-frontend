@@ -55,6 +55,15 @@ $power-saving-dark-theme: mat-dark-theme((
     fill: white;
   }
 
+  .character-name {
+    .character-stats {
+      background-color: #303030;
+    }
+    .detail-button {
+      color:#ca9500;
+    }
+  }
+
   .team-applications {
     background-color: #303030;
   }
@@ -107,6 +116,15 @@ $power-saving-dark-theme: mat-dark-theme((
   @include angular-material-theme($power-saving-light-theme);
   text {
     fill: black;
+  }
+
+  .character-name {
+    .character-stats {
+      background-color: white;
+    }
+    .detail-button {
+      color:#ca9500;
+    }
   }
 
   .team-applications {

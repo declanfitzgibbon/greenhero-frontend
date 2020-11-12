@@ -75,7 +75,6 @@ export class UserConsumptionCardsComponent implements OnInit {
         break;
     }
 
-    console.log(this.single);
     
 
     this.loading = false;
@@ -86,7 +85,6 @@ export class UserConsumptionCardsComponent implements OnInit {
   }
 
   onSelect(card: { name: string, value: number }) {
-    console.log(card);
   }
 
   onResize(event) {

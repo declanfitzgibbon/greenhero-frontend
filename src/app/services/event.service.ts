@@ -10,14 +10,14 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   async getEvents() {
-    return this.http.get<any>('http://localhost:8080/Event/').toPromise();
+    return this.http.get<any>('https://greenhero.herokuapp.com/Event/').toPromise();
   }
 
   async getMostGrouped(timeFrame: number) {
     return [
       {
         name: 'Developers',
-        value: (await this.http.get<{ total: number }>('http://localhost:8080/Team/getNumberOfPeople', {
+        value: (await this.http.get<{ total: number }>('https://greenhero.herokuapp.com/Team/getNumberOfPeople', {
           params: {
             profession: 'Developers'
           }
@@ -25,7 +25,7 @@ export class EventService {
       },
       {
         name: 'Lawyers',
-        value: (await this.http.get<{ total: number }>('http://localhost:8080/Team/getNumberOfPeople', {
+        value: (await this.http.get<{ total: number }>('https://greenhero.herokuapp.com/Team/getNumberOfPeople', {
           params: {
             profession: 'Lawyers'
           }
@@ -33,7 +33,7 @@ export class EventService {
       },
       {
         name: 'Designers',
-        value: (await this.http.get<{ total: number }>('http://localhost:8080/Team/getNumberOfPeople', {
+        value: (await this.http.get<{ total: number }>('https://greenhero.herokuapp.com/Team/getNumberOfPeople', {
           params: {
             profession: 'Designers'
           }
@@ -41,7 +41,7 @@ export class EventService {
       },
       {
         name: 'Engineers',
-        value: (await this.http.get<{ total: number }>('http://localhost:8080/Team/getNumberOfPeople', {
+        value: (await this.http.get<{ total: number }>('https://greenhero.herokuapp.com/Team/getNumberOfPeople', {
           params: {
             profession: 'Engineers'
           }
@@ -56,7 +56,7 @@ export class EventService {
       case 0:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 1);
-        return (await this.http.get<{ res: string }>('http://localhost:8080/Event/getTopEvent', {
+        return (await this.http.get<{ res: string }>('https://greenhero.herokuapp.com/Event/getTopEvent', {
           params: {
             date: min_date.toISOString()
           }
@@ -65,7 +65,7 @@ export class EventService {
       case 1:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 7);
-        return (await this.http.get<{ res: string }>('http://localhost:8080/Event/getTopEvent', {
+        return (await this.http.get<{ res: string }>('https://greenhero.herokuapp.com/Event/getTopEvent', {
           params: {
             date: min_date.toISOString()
           }
@@ -74,7 +74,7 @@ export class EventService {
       case 2:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 28);
-        return (await this.http.get<{ res: string }>('http://localhost:8080/Event/getTopEvent', {
+        return (await this.http.get<{ res: string }>('https://greenhero.herokuapp.com/Event/getTopEvent', {
           params: {
             date: min_date.toISOString()
           }
@@ -83,7 +83,7 @@ export class EventService {
       case 3:
         min_date = new Date();
         min_date.setDate(min_date.getDate() - 365);
-        return (await this.http.get<{ res: string }>('http://localhost:8080/Event/getTopEvent', {
+        return (await this.http.get<{ res: string }>('https://greenhero.herokuapp.com/Event/getTopEvent', {
           params: {
             date: min_date.toISOString()
           }
@@ -93,12 +93,12 @@ export class EventService {
   }
 
   async getPeopleInGroup(date: Date) {
-    return (await this.http.get<{ total: number }>('http://localhost:8080/Team/getAllNumberOfPeople').toPromise()).total
+    return (await this.http.get<{ total: number }>('https://greenhero.herokuapp.com/Team/getAllNumberOfPeople').toPromise()).total
   }
 
   async getCompletedEvents(date: Date) {
     date.setDate(date.getDate() - 28);
-    return (await this.http.get<{ total: number }>('http://localhost:8080/Team/getNumberofCompletedEvent', {
+    return (await this.http.get<{ total: number }>('https://greenhero.herokuapp.com/Team/getNumberofCompletedEvent', {
       params: {
         date: date.toISOString()
       }
@@ -106,10 +106,10 @@ export class EventService {
   }
 
   async getEventByID(event_id) {
-    return (await this.http.get<any>('http://localhost:8080/Event/getEventById', {
+    return (await this.http.get<any>('https://greenhero.herokuapp.com/Event/getEventById', {
       params: {
         id: event_id
       }
-    }).toPromise())
+    }).toPromise())[0]
   }
 }
