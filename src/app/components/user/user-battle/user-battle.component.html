@@ -1,8 +1,8 @@
 <div gdAreas="turns canvas | turns actions"
 gdGap="10px"
 gdRows="auto auto"
-class="battle-container">
+class="battle-container" *ngIf="!loading">
     <app-user-battle-turns gdArea="turns" [team]="team"></app-user-battle-turns>
-    <app-user-battle-canvas gdArea="canvas" (targetChosen)="setTarget($event)" [action]="action" [team]="team" [boss]="event.boss"></app-user-battle-canvas>
+    <app-user-battle-canvas gdArea="canvas" (targetChosen)="setTarget($event)" [action]="action" [team]="team" [boss]="event.boss" [turnId]="firstTurnId"></app-user-battle-canvas>
     <app-user-battle-actions gdArea="actions" [targetChosen]="target" (actionChosen)="setAction($event)" [teamId]="team._id"></app-user-battle-actions>
 </div>

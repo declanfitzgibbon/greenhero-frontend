@@ -41,7 +41,6 @@ export class UserBattleActionsComponent implements OnInit {
     this.targetChosen = null;
     setTimeout(() => {
       this.turnService.nextTurn(this.teamId);
-      console.log(this.targetChosen);
       
     }, 1000);
   }

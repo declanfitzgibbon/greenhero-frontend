@@ -6,7 +6,7 @@
             </div>
             <div class="team-name" fxFlex="70">
                 <div>
-                    {{ team.name }}
+                    {{ team.teamName }}
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="character-name" fxFlex="30">
                     <div>
-                        {{ team.teamLeader.name }}
+                        {{ team.teamLeader.characterName }}
                     </div>
                 </div>
                 <div class="character-stats" fxFlex="40">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="character-name" fxFlex="30">
                     <div>
-                        {{ member.name }}
+                        {{ member.characterName }}
                     </div>
                 </div>
                 <div class="character-stats" fxFlex="40">
@@ -64,8 +64,7 @@
             
         </div>
         <div class="team-actions" fxLayout="row" fxLayoutAlign="space-around center">
-            <button *ngIf="team.teamLeader.user_id === user._id" mat-raised-button (click)="navigateToEvent()" [disabled]="membersMissing()">Lock in</button>
-            <button mat-raised-button (click)="abandonTeam()" [disabled]="true">Abandon</button>
+            <button mat-raised-button (click)="navigateToEvent()" [disabled]="membersMissing()">Lock in</button>
         </div>
     </div>
     <div class="team-applications" fxLayout="column" fxLayoutAlign="start start" (click)="openApplications()" *ngIf="team.teamLeader.user_id === user._id">

@@ -53,7 +53,6 @@ export class AdminCardsComponent implements OnInit, OnChanges {
   }
 
   onSelect(card: { name: string, value: number }) {
-    console.log(card);
   }
 
   onResize(event) {

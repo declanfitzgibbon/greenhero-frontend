@@ -13,7 +13,7 @@ export interface Boss {
     armor: number;
     attack: number;
     healing_factor: number;
-    name: string;
-    description: string;
+    bossName: string;
+    bossDescription: string;
     avatar: string;
 }

@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="team-summary" *ngIf="currentTeam">
-                    <app-event-team-lobby [team]="currentTeam"></app-event-team-lobby>
+                    <app-event-team-lobby [team]="currentTeam" (applicationChange)="ngOnInit()"></app-event-team-lobby>
                 </div>
             </div>
             <ng-container *ngIf="loading">
@@ -77,7 +77,7 @@
                     </div>
                     <div class="boss-stats">
                         <p><span class="label">Health:</span> {{ selectedEvent.boss.health }} <img src="/assets/health-normal.png" alt=""></p>
-                        <p><span class="label">armor:</span> {{ selectedEvent.boss.armor }} <img src="/assets/breastplate.png" alt=""></p>
+                        <p><span class="label">Armor:</span> {{ selectedEvent.boss.armor }} <img src="/assets/breastplate.png" alt=""></p>
                         <p><span class="label">Attack:</span> {{ selectedEvent.boss.attack }} <img src="/assets/swords-power.png" alt=""></p>
                         <p><span class="label">Healing factor:</span> {{ selectedEvent.boss.healing_factor }} <img src="/assets/healing.png" alt=""></p>
                     </div>

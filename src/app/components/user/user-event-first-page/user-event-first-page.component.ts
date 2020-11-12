@@ -31,6 +31,7 @@ export class UserEventFirstPageComponent implements OnInit {
     this.selected = this.events[0]._id;
     this.selectedEvent = this.events[0];
     this.currentTeam = await this.teamService.getPlayerTeamForEvent(this.selectedEvent._id,this.user._id);
+    
     this.loading = false;
   }
 
@@ -44,10 +45,7 @@ export class UserEventFirstPageComponent implements OnInit {
   }
 
   teamCreated(id: string, team: Team) {
-    this.teamService.addTeam(team);
-    this.currentTeam = team;
-    this.searchIntention = false;
-    this.createIntention = false;
+    this.ngOnInit();
   }
 
 }

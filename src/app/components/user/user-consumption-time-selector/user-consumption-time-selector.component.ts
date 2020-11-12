@@ -18,7 +18,6 @@ export class UserConsumptionTimeSelectorComponent implements OnInit {
   }
 
   choice(number: number) {
-    console.log(number);
     
     this.timeSelector.emit(number);
     this.timeSelected = number;

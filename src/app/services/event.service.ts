@@ -110,6 +110,6 @@ export class EventService {
       params: {
         id: event_id
       }
-    }).toPromise())
+    }).toPromise())[0]
   }
 }

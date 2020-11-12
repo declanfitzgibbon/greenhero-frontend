@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Application } from 'src/app/models/application';
 import { CharacterService } from 'src/app/services/character.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UserService } from 'src/app/services/user.service';
@@ -28,23 +29,24 @@ export class EventSearchTeamComponent implements OnInit {
     this.user = this.userService.user;
     this.teams = await this.teamService.searchTeams(this.event_id, this.teamName);
     this.characters = await this.characterService.getCharacters(this.user._id);
-    console.log(this.characters);
     
     this.characterSelected = this.characters[0];
     this.characterSelectedID = this.characterSelected._id;
     this.loading = false;
   }
 
-  apply(team: Team) {
-      team.applications.push({
-        _id: "900",
-        accepted: false,
-        character: this.characterSelected,
-        rejected: false,
-        team_id: team._id,
-        user_id: this.user._id
-      });
-      this.teamService.saveTeam(team._id, team);
+  async apply(team: Team) {
+    const application: Application = {
+      _id: "900",
+      accepted: false,
+      character: this.characterSelected,
+      rejected: false,
+      team_id: team._id,
+      user_id: this.user._id
+    }
+    team.applications.push(application);
+    await this.teamService.createApplication(application);
+    this.ngOnInit();
   }
 
   newCharacterSelected() {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Mission } from '../models/mission';
 
 @Injectable({
   providedIn: 'root'
@@ -126,5 +127,11 @@ export class MissionService {
         date: date.toISOString()
       }
     }).toPromise()).total
+  }
+
+  async updateMission(mission: Mission) {
+    return (await this.http.put<any>('http://localhost:8080/Mission', {
+      ...mission
+    }).toPromise())
   }
 }

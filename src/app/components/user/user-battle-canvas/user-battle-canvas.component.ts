@@ -103,15 +103,25 @@ class HealthBar {
   y: number;
   value: number;
   p: number;
+  name: string;
   isSuper: boolean;
+  maxHealth: number
 
-  constructor (scene: Scene, x: number, y: number, isSuper: boolean, maxHealth: number, currentHealth: number)
+  constructor (scene: Scene, x: number, y: number, isSuper: boolean, maxHealth: number, currentHealth: number, name: string)
   {
+      this.name = name;
       this.isSuper = isSuper;
       this.bar = new GameObjects.Graphics(scene);
       this.value = currentHealth;
       this.text = new GameObjects.Text(scene, this.isSuper ? x + 45 : x + 20, y, currentHealth+'/'+maxHealth, {
         fontSize: '14px',
+        fontFamily: 'Arial',
+        color: 'black',
+        align: 'center'
+      });
+      this.maxHealth = maxHealth;
+      const nameCanvas = new GameObjects.Text(scene, this.isSuper ? x + 45 : x + 20, y - 20, this.name, {
+        fontSize: '18px',
         fontFamily: 'Arial',
         color: 'black',
         align: 'center'
@@ -124,6 +134,7 @@ class HealthBar {
 
       scene.add.existing(this.bar);
       scene.add.existing(this.text);
+      scene.add.existing(nameCanvas);
   }
 
   decrease (amount: number)
@@ -143,7 +154,7 @@ class HealthBar {
   increase (amount: number)
   {
       this.value += amount;
-      this.value = this.value > 100 ? 100 : this.value;
+      this.value = this.value > this.maxHealth ? this.maxHealth : this.value;
 
       this.draw();
   }
@@ -152,7 +163,7 @@ class HealthBar {
   {
       this.bar.clear();
 
-      this.text.text = this.isSuper ? this.value + '/1000' : this.value + '/100'
+      this.text.text = this.isSuper ? this.value + '/' +this.maxHealth : this.value + '/' +this.maxHealth
 
       //  BG
       this.bar.fillStyle(0x000000);
@@ -225,7 +236,7 @@ class Elf extends GameObjects.Sprite {
       var hx = this.color === 'green' ? 275 : 110;
       var hy = this.color === 'green' ? 230 : 110;
       
-      this.hp = new HealthBar(scene, x - hx, y - hy, this.color === 'green', character.health, character.health);
+      this.hp = new HealthBar(scene, x - hx, y - hy, this.color === 'green', character.health, character.health, (character as Character).characterName ? (character as Character).characterName : (character as Boss).bossName);
 
       this.id = id; 
       
@@ -411,6 +422,9 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
   add: any;
 
   constructor(private turnService: BattleTurnService) {
+  }
+
+  ngOnInit(): void {
     this.scene = new MainScene([], [], this.turnId, this.team, this.boss);
     this.config = {
       width:  (5 * window.innerWidth / 6) - 20,
@@ -419,11 +433,6 @@ export class UserBattleCanvasComponent implements OnInit, OnChanges {
       parent: 'game',
       scene: this.scene
     };
-   }
-
-  ngOnInit(): void {
-
-
     this.turnService.turnChange.subscribe((value) => {
       this.turnId = value[0];
       this.scene.blues.forEach((elf) => {

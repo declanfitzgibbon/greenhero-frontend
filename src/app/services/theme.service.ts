@@ -16,7 +16,6 @@ export class ThemeService {
     
     this.isDark = !this.isDark;
     this.isDark$.emit(this.isDark);
-    console.log(this.isDark);
   }
 
   getThemeType() {

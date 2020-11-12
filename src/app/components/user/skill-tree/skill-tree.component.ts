@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { AUTO, Game, GameObjects, Time, Types } from 'phaser';
 import { SkillTree } from 'src/app/models/skillTree';
-import { AugmentationType, Node } from 'src/app/models/node';
+import { Ability, AugmentationType, Node } from 'src/app/models/node';
 import { BattleTurnService } from 'src/app/services/battle-turn.service';
 
 
@@ -16,7 +16,10 @@ class MainScene extends Phaser.Scene {
 
   preload() {
     this.load.image('background', 'assets/skill-tree-background.jpg');
-    this.load.image('node', 'assets/skill-node.png');
+    this.load.image('attack-node', 'assets/skill-node.png');
+    this.load.image('health-node', 'assets/skill-node-health.png');
+    this.load.image('armor-node', 'assets/skill-node-armor.png');
+    this.load.image('healing-node', 'assets/skill-node-heal_factor.png');
     this.load.image('lock', 'assets/lock.png');
     this.load.image('skill-description', 'assets/skill-tree-description.png');
   }
@@ -36,7 +39,13 @@ class MainScene extends Phaser.Scene {
 
   renderSkillTree(skillTree: SkillTree, node: Node, parentNode?: Node, sons?: Array<Node>) {
     // Creation of the skill node
-    const sprite = this.add.sprite(node.x, node.y, 'node').setOrigin(0).setInteractive( { useHandCursor: true  } );
+    const sprite = this.add.sprite(node.x, node.y, 
+      node.ability === Ability.Attack ? 'attack-node' : (
+        node.ability === Ability.Health ? 'health-node' : (
+          node.ability === Ability.Armor ? 'armor-node' : 'healing-node'
+        )
+      )  
+    ).setOrigin(0).setInteractive( { useHandCursor: true  } );
     sprite.scale = 0.10;
     if(!node.owned) {
       sprite.setTint(0x6E7970);
@@ -50,7 +59,7 @@ class MainScene extends Phaser.Scene {
     description.scale = 0.05;
 
     // Creation of the texts in the description
-    const displayText = node.ability + ': '+node.amount+(node.augmentationType === AugmentationType.percentage ? '%' : '');
+    const displayText = (node.ability === Ability.Healing_Factor ? 'Healing' : node.ability) + ': '+(node.augmentationType === AugmentationType.percentage ? node.amount * 100 : node.amount)+(node.augmentationType === AugmentationType.percentage ? '%' : '');
     const textDescription = this.add.text(node.x + 70, node.y - 22, displayText, {
       fontSize: '12px',
       fontFamily: 'Arial',
@@ -191,7 +200,6 @@ export class SkillTreeComponent implements OnInit, OnChanges {
   }
 
   initGame() {
-    console.log('rendering skill tree: '+this.skillTree.class);
     
     this.scene = new MainScene(this.skillTree);
     this.config = {
