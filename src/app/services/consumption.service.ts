@@ -1168,7 +1168,7 @@ export class ConsumptionService {
   }
 
   // WENHAN THIS NEEDS TO BE CONNECTED TO THE DB IN SOME WAY TO BRING THE CONSUMPTION OF THE CURRENT SESSION
-  getConsumptionObservable(user_id: string) {
-    return new EventEmitter();
+  async getConsumptionObservable() {
+    return (await this.http.get<{total: number}>('http://localhost:8080/User/getActivatedUser').toPromise()).total;
   }
 }

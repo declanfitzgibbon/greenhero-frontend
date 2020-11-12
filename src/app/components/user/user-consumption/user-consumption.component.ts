@@ -23,7 +23,11 @@ export class UserConsumptionComponent implements OnInit {
     this.topAllowance = await this.consumptionService.getUserMonthAllowance(this.userService.user._id, new Date());
     this.allowance = await this.consumptionService.getTotalUserConsumptionForMonth(this.userService.user._id, new Date());
 
-    this.consumptionService.getConsumptionObservable(this.userService.user._id).subscribe( (value: number) => this.switchOn(value) );
+    this.consumption = await this.consumptionService.getConsumptionObservable();
+    if (this.consumption) {
+      this.logIn = true
+      this.switchOn(this.consumption)
+    }
   }
 
   switchOn(amount: number) {
