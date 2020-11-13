@@ -36,7 +36,7 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
     this.themeService.getThemeType().subscribe((theme) => this.isDark = theme);
     this.isDark = this.themeService.getCurrentThemeType();
 
-    this.title = "Week allowance"
+    this.title = "Month allowance"
 
     if (this.isDark) {
       this.colorScheme = { domain: ["#375c66", "#37665b", "#327785", "#344b80"] }
@@ -44,25 +44,24 @@ export class UserGaugeChartComponent implements OnInit, OnChanges {
       this.colorScheme = { domain: ["#68b1c4", "#70ccb7", "#52c6de", "#557bd4"] }
     }
 
+    this.units = 'Max: '+(this.max);
     if (!this.stats) {
       this.single = [
         {
-          "name": "Week Allowance",
+          "name": "Month Allowance",
           "value": this.value
         }
       ]
+      this.units += '\nNot Connected!';
     }
     else {
       this.single = [
         {
-          "name": "Week Allowance",
+          "name": "Month Allowance",
           "value": this.value
         }
       ]
-    }
-
-    if(this.max < this.value) {
-      this.units = 'Max allowance: '+(this.max)
+      this.units += '\nConnected!';
     }
 
     this.loading = false;
